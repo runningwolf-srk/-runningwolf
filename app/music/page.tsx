@@ -1,6 +1,6 @@
 "use client"
 
-import { musicCatalog } from "@/lib/musicCatalog"
+import { musicCatalog } from "@/src/lib/musicCatalog"
 
 function getYoutubeId(url: string) {
   const m = url.match(/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/)
