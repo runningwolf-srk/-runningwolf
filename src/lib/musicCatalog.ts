@@ -9,7 +9,7 @@ export interface Song {
   coverArt: string
 }
 
-export const songs: Song[] = [
+export const musicCatalog: Song[] = [
   {
     id: "iron-collide",
     title: "IRON COLLIDE",
