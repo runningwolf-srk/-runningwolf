@@ -1,7 +1,12 @@
 "use client"
 
-import { musicCatalog } from "@/lib/musicCatalog"
+import { musicCatalog } from "@/src/lib/musicCatalog"
 
+function getYoutubeId(url: string) {
+  // handles https://www.youtube.com/shorts/XXXX and watch?v=XXXX
+  const m = url.match(/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/)
+  return m? m[1] : url
+}
 
 export default function Music() {
   return (
@@ -17,7 +22,7 @@ export default function Music() {
       }}
     >
       <h1>RunningWolf SRK — Music</h1>
-      <p style={{ opacity: 0.7 }}>Viking / Norse selections only</p>
+      <p style={{ opacity: 0.7 }}>Viking / Norse</p>
 
       <div style={{ display: "grid", gap: "24px", marginTop: "32px" }}>
         {musicCatalog.map((t) => (
@@ -25,20 +30,16 @@ export default function Music() {
             <h3 style={{ margin: "0 0 8px" }}>{t.title}</h3>
             <iframe
               width="100%"
-              height="315"
-              src={`https://www.youtube.com/embed/${t.youtube}`}
+              height="180"
+              src={`https://www.youtube.com/embed/${getYoutubeId(t.youtube)}`}
+              title={t.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{ border: 0, borderRadius: 12 }}
+              style={{ border: 0, borderRadius: "12px" }}
             />
-            <p style={{ opacity: 0.6, fontSize: 14 }}>{t.tag}</p>
           </div>
         ))}
       </div>
-
-      <p style={{ marginTop: 48 }}>
-        <a href="/" style={{ color: "#e8e0d0" }}>← Home</a>
-      </p>
     </main>
   )
 }
