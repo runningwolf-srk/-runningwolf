@@ -14,7 +14,7 @@ export const musicCatalog: Song[] = [
     id: "iron-collide",
     title: "IRON COLLIDE",
     artist: "RunningWolf",
-    youtubeId: "REPLACE_ME_IRON_COLLIDE_ID",
+    youtubeId: "GMRfdPSNVZM",
     genre: "Viking",
     coverArt: "/covers/iron-collide.jpg"
   },
@@ -22,7 +22,7 @@ export const musicCatalog: Song[] = [
     id: "horn-of-war",
     title: "HORN OF WAR",
     artist: "RunningWolf",
-    youtubeId: "REPLACE_ME_HORN_OF_WAR_ID",
+    youtubeId: "UT1c5Q81kVk",
     genre: "Viking",
     coverArt: "/covers/horn-of-war.jpg"
   },
@@ -34,4 +34,4 @@ export const musicCatalog: Song[] = [
     genre: "Worship",
     coverArt: "/covers/heaven-calling.jpg"
   },
-]
+]]
