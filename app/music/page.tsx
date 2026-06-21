@@ -1,6 +1,6 @@
 "use client"
 
-import { musicCatalog } from "@/lib/musicCatalog"
+import { musicCatalog } from "@/src/lib/musicCatalog"
 
 function getYoutubeEmbed(id?: string) {
   return id ? `https://www.youtube.com/embed/${id}` : null
