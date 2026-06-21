@@ -1,23 +1,12 @@
 export type Track = {
   id: string
   title: string
-  youtube: string
+  artist: string
+  youtubeId?: string
 }
 
 export const musicCatalog: Track[] = [
-  {
-    id: "iron-collide",
-    title: "IRON COLLIDE",
-    youtube: "https://www.youtube.com/shorts/2-vpfkH5bpw",
-  },
-  {
-    id: "horn-of-war",
-    title: "HORN OF WAR",
-    youtube: "https://www.youtube.com/shorts/v_3yvB6uFLM",
-  },
-  {
-    id: "spiritual-journey",
-    title: "SPIRITUAL JOURNEY",
-    youtube: "https://www.youtube.com/shorts/6yVcWnMo_7g",
-  },
+  { id: "track-1", title: "Song 1", artist: "RunningWolf", youtubeId: "" },
+  { id: "track-2", title: "Song 2", artist: "RunningWolf", youtubeId: "" },
+  { id: "track-3", title: "Song 3", artist: "RunningWolf", youtubeId: "" }
 ]
