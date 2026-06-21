@@ -2,7 +2,8 @@ export type Track = {
   id: string
   title: string
   artist: string
-  youtubeId?: string
+  youtubeId: string
+  coverUrl: string
   note?: string
 }
 
@@ -12,6 +13,7 @@ export const musicCatalog: Track[] = [
     title: "IRON COLLIDE",
     artist: "RunningWolf",
     youtubeId: "HNYdZTp1qNc",
+    coverUrl: "/covers/iron-collide.jpg",
     note: "Viking energy"
   },
   {
@@ -19,6 +21,7 @@ export const musicCatalog: Track[] = [
     title: "HORN OF WAR",
     artist: "RunningWolf",
     youtubeId: "UT1c5Q81kVk",
+    coverUrl: "/covers/horn-of-war.jpg",
     note: "War cry aesthetic"
   },
   {
@@ -26,6 +29,7 @@ export const musicCatalog: Track[] = [
     title: "SPIRITUAL JOURNEY",
     artist: "RunningWolf",
     youtubeId: "GMRfdPSNVZM",
-    note: "Cinematic worship"
+    coverUrl: "/covers/spiritual-journey.jpg",
+    note: "Mystic path"
   }
 ]
