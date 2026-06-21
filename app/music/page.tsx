@@ -1,6 +1,7 @@
 "use client"
 
-import { musicCatalog } from "@/src/lib/musicCatalog"
+import { musicCatalog } from "@/lib/musicCatalog"
+
 
 export default function Music() {
   return (
