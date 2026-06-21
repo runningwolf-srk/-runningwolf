@@ -1,36 +1,37 @@
-export type Track = {
+// src/lib/musicCatalog.ts
+
+export interface Song {
   id: string
   title: string
   artist: string
   youtubeId: string
-  coverUrl?: string
-  note?: string
+  genre: string
+  coverArt: string
 }
 
-export const musicCatalog: Track[] = [
+export const songs: Song[] = [
   {
     id: "iron-collide",
     title: "IRON COLLIDE",
     artist: "RunningWolf",
-    youtubeId: "HNYdZTp1qNc",
-    coverUrl: "/covers/iron-collide.jpg",
-    note: "Viking energy"
+    youtubeId: "REPLACE_ME_IRON_COLLIDE_ID",
+    genre: "Viking",
+    coverArt: "/covers/iron-collide.jpg"
   },
   {
     id: "horn-of-war",
     title: "HORN OF WAR",
     artist: "RunningWolf",
-    youtubeId: "UT1c5Q81kVk",
-    coverUrl: "/covers/horn-of-war.jpg",
-    note: "War cry aesthetic"
+    youtubeId: "REPLACE_ME_HORN_OF_WAR_ID",
+    genre: "Viking",
+    coverArt: "/covers/horn-of-war.jpg"
   },
   {
-    id: "spiritual-journey",
-    title: "SPIRITUAL JOURNEY",
+    id: "heaven-calling",
+    title: "HEAVEN CALLING",
     artist: "RunningWolf",
-    youtubeId: "GMRfdPSNVZM",
-    coverUrl: "/covers/spiritual-journey.jpg",
-    note: "Cinematic worship"
-  }
-
+    youtubeId: "hRzarTmRdsU",
+    genre: "Worship",
+    coverArt: "/covers/heaven-calling.jpg"
+  },
 ]
