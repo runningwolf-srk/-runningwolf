@@ -1,75 +1,93 @@
 "use client"
 
-import { musicCatalog } from "@/lib/musicCatalog"
 import Link from "next/link"
+
+const catalog = [
+  {
+    id: "runningwolf-1",
+    title: "RunningWolf",
+    tag: "Identity Anthem",
+    cover: "/729068345_1706992463868756_7233760520950384832_n~2.jpg",
+    youtube: "https://youtube.com/@jessymarquez-e5t",
+  },
+  {
+    id: "track-2",
+    title: "Storm Born",
+    tag: "Cinematic",
+    cover: "/729068345_1706992463868756_7233760520950384832_n~2.jpg",
+    youtube: "https://youtube.com/@jessymarquez-e5t",
+  },
+  {
+    id: "track-3",
+    title: "Wolf Blood",
+    tag: "War Chant",
+    cover: "/729068345_1706992463868756_7233760520950384832_n~2.jpg",
+    youtube: "https://youtube.com/@jessymarquez-e5t",
+  },
+]
 
 export default function MusicPage() {
   return (
     <main
       style={{
         minHeight: "100vh",
-        background: "#0b0b0f",
+        fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
         color: "#e8e0d0",
-        fontFamily: "system-ui",
-        padding: 24,
+        background:
+          "radial-gradient(circle at center, rgba(212,168,75,0.08), transparent 45%), #050507",
+        padding: "48px 24px",
       }}
     >
-      <h1 style={{ color: "#d4a84b", marginBottom: 8 }}>
-        RunningWolf — Music
-      </h1>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <Link href="/" style={{ color: "#d4a84b", textDecoration: "none", fontSize: 13, opacity: 0.8 }}>
+            ← RunningWolf
+          </Link>
+          <h1 style={{ fontSize: 36, fontWeight: 700, color: "#d4a84b", margin: "12px 0 6px" }}>
+            Music Catalog
+          </h1>
+          <p style={{ fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.55, margin: 0 }}>
+            Jessy Marquez
+          </p>
+        </div>
 
-      <p style={{ opacity: 0.7, marginBottom: 24 }}>
-        Catalog / Select a track
-      </p>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 16,
-        }}
-      >
-        {musicCatalog.map((track) => (
-          <a
-            key={track.id}
-            href={track.youtube}
-            target="_blank"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-              border: "1px solid #2a2a3a",
-              borderRadius: 12,
-              overflow: "hidden",
-              background: "#12121a",
-            }}
-          >
-            <img
-              src={track.coverUrl}
-              alt={track.title}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+            gap: 20,
+          }}
+        >
+          {catalog.map((t) => (
+            <a
+              key={t.id}
+              href={t.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                width: "100%",
-                height: 180,
-                objectFit: "cover",
                 display: "block",
+                background: "#12121a",
+                border: "1px solid #2a2a3a",
+                borderRadius: 16,
+                overflow: "hidden",
+                textDecoration: "none",
+                color: "inherit",
               }}
-            />
-
-            <div style={{ padding: 12 }}>
-              <div style={{ fontWeight: 700, color: "#d4a84b" }}>
-                {track.title}
+            >
+              <div style={{ aspectRatio: "1 / 1", overflow: "hidden", background: "#0b0b0f" }}>
+                <img
+                  src={t.cover}
+                  alt={t.title}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
               </div>
-              <div style={{ fontSize: 12, opacity: 0.7 }}>
-                {track.tag}
+              <div style={{ padding: "14px 16px" }}>
+                <div style={{ fontWeight: 600, fontSize: 16, color: "#e8e0d0" }}>{t.title}</div>
+                <div style={{ fontSize: 12, opacity: 0.6, marginTop: 4 }}>{t.tag}</div>
               </div>
-            </div>
-          </a>
-        ))}
-      </div>
-
-      <div style={{ marginTop: 32 }}>
-        <Link href="/" style={{ color: "#d4a84b" }}>
-          ← Back Home
-        </Link>
+            </a>
+          ))}
+        </div>
       </div>
     </main>
   )
