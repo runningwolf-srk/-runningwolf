@@ -1,5 +1,16 @@
 "use client"
 
+const btnStyle: React.CSSProperties = {
+  padding: "10px 16px",
+  borderRadius: 8,
+  background: "#1a1a24",
+  color: "#e8e0d0",
+  textDecoration: "none",
+  fontSize: 14,
+  fontWeight: 500,
+  border: "1px solid #2a2a3a",
+}
+
 export default function Home() {
   return (
     <main
@@ -44,6 +55,25 @@ export default function Home() {
         <p style={{ fontSize: 18, opacity: 0.75, margin: "0 0 24px" }}>
           RunningWolf
         </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 10,
+            justifyContent: "center",
+          }}
+        >
+          <a href="https://youtube.com/@YOURHANDLE" target="_blank" rel="noopener noreferrer" style={btnStyle}>
+            YouTube
+          </a>
+          <a href="https://instagram.com/YOURHANDLE" target="_blank" rel="noopener noreferrer" style={btnStyle}>
+            Instagram
+          </a>
+          <a href="mailto:you@email.com" style={btnStyle}>
+            Email
+          </a>
+        </div>
       </div>
     </main>
   )
