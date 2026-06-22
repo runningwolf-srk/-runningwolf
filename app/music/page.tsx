@@ -1,35 +1,75 @@
 "use client"
 
-import { musicCatalog } from "@/src/lib/musicCatalog"
-
-function getYoutubeEmbed(id?: string) {
-  return id ? `https://www.youtube.com/embed/${id}` : null
-}
+import { musicCatalog } from "@/lib/musicCatalog"
+import Link from "next/link"
 
 export default function MusicPage() {
   return (
-    <main style={{ padding: "2rem", maxWidth: "720px", margin: "0 auto", background: "#000", color: "#fff", minHeight: "100vh" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Music</h1>
-      <div style={{ display: "grid", gap: "2rem" }}>
-        {musicCatalog.map((track) => {
-          const embed = getYoutubeEmbed(track.youtubeId)
-          return (
-            <div key={track.id} style={{ border: "1px solid #333", padding: "1rem", borderRadius: "8px", background: "#111" }}>
-              <h2 style={{ margin: "0 0 0.5rem" }}>{track.title}</h2>
-              <p style={{ color: "#aaa", margin: "0 0 1rem" }}>{track.artist}</p>
-              {embed && (
-                <iframe
-                  width="100%"
-                  height="315"
-                  src={embed}
-                  title={track.title}
-                  allowFullScreen
-                  style={{ border: 0, borderRadius: "6px" }}
-                />
-              )}
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#0b0b0f",
+        color: "#e8e0d0",
+        fontFamily: "system-ui",
+        padding: 24,
+      }}
+    >
+      <h1 style={{ color: "#d4a84b", marginBottom: 8 }}>
+        RunningWolf — Music
+      </h1>
+
+      <p style={{ opacity: 0.7, marginBottom: 24 }}>
+        Catalog / Select a track
+      </p>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 16,
+        }}
+      >
+        {musicCatalog.map((track) => (
+          <a
+            key={track.id}
+            href={track.youtube}
+            target="_blank"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              border: "1px solid #2a2a3a",
+              borderRadius: 12,
+              overflow: "hidden",
+              background: "#12121a",
+            }}
+          >
+            <img
+              src={track.coverUrl}
+              alt={track.title}
+              style={{
+                width: "100%",
+                height: 180,
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+
+            <div style={{ padding: 12 }}>
+              <div style={{ fontWeight: 700, color: "#d4a84b" }}>
+                {track.title}
+              </div>
+              <div style={{ fontSize: 12, opacity: 0.7 }}>
+                {track.tag}
+              </div>
             </div>
-          )
-        })}
+          </a>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 32 }}>
+        <Link href="/" style={{ color: "#d4a84b" }}>
+          ← Back Home
+        </Link>
       </div>
     </main>
   )
