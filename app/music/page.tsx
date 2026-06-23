@@ -1,27 +1,31 @@
-export default function MusicPage() {
-  const tracks = [
-    { title: "Heaven Calling", img: "/music/heaven-calling.jpg" },
-    { title: "Iron Collide", img: "/music/iron-collide.jpg" },
-  ]
-  const fallback = "/729068345_1706992463868756_7233760520950384832_n~2.jpg"
+import "./globals.css"
+import Link from "next/link"
 
+export const metadata = {
+  title: "RunningWolf — Jessy Marquez",
+  description: "Heavy metal / Viking metal from Guymon, OK",
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ padding: "24px", maxWidth: "980px", margin: "0 auto" }}>
-      <h1>Music Catalog</h1>
-      <p style={{ color: "#9a8a7a" }}>Jessy Marquez</p>
-      <div style={{ display: "grid", gap: "20px", marginTop: "24px" }}>
-        {tracks.map(t => (
-          <div key={t.title}>
-            <img 
-              src={t.img} 
-              alt={t.title}
-              onError={e => (e.currentTarget.src = fallback)}
-              style={{ width: "100%", borderRadius: "12px" }}
-            />
-            <p style={{ color: "#d4a84b" }}>{t.title}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <html lang="en">
+      <body style={{ background: "#0b0a09", color: "#e8e2da", margin: 0, fontFamily: "system-ui, sans-serif" }}>
+        <header style={{ padding: "16px 24px", borderBottom: "1px solid #2a1818", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Link href="/" style={{ color: "#e8e2da", textDecoration: "none", fontWeight: 700 }}>
+            RunningWolf
+          </Link>
+          <nav style={{ display: "flex", gap: "20px" }}>
+            <Link href="/" style={{ color: "#9a8a7a", textDecoration: "none" }}>Home</Link>
+            <Link href="/music" style={{ color: "#9a8a7a", textDecoration: "none" }}>Music</Link>
+          </nav>
+        </header>
+
+        <main>{children}</main>
+
+        <footer style={{ padding: "24px", textAlign: "center", color: "#6b5a4a", fontSize: "14px", borderTop: "1px solid #2a1818", marginTop: "40px" }}>
+          © 2026 Jessy Marquez / RunningWolf
+        </footer>
+      </body>
+    </html>
   )
 }
