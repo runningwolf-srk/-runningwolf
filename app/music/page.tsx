@@ -2,13 +2,12 @@
 import Link from "next/link"
 
 const catalog = [
-  { id: "heaven-calling", title: "Heaven Calling", tag: "Worship Anthem", cover: "/heaven-calling.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-  { id: "iron-collide", title: "Iron Collide", tag: "Epic Hard Rock Anthem", cover: "/iron-collide.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-  { id: "blood-of-cross", title: "Blood of Cross", tag: "By His Wounds We Are Healed", cover: "/blood-of-cross.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-  { id: "lord-of-lords", title: "Lord of Lords", tag: "A Spiritual Anthem", cover: "/lord-of-lords.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-  { id: "horn-of-war", title: "Horn of War", tag: "A Battle Cry. A Legend Rises.", cover: "/horn-of-war.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-  { id: "spiritual-journey", title: "Spiritual Journey", tag: "A Journey To His Presence", cover: "/spiritual-journey.jpg", youtube: "https://youtube.com/@jessymarquez-e5t" },
-]
+  { title: "Heaven Calling", cover: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp", ... },
+{ title: "Iron Collide", cover: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp", ... },
+{ title: "Blood of Cross", cover: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp", ... },
+{ title: "Lord of Lords", cover: "/060a2ef0-6320-11f1-94f7-f3f3b6c0f03c.webp", ... },
+{ title: "Horn of War", cover: "/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp", ... },
+{ title: "Spiritual Journey", cover: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp", ... },
 
 export default function MusicPage() {
   return (
