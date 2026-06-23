@@ -22,6 +22,9 @@ export default function MusicPage() {
           </a>
         ))}
       </div>
+      <div style={{ marginTop: "24px" }}>
+        <Link href="/">← Home</Link>
+      </div>
     </div>
   )
-}}
+}
