@@ -6,9 +6,8 @@ export default function MusicPage() {
 
       <div style={{ display: "grid", gap: "20px" }}>
         <div style={{ background: "#141011", border: "1px solid #2a1818", borderRadius: "14px", overflow: "hidden" }}>
-          <img src="/music/heaven-calling.jpg" alt="Heaven Calling" style={{ width: "100%", display: "block" }} />
-          <div style={{ padding: "14px 16px", color: "#d4a84b", fontWeight: 600 }}>Heaven Calling</div>
-        </div>
+          /public/music/heaven-calling.jpg
+/public/music/iron-collide.jpg
 
         <div style={{ background: "#141011", border: "1px solid #2a1818", borderRadius: "14px", overflow: "hidden" }}>
           <img src="/music/iron-collide.jpg" alt="Iron Collide" style={{ width: "100%", display: "block" }} />
