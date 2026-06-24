@@ -1,49 +1,70 @@
 import Image from "next/image";
+import Link from "next/link";
+
+const hymns = [
+  {
+    slug: "heaven-calling",
+    title: "Heaven Is Calling",
+    cover: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    tagline: "A Worship Anthem",
+    story: "Written when worship was the only weapon left."
+  },
+  // When you add Iron Collide:
+  // {
+  //   slug: "iron-collide",
+  //   title: "Iron Collide",
+  //   cover: "/iron-collide-cover.jpg",
+  //   tagline: "Strength and perseverance through fire",
+  //   story: "A battle anthem for when life hits you like hammer on anvil."
+  // },
+];
 
 export default function MusicPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Heaven Is Calling Card */}
-      <div className="max-w-3xl mx-auto mb-16">
-        <h1 className="text-4xl font-bold mb-6 text-center">Heaven Is Calling</h1>
-        <Image 
-          src="/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp"
-          alt="Heaven Calling - A Worship Anthem"
-          width={800}
-          height={800}
-          className="rounded-lg shadow-2xl shadow-red-900/30 mx-auto"
-          priority
-        />
-      </div>
+    <div className="bg-[#0b0b0f] text-[#e8e6e3] min-h-screen py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold text-yellow-500 mb-2 text-center" style={{fontFamily: 'Cinzel, serif', fontWeight: 900}}>
+          The Hymns
+        </h1>
+        <p className="text-white/60 text-center mb-12">Each song is a weapon. Choose yours.</p>
 
-      {/* Heaven Calling YouTube Video */}
-      <div className="max-w-3xl mx-auto mb-16">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Official Visualizer</h2>
-        <div className="aspect-video w-full">
-          <iframe 
-            className="rounded-lg w-full h-full"
-            src="https://www.youtube.com/embed/oxNauKuxg4Q" 
-            title="Heaven Is Calling - RUNNINGWOLF"
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen
-          ></iframe>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {hymns.map((hymn) => (
+            <div key={hymn.slug} className="bg-black border border-yellow-900/30 rounded-xl overflow-hidden shadow-xl shadow-yellow-900/10 hover:shadow-yellow-900/30 transition-all hover:-translate-y-1">
+              <div className="relative aspect-square">
+                <Image src={hymn.cover} alt={hymn.title} fill className="object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-yellow-500 mb-2">{hymn.title}</h3>
+                <p className="text-sm text-white/70 mb-4 italic">{hymn.tagline}</p>
+                <p className="text-xs text-white/50 mb-6">{hymn.story}</p>
+                <div className="flex gap-3">
+                  <Link 
+                    href={`/${hymn.slug}`}
+                    className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded text-center text-sm"
+                  >
+                    ▶️ Play
+                  </Link>
+                  <Link 
+                    href={`/${hymn.slug}#story`}
+                    className="flex-1 border border-yellow-600/60 hover:bg-yellow-600/10 text-yellow-500 py-2 px-4 rounded text-center text-sm"
+                  >
+                    📖 Story
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
 
-      {/* Stormbreakers Playlist */}
-      <div className="max-w-3xl mx-auto mt-16">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Stormbreakers Playlist</h2>
-        <iframe 
-          className="rounded-lg"
-          src="https://open.spotify.com/embed/playlist/5BxENwMmi8ygKIZLCCvgmS?utm_source=generator&theme=0" 
-          width="100%" 
-          height="380" 
-          frameBorder="0" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy"
-        ></iframe>
+        {/* Empty state if only 1 song */}
+        {hymns.length === 1 && (
+          <div className="text-center mt-16 py-12 border-t border-yellow-900/20">
+            <p className="text-white/50 text-sm mb-4">More hymns are being forged in the fire...</p>
+            <p className="text-yellow-500 text-xs tracking-[0.3em]">THE SAGA CONTINUES</p>
+          </div>
+        )}
       </div>
     </div>
   );
-}
+            }
