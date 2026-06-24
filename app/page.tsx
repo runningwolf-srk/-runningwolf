@@ -12,7 +12,6 @@ export default function HomePage() {
           <nav className="flex gap-5 text-xs md:text-sm">
             <Link href="/" className="text-yellow-500">Home</Link>
             <Link href="/music" className="hover:text-yellow-500">Music</Link>
-            <Link href={`/${hymn.slug}#story`}>📖 Story</Link>
             <Link href="/gallery" className="hover:text-yellow-500">Gallery</Link>
           </nav>
         </div>
@@ -42,7 +41,6 @@ export default function HomePage() {
             <span className="text-yellow-500 font-semibold"> Stormbreakers</span> is for the addicted, the broken, the chosen.
           </p>
           
-          {/* DUAL CTA - Choose your path */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/music" 
@@ -60,7 +58,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THE SAGA - shortened for focus */}
       <section className="bg-black py-12 px-4 border-t border-yellow-900/20">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs text-yellow-500 tracking-[0.3em] mb-4 font-semibold">
@@ -69,11 +66,6 @@ export default function HomePage() {
           <p className="text-lg text-yellow-500 font-semibold py-4 border-y border-yellow-900/30 max-w-xl mx-auto" style={{fontFamily: 'Cinzel, serif'}}>
             &quot;Worship is your weapon.<br/>The storm is your calling.&quot;
           </p>
-          <div className="mt-6">
-            <Link href="/stories" className="text-yellow-500 hover:text-yellow-400 text-sm">
-              Read the full story →
-            </Link>
-          </div>
         </div>
       </section>
 
