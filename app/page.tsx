@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main className="bg-black text-white">
-      {/* Nav */}
       <nav className="fixed top-0 w-full z-30 bg-black/60 backdrop-blur-md px-4 py-3">
         <div className="container mx-auto flex justify-between items-center">
           <span className="font-bold text-lg">Stormbreakers - RunningWolf</span>
@@ -15,7 +14,6 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* SECTION 1: VIKING HERO - TAKES FULL SCREEN */}
       <section className="relative h-screen w-full overflow-hidden">
         <Image 
           src="/729068345_1706992463868756_7233760520950384832_n~2.jpg"
@@ -41,7 +39,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: MUSIC - STARTS AFTER HERO */}
       <section id="music" className="bg-zinc-950 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
