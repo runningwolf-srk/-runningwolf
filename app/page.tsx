@@ -15,8 +15,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* VIKING HERO - ONLY THING ON SCREEN */}
-      <section className="relative h-screen w-full">
+      {/* SECTION 1: VIKING HERO - TAKES FULL SCREEN */}
+      <section className="relative h-screen w-full overflow-hidden">
         <Image 
           src="/729068345_1706992463868756_7233760520950384832_n~2.jpg"
           alt="RunningWolf - Stormbreakers"
@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MUSIC SECTION - STARTS AFTER SCROLL */}
+      {/* SECTION 2: MUSIC - STARTS AFTER HERO */}
       <section id="music" className="bg-zinc-950 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
