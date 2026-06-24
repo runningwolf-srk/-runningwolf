@@ -16,9 +16,9 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="py-4 px-4">
+      <section className="py-6 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border-2 border-yellow-600/60 shadow-lg shadow-yellow-900/20 mb-3">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-2 border-yellow-600/60 shadow-xl shadow-yellow-900/30 mb-4">
             <Image 
               src="/729068345_1706992463868756_7233760520950384832_n~2.jpg"
               alt="RunningWolf"
@@ -28,16 +28,16 @@ export default function HomePage() {
             />
           </div>
           
-          <h1 className="text-xl md:text-2xl font-bold text-yellow-500 mb-0">
+          <h1 className="text-2xl md:text-3xl font-bold text-yellow-500 mb-1">
             Jessy Marquez
           </h1>
-          <p className="text-xs text-white/60 tracking-[0.3em] mb-3">
+          <p className="text-sm text-white/60 tracking-[0.3em] mb-4">
             RUNNINGWOLF
           </p>
           
           <Link 
             href="/heaven-calling" 
-            className="inline-block text-yellow-500 hover:text-yellow-400 text-sm font-semibold"
+            className="inline-block text-yellow-500 hover:text-yellow-400 text-base font-semibold"
           >
             Listen Now →
           </Link>
