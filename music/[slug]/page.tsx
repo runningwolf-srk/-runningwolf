@@ -1,16 +1,31 @@
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
-const hymns = [
+const musicCatalog = [
   {
     slug: "heaven-calling",
     title: "Heaven Is Calling",
+    youtubeId: "oxNauKuxg4Q",
     cover: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp",
-    tagline: "A Worship Anthem"
+    tagline: "A Worship Anthem",
+    story: {
+      written: "2023, outside a rehab center in Guymon, OK",
+      origin: "The ruins weren’t a metaphor. I was walking through real broken homes, addiction, silent fathers. This hymn is what I heard when I stopped swinging and started listening.",
+      lyric: "If the sky falls, I’ll still be singing",
+      meaning: "For the ones who think God went silent. He didn’t. You just have to get quiet enough to hear Him calling."
+    }
   },
 ];
 
-export default function MusicPage() {
+export async function generateStaticParams() {
+  return musicCatalog.map((track) => ({ slug: track.slug }));
+}
+
+export default function TrackPage({ params }: { params: { slug: string } }) {
+  const track = musicCatalog.find((t) => t.slug === params.slug);
+  if (!track) notFound();
+
   return (
     <main className="bg-[#0b0b0f] text-[#e8e6e3] min-h-screen">
       <header className="bg-black/80 backdrop-blur-md border-b border-yellow-900/30 px-4 py-3 sticky top-0 z-30">
@@ -26,39 +41,67 @@ export default function MusicPage() {
         </div>
       </header>
 
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center mb-12">
-          <p className="text-xs text-yellow-500 tracking-[0.3em] mb-4 font-semibold">HALL OF RELICS</p>
-          <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-4" style={{fontFamily: 'Cinzel, serif', fontWeight: 900}}>
-            THE HYMNS
-          </h1>
-          <p className="text-white/60 max-w-2xl mx-auto">
-            These are not songs. These are weapons forged in fire for the war you’re in.
-          </p>
-        </div>
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <p className="text-xs text-yellow-500 tracking-[0.3em] mb-3 font-semibold">THE HYMNS</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-4" style={{fontFamily: 'Cinzel, serif', fontWeight: 900}}>
+              {track.title}
+            </h1>
+            <p className="text-white/60 italic">{track.tagline}</p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {hymns.map((hymn) => (
-            <div key={hymn.slug} className="bg-black/60 border border-yellow-900/30 rounded-xl overflow-hidden hover:border-yellow-600/60 transition-all duration-300">
-              <div className="relative aspect-square">
-                <Image src={hymn.cover} alt={hymn.title} fill className="object-cover" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-xl font-bold text-yellow-500 mb-1" style={{fontFamily: 'Cinzel, serif'}}>
-                  {hymn.title}
-                </h3>
-                <p className="text-white/50 text-sm italic mb-4">{hymn.tagline}</p>
-                <div className="flex gap-3">
-                  <Link href={`/music/${hymn.slug}`} className="flex-1 bg-yellow-500 text-black text-center py-2 rounded-lg font-semibold text-sm hover:bg-yellow-400">
-                    ▶️ Play
-                  </Link>
-                  <Link href={`/music/${hymn.slug}#story`} className="flex-1 bg-white/10 text-white text-center py-2 rounded-lg font-semibold text-sm hover:bg-white/20">
-                    📖 Story
-                  </Link>
-                </div>
-              </div>
+          <div className="relative aspect-square max-w-2xl mx-auto rounded-xl overflow-hidden border border-yellow-900/30 shadow-2xl shadow-yellow-900/20 mb-12">
+            <Image src={track.cover} alt={track.title} fill className="object-cover" priority />
+          </div>
+
+          <div className="max-w-3xl mx-auto mb-8">
+            <h2 className="text-xl font-semibold mb-4 text-center text-white/80">Listen</h2>
+            <div className="aspect-video w-full bg-black rounded-xl overflow-hidden border border-yellow-900/30">
+              <iframe 
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${track.youtubeId}`}
+                title={track.title}
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              />
             </div>
-          ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/music" className="text-yellow-500 hover:text-yellow-400 text-sm font-semibold">
+              ← Back to Hall of Relics
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" className="bg-black py-16 px-4 border-t border-yellow-900/20 scroll-mt-20">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs text-yellow-500 tracking-[0.3em] mb-4 text-center font-semibold">
+            THE STORY BEHIND THE SONG
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">{track.title}</h2>
+          <div className="space-y-6 text-white/80 leading-relaxed">
+            <div>
+              <p className="text-sm text-white/50 mb-1">Written</p>
+              <p className="text-yellow-500 font-semibold">{track.story.written}</p>
+            </div>
+            <div>
+              <p className="text-sm text-white/50 mb-2">Origin</p>
+              <p>{track.story.origin}</p>
+            </div>
+            <div className="py-6 my-8 border-y border-yellow-900/30">
+              <p className="text-lg md:text-xl text-yellow-500 font-semibold text-center" style={{fontFamily: 'Cinzel, serif'}}>
+                &quot;{track.story.lyric}&quot;
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-white/50 mb-2">Meaning</p>
+              <p>{track.story.meaning}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -67,4 +110,4 @@ export default function MusicPage() {
       </footer>
     </main>
   );
-}
+            }
