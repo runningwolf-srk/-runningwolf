@@ -12,7 +12,7 @@ export default function HomePage() {
           <nav className="flex gap-5 text-xs md:text-sm">
             <Link href="/" className="text-yellow-500">Home</Link>
             <Link href="/music" className="hover:text-yellow-500">Music</Link>
-            <Link href="/stories" className="hover:text-yellow-500">Stories</Link>
+            <Link href={`/${hymn.slug}#story`}>📖 Story</Link>
             <Link href="/gallery" className="hover:text-yellow-500">Gallery</Link>
           </nav>
         </div>
