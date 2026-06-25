@@ -74,13 +74,13 @@ const musicCatalog: Song[] = [
     slug: "spiritual-journey",
     title: "Spiritual Journey",
     youtubeId: "umDFjJjh0_c",
-    cover: "/spiritual-journey-cover.webp", // UPLOAD THIS TO /public
-    tagline: "From Dust to Destiny",
+    cover: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp",
+    tagline: "A Journey to His Presence",
     story: {
       written: "2026",
-      origin: "The Suno track that started it all. AI wrote the notes. God wrote the story.",
+      origin: "The Suno track that mapped the war. AI wrote the notes. God wrote the story.",
       lyric: "From dust to destiny, He’s calling me",
-      meaning: "This is the map. Every battle, every breakthrough, every time we thought it was over."
+      meaning: "This is the map. Every battle, every breakthrough, every time we thought it was over but He said 'walk'."
     }
   }
 ];
