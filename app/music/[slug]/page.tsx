@@ -2,7 +2,22 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-const musicCatalog = [
+type Song = {
+  slug: string;
+  title: string;
+  cover: string;
+  tagline: string;
+  youtubeId?: string;
+  audioUrl?: string;
+  story: {
+    written: string;
+    origin: string;
+    lyric: string;
+    meaning: string;
+  };
+};
+
+const musicCatalog: Song[] = [
   {
     slug: "heaven-calling",
     title: "Heaven Is Calling",
@@ -30,7 +45,7 @@ const musicCatalog = [
     }
   },
   {
-    slug: "mahalla-hybrid",
+    slug: "mahalla-rising",
     title: "Mahalla Rising",
     youtubeId: "fIkUDO2emoc",
     cover: "/mahalla-cover.webp",
@@ -40,6 +55,19 @@ const musicCatalog = [
       origin: "Heard the war drums of old nations and realized they were calling the same God.",
       lyric: "The nations will hear",
       meaning: "Worship isn’t Western. The whole earth groans."
+    }
+  },
+  {
+    slug: "suno-weapon", // CHANGE THIS SLUG
+    title: "Suno Weapon", // CHANGE THIS TO REAL TITLE
+    audioUrl: "/suno-weapon.mp3", // CHANGE THIS FILENAME - UPLOAD MP3 TO /public
+    cover: "/suno-weapon-cover.webp", // CHANGE THIS FILENAME - UPLOAD IMAGE TO /public
+    tagline: "Forged by AI, Anointed by Fire",
+    story: {
+      written: "2026",
+      origin: "Started in Suno as an experiment. God finished it in the mix.",
+      lyric: "CHANGE THIS LYRIC", // PUT YOUR BEST LINE HERE
+      meaning: "Even machines can worship when the Spirit moves. This tool is just another instrument."
     }
   },
 ];
@@ -67,29 +95,26 @@ export default function SongPage({ params }: { params: { slug: string } }) {
         <h1 className="text-5xl font-bold mb-4">{song.title}</h1>
         <p className="text-2xl text-red-500 mb-8">{song.tagline}</p>
         
-        <div className="aspect-video mb-8">
-          <iframe
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${song.youtubeId}`}
-            title={song.title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="rounded-lg"
-          ></iframe>
-        </div>
-        
-        <div className="bg-zinc-900 p-8 rounded-lg">
-          <h2 className="text-3xl font-bold mb-6">The Story</h2>
-          <p className="text-zinc-400 mb-4"><strong>Written:</strong> {song.story.written}</p>
-          <p className="text-zinc-300 mb-4"><strong>Origin:</strong> {song.story.origin}</p>
-          <blockquote className="border-l-4 border-red-600 pl-4 my-6 text-xl italic">
-            "{song.story.lyric}"
-          </blockquote>
-          <p className="text-zinc-300"><strong>Meaning:</strong> {song.story.meaning}</p>
-        </div>
-      </div>
-    </main>
-  );
-}
+        <div className="mb-8">
+          {song.youtubeId && (
+            <div className="aspect-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${song.youtubeId}`}
+                title={song.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              ></iframe>
+            </div>
+          )}
+          
+          {song.audioUrl && (
+            <div className="bg-zinc-900 p-6 rounded-lg">
+              <p className="text-zinc-400 mb-4 text-center">Audio Player</p>
+              <audio 
+                controls 
+                className="w-full"
+                src={song.audioUrl
