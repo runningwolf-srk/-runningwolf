@@ -58,16 +58,16 @@ const musicCatalog: Song[] = [
     }
   },
   {
-    slug: "suno-weapon",
-    title: "Suno Weapon",
-    audioUrl: "/suno-weapon.mp3",
-    cover: "/suno-weapon-cover.webp",
-    tagline: "Forged by AI, Anointed by Fire",
+    slug: "blood-of-cross",
+    title: "Blood of Cross",
+    youtubeId: "4lcbjsNLlzo",
+    cover: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    tagline: "By His Wounds We Are Healed",
     story: {
       written: "2026",
-      origin: "Started in Suno as an experiment. God finished it in the mix.",
-      lyric: "CHANGE THIS LYRIC",
-      meaning: "Even machines can worship when the Spirit moves. This tool is just another instrument."
+      origin: "Forged in Suno. Birthed at the cross. This one bleeds.",
+      lyric: "By His wounds we are healed",
+      meaning: "5 minutes wasn’t too long for the crucifixion. It’s not too long for worship."
     }
   }
 ];
