@@ -17,11 +17,18 @@ const hymns = [
     shortStory: "Metal isn’t evil — silence is."
   },
   {
-    slug: "mahalla-hybrid",
+    slug: "mahalla-rising",
     title: "Mahalla Rising",
     cover: "/mahalla-cover.webp",
     tagline: "Ancient Drums, Eternal King",
     shortStory: "The nations will hear."
+  },
+  {
+    slug: "suno-weapon",
+    title: "Suno Weapon", // CHANGE THIS TO REAL TITLE
+    cover: "/suno-weapon-cover.webp", // CHANGE THIS FILENAME
+    tagline: "Forged by AI, Anointed by Fire", 
+    shortStory: "5 minutes of pure warfare."
   },
 ];
 
