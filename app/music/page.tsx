@@ -24,11 +24,11 @@ const hymns = [
     shortStory: "The nations will hear."
   },
   {
-    slug: "suno-weapon",
-    title: "Suno Weapon", // CHANGE THIS TO REAL TITLE
-    cover: "/suno-weapon-cover.webp", // CHANGE THIS FILENAME
-    tagline: "Forged by AI, Anointed by Fire", 
-    shortStory: "5 minutes of pure warfare."
+    slug: "blood-of-cross",
+    title: "Blood of Cross",
+    cover: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    tagline: "By His Wounds We Are Healed", 
+    shortStory: "5 minutes at the foot of the cross."
   },
 ];
 
