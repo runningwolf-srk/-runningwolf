@@ -42,9 +42,104 @@ const relics = [
     title: 'Spiritual Journey', 
     hook: 'Survival was never the goal. Purpose was.',
     bgImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'
-  },
-];
+  }
+]; // ← THIS LINE WAS MISSING IN YOUR FILE
 
 export default function Page() {
   return (
     <div style={{
+      background:'black',
+      color:'white',
+      minHeight:'100vh',
+      padding:'100px 20px',
+      fontFamily:'system-ui, sans-serif'
+    }}>
+      <div style={{maxWidth:'1000px',margin:'0 auto',textAlign:'center'}}>
+        <h1 style={{
+          fontSize:'60px',
+          marginBottom:'20px',
+          fontFamily:'Georgia, serif',
+          fontWeight:'bold',
+          letterSpacing:'2px'
+        }}>
+          HALL OF RELICS
+        </h1>
+        <p style={{
+          fontSize:'18px',
+          color:'#999',
+          marginBottom:'60px',
+          fontStyle:'italic'
+        }}>
+          A cinematic worship mythology database
+        </p>
+        
+        <div style={{display:'grid',gap:'30px'}}>
+          {relics.map((relic) => (
+            <a 
+              key={relic.slug}
+              href={`/music/${relic.slug}`}
+              style={{
+                display:'block',
+                height:'200px',
+                borderRadius:'8px',
+                overflow:'hidden',
+                border:'1px solid #333',
+                textDecoration:'none',
+                position:'relative',
+                backgroundImage:`url(${relic.bgImage})`,
+                backgroundSize:'cover',
+                backgroundPosition:'center'
+              }}
+            >
+              <div style={{
+                position:'absolute',
+                top:0,
+                left:0,
+                right:0,
+                bottom:0,
+                background:'rgba(0,0,0,0.7)',
+                display:'flex',
+                flexDirection:'column',
+                justifyContent:'center',
+                padding:'30px',
+                textAlign:'left'
+              }}>
+                <h2 style={{
+                  fontSize:'32px',
+                  margin:'0 0 10px 0',
+                  color:'white',
+                  fontFamily:'Georgia, serif',
+                  fontWeight:'bold'
+                }}>
+                  {relic.title}
+                </h2>
+                <p style={{
+                  color:'#ccc',
+                  margin:0,
+                  fontSize:'16px',
+                  fontStyle:'italic'
+                }}>
+                  {relic.hook}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div style={{
+          marginTop:'80px',
+          paddingTop:'40px',
+          borderTop:'1px solid #333'
+        }}>
+          <p style={{
+            color:'#666',
+            fontSize:'12px',
+            letterSpacing:'2px'
+          }}>
+            SEVEN RELICS. ONE KINGDOM.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
