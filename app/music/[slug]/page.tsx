@@ -18,7 +18,7 @@ const relics = [
       'Cower, or charge.'
     ],
     meaning: 'The horn does not ask if you are ready.',
-    meaningType: 'silence' // declarative | metaphor | silence
+    meaningType: 'unresolved'
   },
   { 
     slug: 'iron-collide', 
@@ -28,7 +28,7 @@ const relics = [
     bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp',
     youtubeId: 'dQw4w9WgXcQ',
     written: '2024',
-    origin: 'Born where comfort died and calling began.',
+    origin: 'Born where comfort died.',
     story: [
       'Two blades. One forge. No mercy.',
       'Iron only strengthens when it strikes iron.',
@@ -36,7 +36,7 @@ const relics = [
       'Stop praying for easy battles. Start praying for stronger steel.'
     ],
     meaning: 'The anvil knows your name.',
-    meaningType: 'metaphor'
+    meaningType: 'poetic'
   },
   { 
     slug: 'iron-collide-worship', 
@@ -46,7 +46,7 @@ const relics = [
     bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp',
     youtubeId: 'dQw4w9WgXcQ',
     written: '2024',
-    origin: 'Written on knees in the same dirt where we once stood to fight.',
+    origin: 'Written on knees in war dirt.',
     story: [
       'The same battlefield. The same scars. A different sound.',
       'Where defiance once screamed, surrender now kneels.',
@@ -64,15 +64,15 @@ const relics = [
     bgImage: '/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp',
     youtubeId: 'dQw4w9WgXcQ',
     written: '2024',
-    origin: 'Written at the place where sky went dark and earth shook.',
+    origin: 'Written where the sky went dark.',
     story: [
       'Golgotha was not a defeat. It was an invasion.',
-      'Hell celebrated for three days. Then the stone moved.',
-      'The blood that fell did not just cover sin—it conquered death.',
+      'Hell celebrated for three days.',
+      'Then the stone moved.',
       'Every drop was a declaration: "You are mine."'
     ],
     meaning: 'The grave is empty.',
-    meaningType: 'silence'
+    meaningType: 'unresolved'
   },
   { 
     slug: 'heaven-calling', 
@@ -82,7 +82,7 @@ const relics = [
     bgImage: '/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp',
     youtubeId: 'dQw4w9WgXcQ',
     written: '2024',
-    origin: 'Forged when worship became the only weapon against silence.',
+    origin: 'Forged when worship became the only weapon.',
     story: [
       '"Heaven is calling out my name."',
       'Even in stillness, we are not forgotten.',
@@ -102,13 +102,13 @@ const relics = [
     written: '2024',
     origin: 'Born when lukewarm became unbearable.',
     story: [
-      'Tongues of fire. Hurricane wind. Dead religion catching flame.',
-      'The same Spirit that raised Christ now burns in ordinary men.',
+      'Tongues of fire. Hurricane wind.',
+      'Dead religion catching flame.',
       'You cannot fake this fire. You can only carry it.',
       'The difference between a spark and a wildfire is surrender.'
     ],
     meaning: 'The fire does not ask permission.',
-    meaningType: 'metaphor'
+    meaningType: 'poetic'
   },
   { 
     slug: 'spiritual-journey', 
@@ -118,15 +118,15 @@ const relics = [
     bgImage: '/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp',
     youtubeId: 'dQw4w9WgXcQ',
     written: '2024',
-    origin: 'Written in the middle of nowhere, on the road between broken and whole.',
+    origin: 'Written in the middle of nowhere.',
     story: [
-      'The road was longer than promised. The night, darker than expected.',
-      'But every detour had a purpose. Every delay, a lesson.',
+      'The road was longer than promised.',
+      'The night, darker than expected.',
       'He was not lost. He was being led.',
       'The destination was never the point. The transformation was.'
     ],
-    meaning: 'You are not behind.',
-    meaningType: 'silence'
+    meaning: 'And the road continues...',
+    meaningType: 'unresolved'
   },
 ];
 
@@ -150,7 +150,7 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
     }}>
       {/* Hero */}
       <div style={{
-        height:'75vh',
+        height:'80vh',
         backgroundImage:`url(${relic.bgImage})`,
         backgroundSize:'cover',
         backgroundPosition:'center',
@@ -165,36 +165,26 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
         }}></div>
         <div style={{
           position:'relative',
-          padding:'0 24px 60px',
+          padding:'0 24px 80px',
           maxWidth:'900px',
           margin:'0 auto',
           width:'100%'
         }}>
-          <Link href="/music" style={{
-            color:'#888',
-            textDecoration:'none',
-            fontSize:'14px',
-            display:'inline-block',
-            marginBottom:'24px',
-            letterSpacing:'1px'
-          }}>
-            ← HALL OF RELICS
-          </Link>
           <div style={{
-            fontSize:'12px',
-            color:'#666',
-            marginBottom:'16px',
-            letterSpacing:'3px'
+            fontSize:'11px',
+            color:'#555',
+            marginBottom:'20px',
+            letterSpacing:'4px'
           }}>
             RELIC {String(currentIndex + 1).padStart(2, '0')} / {String(relics.length).padStart(2, '0')}
           </div>
           <h1 style={{
-            fontSize:'clamp(48px, 8vw, 80px)',
-            margin:'0 0 16px 0',
+            fontSize:'clamp(48px, 8vw, 88px)',
+            margin:'0 0 20px 0',
             fontFamily:'Georgia, serif',
             fontWeight:'700',
-            lineHeight:'0.95',
-            textShadow:'0 4px 12px rgba(0,0,0,0.8)'
+            lineHeight:'0.9',
+            textShadow:'0 4px 20px rgba(0,0,0,0.9)'
           }}>
             {relic.title}
           </h1>
@@ -202,14 +192,14 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
             fontSize:'20px',
             fontStyle:'italic',
             color:'#ccc',
-            margin:'0 0 12px 0',
+            margin:'0 0 16px 0',
             maxWidth:'600px'
           }}>
             {relic.tagline}
           </p>
           <p style={{
-            fontSize:'14px',
-            color:'#777',
+            fontSize:'13px',
+            color:'#666',
             margin:0,
             fontFamily:'Georgia, serif',
             letterSpacing:'1px'
@@ -223,11 +213,11 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
       <div style={{
         maxWidth:'680px',
         margin:'0 auto',
-        padding:'100px 24px'
+        padding:'120px 24px'
       }}>
         
         {/* YouTube */}
-        <div style={{marginBottom:'100px'}}>
+        <div style={{marginBottom:'120px'}}>
           <iframe
             width="100%"
             height="400"
@@ -240,12 +230,12 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* The Story */}
-        <div style={{marginBottom:'80px'}}>
+        <div style={{marginBottom:'100px'}}>
           <div style={{
-            fontSize:'11px',
-            color:'#555',
-            marginBottom:'40px',
-            letterSpacing:'2px',
+            fontSize:'10px',
+            color:'#444',
+            marginBottom:'50px',
+            letterSpacing:'3px',
             fontFamily:'monospace'
           }}>
             WRITTEN {relic.written} · {relic.origin}
@@ -253,9 +243,9 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
           {relic.story.map((line, i) => (
             <p key={i} style={{
               fontSize:'19px',
-              lineHeight:'2',
-              marginBottom:'28px',
-              color:'#bbb',
+              lineHeight:'2.1',
+              marginBottom:'32px',
+              color:'#aaa',
               fontWeight:'300'
             }}>
               {line}
@@ -263,20 +253,21 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
 
-        {/* Meaning */}
+        {/* Meaning - Varied */}
         <div style={{
-          marginBottom:'100px',
-          paddingTop:'40px',
-          borderTop:'1px solid #1a1a1a',
+          marginBottom:'120px',
+          paddingTop:'50px',
+          borderTop:'1px solid #111',
         }}>
           <p style={{
-            fontSize: relic.meaningType === 'silence'? '20px' : '24px',
-            lineHeight:'1.5',
+            fontSize: relic.meaningType === 'unresolved'? '18px' : '26px',
+            lineHeight:'1.6',
             color:'#fff',
             margin:0,
             fontFamily:'Georgia, serif',
-            fontStyle: relic.meaningType === 'metaphor'? 'italic' : 'normal',
-            fontWeight: relic.meaningType === 'silence'? '300' : '400'
+            fontStyle: relic.meaningType === 'poetic'? 'italic' : 'normal',
+            fontWeight: relic.meaningType === 'unresolved'? '300' : '400',
+            opacity: relic.meaningType === 'unresolved'? 0.7 : 1
           }}>
             {relic.meaning}
           </p>
@@ -284,48 +275,48 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
 
       </div>
 
-      {/* Footer Nav - Clean */}
+      {/* SINGLE NAV SYSTEM */}
       <div style={{
-        borderTop:'1px solid #1a1a1a',
-        padding:'40px 24px',
+        borderTop:'1px solid #111',
+        padding:'50px 24px',
       }}>
         <div style={{
           maxWidth:'900px',
           margin:'0 auto',
-          display:'flex',
-          justifyContent:'space-between',
+          display:'grid',
+          gridTemplateColumns:'1fr auto 1fr',
           alignItems:'center',
-          gap:'20px'
+          gap:'40px'
         }}>
           <Link href={`/music/${prevRelic.slug}`} style={{
-            color:'#666',
+            color:'#555',
             textDecoration:'none',
-            fontSize:'14px',
-            flex:'1',
-            textAlign:'left'
+            fontSize:'13px',
+            letterSpacing:'1px'
           }}>
-            ← {prevRelic.title}
+            ← {prevRelic.title.toUpperCase()}
           </Link>
           <Link href="/music" style={{
-            color:'#888',
+            color:'#777',
             textDecoration:'none',
-            fontSize:'12px',
-            letterSpacing:'2px',
-            textAlign:'center'
+            fontSize:'11px',
+            letterSpacing:'3px',
+            border:'1px solid #222',
+            padding:'12px 24px'
           }}>
-            HALL
+            HALL OF RELICS
           </Link>
           <Link href={`/music/${nextRelic.slug}`} style={{
-            color:'#fff',
+            color:'#999',
             textDecoration:'none',
-            fontSize:'14px',
-            flex:'1',
+            fontSize:'13px',
+            letterSpacing:'1px',
             textAlign:'right'
           }}>
-            {nextRelic.title} →
+            {nextRelic.title.toUpperCase()} →
           </Link>
         </div>
       </div>
     </div>
   );
-      }
+        }
