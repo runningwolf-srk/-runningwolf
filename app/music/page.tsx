@@ -17,7 +17,7 @@ const relics = [
     slug: 'iron-collide-worship', 
     title: 'Iron Collide Worship', 
     hook: 'Where the battlefield becomes an altar.',
-    bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp' // Using same art for now
+    bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp'
   },
   { 
     slug: 'blood-of-cross', 
@@ -35,7 +35,7 @@ const relics = [
     slug: 'im-on-fire', 
     title: 'I\'m On Fire', 
     hook: 'Holy fire cannot be contained. It must be released.',
-    bgImage: '/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp' // Using Horn of War art as placeholder
+    bgImage: '/file_0000000065a071f5832301f52d11fb80.png' // ← YOUR NEW FIRE ART
   },
   { 
     slug: 'spiritual-journey', 
@@ -80,7 +80,7 @@ export default function Page() {
               href={`/music/${relic.slug}`}
               style={{
                 display:'block',
-                height:'250px',
+                height:'280px',
                 borderRadius:'8px',
                 overflow:'hidden',
                 border:'1px solid #333',
