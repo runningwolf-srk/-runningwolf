@@ -1,143 +1,126 @@
 import Link from 'next/link';
+import { relics } from '@/lib/relics';
 
-const relics = [
-  { 
-    slug: 'horn-of-war', 
-    title: 'Horn of War', 
-    hook: 'The call to stand before the battle begins.',
-    bgImage: '/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-  { 
-    slug: 'iron-collide', 
-    title: 'Iron Collide', 
-    hook: 'Faith sharpened in the fire of resistance.',
-    bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-  { 
-    slug: 'iron-collide-worship', 
-    title: 'Iron Collide Worship', 
-    hook: 'Where the battlefield becomes an altar.',
-    bgImage: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-  { 
-    slug: 'blood-of-cross', 
-    title: 'Blood of the Cross', 
-    hook: 'Mercy written in sacrifice. Hope carried through suffering.',
-    bgImage: '/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-  { 
-    slug: 'heaven-calling', 
-    title: 'Heaven Is Calling', 
-    hook: 'When every other voice falls silent, heaven still speaks.',
-    bgImage: '/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-  { 
-    slug: 'im-on-fire', 
-    title: 'I\'m On Fire', 
-    hook: 'The flame of faith was never meant to stay hidden.',
-    bgImage: '/file_0000000065a071f5832301f52d11fb80.png'
-  },
-  { 
-    slug: 'spiritual-journey', 
-    title: 'Spiritual Journey', 
-    hook: 'Survival was never the goal. Purpose was.',
-    bgImage: '/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp'
-  },
-];
-
-export default function Page() {
+export default function HallOfRelics() {
   return (
     <div style={{
-      background:'black',
-      color:'white',
+      background:'#000',
+      color:'#fff',
       minHeight:'100vh',
-      padding:'100px 20px',
-      fontFamily:'system-ui, sans-serif'
+      fontFamily:'system-ui, -apple-system, sans-serif'
     }}>
-      <div style={{maxWidth:'1000px',margin:'0 auto',textAlign:'center'}}>
-        <h1 style={{
-          fontSize:'60px',
+      {/* HEADER */}
+      <div style={{
+        padding:'120px 24px 80px',
+        textAlign:'center',
+        borderBottom:'1px solid #111'
+      }}>
+        <div style={{
+          fontSize:'11px',
+          color:'#555',
           marginBottom:'20px',
+          letterSpacing:'4px'
+        }}>
+          ARCHIVE INDEX
+        </div>
+        <h1 style={{
+          fontSize:'clamp(48px, 8vw, 72px)',
+          margin:'0 0 20px 0',
           fontFamily:'Georgia, serif',
-          fontWeight:'bold',
-          letterSpacing:'2px'
+          fontWeight:'700'
         }}>
           HALL OF RELICS
         </h1>
         <p style={{
           fontSize:'18px',
-          color:'#999',
-          marginBottom:'60px',
+          color:'#777',
+          maxWidth:'500px',
+          margin:'0 auto',
           fontStyle:'italic'
         }}>
-          An archive where every song is a relic and every relic tells a story.
+          Each song, an artifact. Each artifact, a chapter.
         </p>
-        
-        <div style={{display:'grid',gap:'30px'}}>
-          {relics.map((relic, index) => (
-            <a 
-              key={relic.slug}
+      </div>
+
+      {/* RELIC GRID */}
+      <div style={{
+        maxWidth:'1200px',
+        margin:'0 auto',
+        padding:'80px 24px'
+      }}>
+        <div style={{
+          display:'grid',
+          gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))',
+          gap:'40px'
+        }}>
+          {relics.map((relic) => (
+            <Link 
+              key={relic.slug} 
               href={`/music/${relic.slug}`}
-              style={{
-                display:'block',
-                height:'280px',
-                borderRadius:'8px',
-                overflow:'hidden',
-                border:'1px solid #333',
-                textDecoration:'none',
-                position:'relative',
-                backgroundImage:`url(${relic.bgImage})`,
-                backgroundSize:'cover',
-                backgroundPosition:'center'
-              }}
+              style={{ textDecoration:'none' }}
             >
               <div style={{
-                position:'absolute',
-                top:'20px',
-                left:'20px',
-                background:'rgba(0,0,0,0.7)',
-                padding:'8px 16px',
-                borderRadius:'4px',
-                fontSize:'14px',
-                color:'#999',
-                fontFamily:'Georgia, serif'
+                border:'1px solid #1a1a1a',
+                transition:'all 0.3s ease',
+                cursor:'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#333';
+                e.currentTarget.style.transform = 'translateY(-4px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#1a1a1a';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}>
-                RELIC {index + 1} OF {relics.length}
-              </div>
-              <div style={{
-                position:'absolute',
-                top:0,
-                left:0,
-                right:0,
-                bottom:0,
-                background:'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)',
-                display:'flex',
-                flexDirection:'column',
-                justifyContent:'flex-end',
-                padding:'30px',
-                textAlign:'left'
-              }}>
-                <h2 style={{
-                  fontSize:'36px',
-                  margin:'0 0 10px 0',
-                  color:'white',
-                  fontFamily:'Georgia, serif',
-                  fontWeight:'bold',
-                  textShadow:'2px 2px 4px rgba(0,0,0,0.8)'
+                {/* COVER */}
+                <div style={{
+                  aspectRatio:'1/1',
+                  backgroundImage:`url(${relic.coverImage})`,
+                  backgroundSize:'cover',
+                  backgroundPosition:'center',
+                  position:'relative'
                 }}>
-                  {relic.title}
-                </h2>
-                <p style={{
-                  color:'#ddd',
-                  margin:0,
-                  fontSize:'16px',
-                  fontStyle:'italic',
-                  textShadow:'1px 1px 2px rgba(0,0,0,0.8)'
-                }}>
-                  {relic.hook}
-                </p>
+                  <div style={{
+                    position:'absolute',
+                    top:'16px',
+                    left:'16px',
+                    fontSize:'10px',
+                    color:'#fff',
+                    background:'rgba(0,0,0,0.6)',
+                    padding:'6px 10px',
+                    letterSpacing:'2px'
+                  }}>
+                    RELIC {String(relic.relicNumber).padStart(2, '0')}
+                  </div>
+                  <div style={{
+                    position:'absolute',
+                    bottom:0,left:0,right:0,
+                    height:'60%',
+                    background:'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)'
+                  }}></div>
+                </div>
+                
+                {/* INFO */}
+                <div style={{ padding:'24px' }}>
+                  <h3 style={{
+                    fontSize:'20px',
+                    margin:'0 0 8px 0',
+                    color:'#fff',
+                    fontFamily:'Georgia, serif'
+                  }}>
+                    {relic.title}
+                  </h3>
+                  <p style={{
+                    fontSize:'14px',
+                    color:'#666',
+                    margin:0,
+                    fontStyle:'italic'
+                  }}>
+                    {relic.tagline}
+                  </p>
+                </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
