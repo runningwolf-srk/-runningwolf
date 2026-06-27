@@ -1,4 +1,4 @@
-'use client' // ← ADD THIS LINE AT THE TOP
+'use client'
 
 import Link from 'next/link';
 import { relics } from '@/lib/relics';
@@ -11,7 +11,6 @@ export default function HallOfRelics() {
       minHeight:'100vh',
       fontFamily:'system-ui, -apple-system, sans-serif'
     }}>
-      {/* HEADER */}
       <div style={{
         padding:'120px 24px 80px',
         textAlign:'center',
@@ -44,7 +43,6 @@ export default function HallOfRelics() {
         </p>
       </div>
 
-      {/* RELIC GRID */}
       <div style={{
         maxWidth:'1200px',
         margin:'0 auto',
@@ -66,7 +64,6 @@ export default function HallOfRelics() {
                 transition:'all 0.3s ease',
                 cursor:'pointer'
               }}>
-                {/* COVER */}
                 <div style={{
                   aspectRatio:'1/1',
                   backgroundImage:`url(${relic.coverImage})`,
@@ -94,7 +91,6 @@ export default function HallOfRelics() {
                   }}></div>
                 </div>
                 
-                {/* INFO */}
                 <div style={{ padding:'24px' }}>
                   <h3 style={{
                     fontSize:'20px',
@@ -119,7 +115,6 @@ export default function HallOfRelics() {
         </div>
       </div>
 
-      {/* CSS HOVER - NO JS EVENTS NEEDED */}
       <style jsx>{`
         .relic-card:hover {
           border-color: #333;
