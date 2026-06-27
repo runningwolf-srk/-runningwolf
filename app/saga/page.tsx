@@ -1,68 +1,7 @@
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { RELICS } from '../../lib/relics';
 
-const CHAPTERS = {
-  darkness: {
-    number: 'I',
-    title: 'The Darkness',
-    subtitle: 'Where it began',
-    content: `
-      // WRITE YOUR TESTIMONY HERE
-      // Replace this with your Chapter I story
-      // Use <p> tags for paragraphs
-      
-      <p>I was born into brokenness...</p>
-      
-      <p>The addiction started when...</p>
-      
-      <p>At my lowest point...</p>
-    `
-  },
-  crossroads: {
-    number: 'II',
-    title: 'The Crossroads',
-    subtitle: 'The moment of choice',
-    content: `
-      <p>Then God showed up...</p>
-    `
-  },
-  calling: {
-    number: 'III',
-    title: 'The Calling',
-    subtitle: 'RunningWolf is born',
-    content: `
-      <p>He called me RunningWolf because...</p>
-    `
-  },
-  stormbreakers: {
-    number: 'IV',
-    title: 'The Stormbreakers',
-    subtitle: 'Forging the weapons',
-    content: `
-      <p>Each song is a weapon forged in fire...</p>
-    `
-  },
-  journey: {
-    number: 'V',
-    title: 'The Journey Continues',
-    subtitle: 'Where we go from here',
-    content: `
-      <p>This is just the beginning...</p>
-    `
-  }
-};
-
-export async function generateStaticParams() {
-  return Object.keys(CHAPTERS).map((id) => ({ slug: id }));
-}
-
-export default function ChapterPage({ params }: { params: { slug: string } }) {
-  const chapter = CHAPTERS[params.slug as keyof typeof CHAPTERS];
-  
-  if (!chapter) {
-    notFound();
-  }
-
+export default function Saga() {
   return (
     <div style={{
       background:'#000',
@@ -71,70 +10,102 @@ export default function ChapterPage({ params }: { params: { slug: string } }) {
       padding:'60px 24px',
       fontFamily:'system-ui, -apple-system, sans-serif'
     }}>
-      <div style={{ maxWidth:'700px', margin:'0 auto' }}>
+      <div style={{ maxWidth:'900px', margin:'0 auto' }}>
         
-        <Link href="/saga" style={{
-          color:'#d4af37',
-          textDecoration:'none',
-          fontSize:'14px',
-          display:'inline-block',
-          marginBottom:'60px'
-        }}>
-          ← Back to The Saga
-        </Link>
-
-        <div style={{
-          fontSize:'11px',
-          letterSpacing:'4px',
-          color:'#d4af37',
-          marginBottom:'16px'
-        }}>
-          CHAPTER {chapter.number}
-        </div>
-        
-        <h1 style={{
-          fontSize:'56px',
-          fontFamily:'Georgia, serif',
-          color:'#fff',
-          margin:'0 0 12px 0',
-          lineHeight:'1.1'
-        }}>
-          {chapter.title}
-        </h1>
-
-        <div style={{
-          fontSize:'18px',
-          color:'#999',
-          fontStyle:'italic',
-          marginBottom:'60px',
-          paddingBottom:'60px',
-          borderBottom:'1px solid #1a1a1a'
-        }}>
-          {chapter.subtitle}
-        </div>
-
-        <div 
-          style={{
-            fontSize:'18px',
-            lineHeight:'1.8',
-            color:'#ccc'
-          }}
-          dangerouslySetInnerHTML={{ __html: chapter.content }}
-        />
-
-        <div style={{
-          marginTop:'80px',
-          paddingTop:'40px',
-          borderTop:'1px solid #1a1a1a',
-          textAlign:'center'
-        }}>
-          <Link href="/saga" style={{
-            color:'#d4af37',
-            textDecoration:'none',
-            fontSize:'14px'
+        <div style={{ textAlign:'center', marginBottom:'80px' }}>
+          <div style={{
+            fontSize:'11px',
+            letterSpacing:'4px',
+            color:'#444',
+            marginBottom:'16px'
           }}>
-            ← Return to all chapters
-          </Link>
+            THE CHRONICLES
+          </div>
+          <h1 style={{
+            fontSize:'48px',
+            fontFamily:'Georgia, serif',
+            color:'#d4af37',
+            margin:'0 0 16px 0'
+          }}>
+            The Saga
+          </h1>
+          <p style={{ 
+            fontSize:'18px', 
+            color:'#999',
+            lineHeight:'1.7',
+            maxWidth:'600px',
+            margin:'0 auto'
+          }}>
+            Seven weapons. Seven wounds. Seven victories.<br/>
+            Each relic holds a chapter of the testimony.
+          </p>
+        </div>
+
+        <div style={{ display:'flex', flexDirection:'column', gap:'32px' }}>
+          {RELICS.map((relic, index) => (
+            <Link 
+              key={relic.id} 
+              href={`/saga/${relic.id}`}
+              style={{ textDecoration:'none' }}
+            >
+              <div style={{
+                display:'grid',
+                gridTemplateColumns:'200px 1fr',
+                gap:'32px',
+                background:'#0a0a0a',
+                border:'1px solid #1a1a1a',
+                borderLeft:'4px solid #d4af37',
+                padding:'0',
+                borderRadius:'4px',
+                overflow:'hidden',
+                transition:'all 0.3s ease'
+              }}>
+                <div style={{
+                  width:'200px',
+                  height:'200px',
+                  backgroundImage:`url(${relic.cover})`,
+                  backgroundSize:'cover',
+                  backgroundPosition:'center',
+                  backgroundColor:'#111'
+                }}></div>
+                
+                <div style={{ padding:'32px 32px 32px 0' }}>
+                  <div style={{
+                    fontSize:'11px',
+                    letterSpacing:'3px',
+                    color:'#d4af37',
+                    marginBottom:'12px'
+                  }}>
+                    CHAPTER {index + 1} | {relic.subtitle}
+                  </div>
+                  <h2 style={{
+                    fontSize:'32px',
+                    fontFamily:'Georgia, serif',
+                    color:'#fff',
+                    margin:'0 0 8px 0'
+                  }}>
+                    {relic.title}
+                  </h2>
+                  <div style={{
+                    fontSize:'14px',
+                    color:'#666',
+                    fontStyle:'italic',
+                    marginBottom:'16px'
+                  }}>
+                    {relic.scripture}
+                  </div>
+                  <p style={{
+                    fontSize:'16px',
+                    color:'#999',
+                    lineHeight:'1.6',
+                    margin:0
+                  }}>
+                    "{relic.prophecy}"
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
       </div>
