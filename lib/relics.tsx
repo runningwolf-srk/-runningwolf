@@ -1,75 +1,71 @@
-export type Relic = {
-  id: string;
-  title: string;
-  subtitle: string;
-  cover: string;
-  youtubeId: string;
-  scripture: string;
-  prophecy: string;
-};
+import { RELICS } from '../../lib/relics';
 
-export const RELICS: Relic[] = [
-  {
-    id: 'horn-of-war',
-    title: 'HORN OF WAR',
-    subtitle: 'RELIC 01',
-    cover: '/covers/horn-of-war.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Joel 2:1',
-    prophecy: 'Blow the trumpet in Zion, sound the alarm on my holy hill.'
-  },
-  {
-    id: 'iron-collide',
-    title: 'IRON COLLIDE',
-    subtitle: 'RELIC 02',
-    cover: '/covers/iron-collide.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Proverbs 27:17',
-    prophecy: 'As iron sharpens iron, so one person sharpens another.'
-  },
-  {
-    id: 'blood-of-cross',
-    title: 'BLOOD OF THE CROSS',
-    subtitle: 'RELIC 03',
-    cover: '/covers/blood-of-cross.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Colossians 1:20',
-    prophecy: 'Making peace through his blood, shed on the cross.'
-  },
-  {
-    id: 'seven-veils',
-    title: 'SEVEN VEILS',
-    subtitle: 'RELIC 04',
-    cover: '/covers/seven-veils.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Hebrews 10:20',
-    prophecy: 'Through the veil, that is, his flesh.'
-  },
-  {
-    id: 'ghost-code',
-    title: 'GHOST CODE',
-    subtitle: 'RELIC 05',
-    cover: '/covers/ghost-code.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Romans 8:11',
-    prophecy: 'The Spirit of him who raised Jesus from the dead dwells in you.'
-  },
-  {
-    id: 'lion-rises',
-    title: 'LION RISES',
-    subtitle: 'RELIC 06',
-    cover: '/covers/lion-rises.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Revelation 5:5',
-    prophecy: 'Behold, the Lion of the tribe of Judah has conquered.'
-  },
-  {
-    id: 'throne-torn',
-    title: 'THRONE TORN',
-    subtitle: 'RELIC 07',
-    cover: '/covers/throne-torn.webp',
-    youtubeId: 'dQw4w9WgXcQ',
-    scripture: 'Revelation 11:15',
-    prophecy: 'The kingdom of the world has become the kingdom of our Lord.'
-  }
-];
+export default function Scrolls() {
+  return (
+    <div style={{
+      background:'#000',
+      color:'#fff',
+      minHeight:'100vh',
+      padding:'60px 24px',
+      fontFamily:'Georgia, serif'
+    }}>
+      <div style={{ maxWidth:'700px', margin:'0 auto' }}>
+        <div style={{
+          fontSize:'12px',
+          letterSpacing:'4px',
+          color:'#d4af37',
+          marginBottom:'40px',
+          fontFamily:'system-ui, sans-serif'
+        }}>
+          THE WORD
+        </div>
+        <h1 style={{
+          fontSize:'48px',
+          color:'#d4af37',
+          margin:'0 0 60px 0',
+          letterSpacing:'3px'
+        }}>
+          SCROLLS
+        </h1>
+        <div style={{ display:'flex', flexDirection:'column', gap:'40px' }}>
+          {RELICS.map((relic) => (
+            <div key={relic.id} style={{
+              padding:'32px',
+              background:'#0a0a0a',
+              border:'1px solid #1a1a1a',
+              borderLeft:'3px solid #d4af37',
+              borderRadius:'4px'
+            }}>
+              <div style={{
+                fontSize:'11px',
+                color:'#666',
+                letterSpacing:'2px',
+                marginBottom:'8px',
+                fontFamily:'system-ui, sans-serif'
+              }}>
+                {relic.scripture}
+              </div>
+              <div style={{
+                fontSize:'24px',
+                color:'#d4af37',
+                marginBottom:'16px',
+                letterSpacing:'2px'
+              }}>
+                {relic.title}
+              </div>
+              <p style={{
+                fontSize:'18px',
+                fontStyle:'italic',
+                color:'#ccc',
+                lineHeight:'1.6',
+                margin:0
+              }}>
+                "{relic.prophecy}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
