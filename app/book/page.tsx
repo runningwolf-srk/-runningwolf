@@ -304,4 +304,4 @@ export default function BookOfWeapons() {
       `}</style>
     </div>
   );
-}
+                  }
