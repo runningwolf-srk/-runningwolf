@@ -89,7 +89,7 @@ export default function SagaChapter({ params }: { params: { slug: string } }) {
           lineHeight:'1.8',
           color:'#ccc'
         }}>
-          <p>Write your testimony for {relic.title} here.</p>
+          <p>Your testimony for {relic.title} goes here.</p>
           <p>This is where you tell the story behind the weapon.</p>
           <p>What darkness did you face? What did God do?</p>
         </div>
