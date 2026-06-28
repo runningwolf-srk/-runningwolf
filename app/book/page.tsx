@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { RELICS } from '../../src/lib/relics';
-
 export default function BookOfWeapons() {
   const [page, setPage] = useState(0);
   const [unlocked, setUnlocked] = useState(false);
