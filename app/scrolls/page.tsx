@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { RELICS } from '../../lib/relics';
 
 export default function Scrolls() {
@@ -8,74 +7,64 @@ export default function Scrolls() {
       color:'#fff',
       minHeight:'100vh',
       padding:'60px 24px',
-      fontFamily:'system-ui, -apple-system, sans-serif'
+      fontFamily:'Georgia, serif'
     }}>
-      <div style={{ maxWidth:'800px', margin:'0 auto' }}>
-        
-        <div style={{ textAlign:'center', marginBottom:'60px' }}>
-          <div style={{
-            fontSize:'11px',
-            letterSpacing:'4px',
-            color:'#444',
-            marginBottom:'16px'
-          }}>
-            THE SCROLLS
-          </div>
-          <h1 style={{
-            fontSize:'40px',
-            fontFamily:'Georgia, serif',
-            color:'#d4af37',
-            margin:'0 0 16px 0'
-          }}>
-            Lyrics & Prophecy Notes
-          </h1>
-          <p style={{ fontSize:'16px', color:'#666' }}>
-            The words behind the weapons. Read the revelation.
-          </p>
+      <div style={{ maxWidth:'700px', margin:'0 auto' }}>
+        <div style={{
+          fontSize:'12px',
+          letterSpacing:'4px',
+          color:'#d4af37',
+          marginBottom:'40px',
+          fontFamily:'system-ui, sans-serif'
+        }}>
+          THE WORD
         </div>
-
-        <div style={{ display:'flex', flexDirection:'column', gap:'16px' }}>
+        <h1 style={{
+          fontSize:'48px',
+          color:'#d4af37',
+          margin:'0 0 60px 0',
+          letterSpacing:'3px'
+        }}>
+          SCROLLS
+        </h1>
+        <div style={{ display:'flex', flexDirection:'column', gap:'40px' }}>
           {RELICS.map((relic) => (
-            <Link 
-              key={relic.id} 
-              href={`/scrolls/${relic.id}`}
-              style={{ textDecoration:'none' }}
-            >
+            <div key={relic.id} style={{
+              padding:'32px',
+              background:'#0a0a0a',
+              border:'1px solid #1a1a1a',
+              borderLeft:'3px solid #d4af37',
+              borderRadius:'4px'
+            }}>
               <div style={{
-                background:'#0a0a0a',
-                border:'1px solid #1a1a1a',
-                borderLeft:'3px solid #d4af37',
-                padding:'24px',
-                borderRadius:'4px'
+                fontSize:'11px',
+                color:'#666',
+                letterSpacing:'2px',
+                marginBottom:'8px',
+                fontFamily:'system-ui, sans-serif'
               }}>
-                <div style={{
-                  fontSize:'11px',
-                  letterSpacing:'2px',
-                  color:'#d4af37',
-                  marginBottom:'8px'
-                }}>
-                  {relic.subtitle}
-                </div>
-                <h3 style={{
-                  fontSize:'24px',
-                  fontFamily:'Georgia, serif',
-                  color:'#fff',
-                  margin:'0 0 8px 0'
-                }}>
-                  {relic.title}
-                </h3>
-                <div style={{
-                  fontSize:'14px',
-                  color:'#666',
-                  fontStyle:'italic'
-                }}>
-                  {relic.scripture} → Read the scroll
-                </div>
+                {relic.scripture}
               </div>
-            </Link>
+              <div style={{
+                fontSize:'24px',
+                color:'#d4af37',
+                marginBottom:'16px',
+                letterSpacing:'2px'
+              }}>
+                {relic.title}
+              </div>
+              <p style={{
+                fontSize:'18px',
+                fontStyle:'italic',
+                color:'#ccc',
+                lineHeight:'1.6',
+                margin:0
+              }}>
+                "{relic.prophecy}"
+              </p>
+            </div>
           ))}
         </div>
-
       </div>
     </div>
   );
