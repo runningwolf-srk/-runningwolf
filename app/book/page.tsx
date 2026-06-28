@@ -7,7 +7,7 @@ export default function BookOfWeapons() {
   const [page, setPage] = useState(0);
   const [unlocked, setUnlocked] = useState(false);
   const [readPages, setReadPages] = useState<number[]>([]);
-  const relic = RELICS;
+  const relic = RELICS[page];
   const totalPages = RELICS.length;
   const progress = ((page + 1) / totalPages) * 100;
 
@@ -15,7 +15,7 @@ export default function BookOfWeapons() {
     if (!readPages.includes(page)) {
       setReadPages([...readPages, page]);
     }
-  }, );
+  }, [page, readPages]);
 
   const playSound = () => {
     const audio = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU');
