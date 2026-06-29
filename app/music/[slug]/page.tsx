@@ -31,8 +31,8 @@ const songs: Record<string, SongData> = {
     subtitle: "The Battle Cry",
     scripture: "As iron sharpens iron, so one person sharpens another.",
     scriptureRef: "Proverbs 27:17",
-    youtubeId: "odIsEMUtNJI", // Horn of War
-    youtubeIdBonus: "fIkUDO2emoc", // Horn of War Live
+    youtubeId: "odIsEMUtNJI", // Fixed: Horn of War ID
+    youtubeIdBonus: "fIkUDO2emoc", // Fixed: Horn of War Live
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
       {
@@ -59,7 +59,7 @@ const songs: Record<string, SongData> = {
     subtitle: "Sharpened Together",
     scripture: "As iron sharpens iron, so one person sharpens another.",
     scriptureRef: "Proverbs 27:17",
-    youtubeId: "M4wGCg5oCx0", // Iron Collide
+    youtubeId: "M4wGCg5oCx0", // Fixed: Iron Collide ID
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
       {
@@ -86,7 +86,7 @@ const songs: Record<string, SongData> = {
     subtitle: "The Sacrifice",
     scripture: "But he was pierced for our transgressions, he was crushed for our iniquities.",
     scriptureRef: "Isaiah 53:5",
-    youtubeId: "4lcbjsNLlzo", // Blood of the Cross
+    youtubeId: "4lcbjsNLlzo",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
       {
@@ -113,7 +113,7 @@ const songs: Record<string, SongData> = {
     subtitle: "The Return",
     scripture: "I saw heaven standing open and there before me was a white horse.",
     scriptureRef: "Revelation 19:11",
-    youtubeId: "8XQUhWB_N5M", // White Horse - FIXED
+    youtubeId: "8XQUhWB_N5M",
     genre: "Cinematic Worship • Orchestral • Epic",
     story: [
       {
@@ -166,7 +166,7 @@ const songs: Record<string, SongData> = {
     subtitle: "The Paradox",
     scripture: "See, the Lion of the tribe of Judah has triumphed.",
     scriptureRef: "Revelation 5:5",
-    youtubeId: "oxNauKuxg4Q", // Lion and Lamb - FIXED
+    youtubeId: "oxNauKuxg4Q",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
       {
