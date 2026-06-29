@@ -3,8 +3,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type RelicStory = {
   title: string;
@@ -20,10 +20,14 @@ type Relic = {
   theme: string;
   backgroundImage: string;
   audioUrl?: string;
+  ambientUrl?: string;
   youtubeId?: string;
   youtubeIdBonus?: string;
   story: RelicStory[];
   meaning: string;
+  written: string;
+  genre: string;
+  relicNumber: string;
   sagaNext?: string;
   sagaPrev?: string;
   status?: "live" | "coming-soon";
@@ -38,7 +42,12 @@ const RELICS: Record<string, Relic> = {
     scriptureRef: "Joel 2:1",
     theme: "By His Call We Rise",
     backgroundImage: "/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp",
+    audioUrl: "/audio/horn-of-war.mp3",
+    ambientUrl: "/audio/wind-horn.mp3",
     youtubeId: "M4wGCg5oCx0",
+    written: "2024",
+    genre: "Cinematic Worship • Viking War Hymn • Orchestral",
+    relicNumber: "01 / 07",
     story: [
       {
         title: "THE SILENCE",
@@ -66,6 +75,9 @@ const RELICS: Record<string, Relic> = {
     backgroundImage: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp",
     youtubeId: "odIsEMUtNJI",
     youtubeIdBonus: "fIkUDO2emoc",
+    written: "2024",
+    genre: "Cinematic Worship • Viking War Hymn • Orchestral",
+    relicNumber: "02 / 07",
     story: [
       {
         title: "THE ANVIL",
@@ -93,6 +105,9 @@ const RELICS: Record<string, Relic> = {
     theme: "By His Blood We Are Redeemed",
     backgroundImage: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp",
     youtubeId: "4lcbjsNLlzo",
+    written: "2024",
+    genre: "Cinematic Worship • Orchestral • Choir",
+    relicNumber: "03 / 07",
     story: [
       {
         title: "THE PLACE",
@@ -120,6 +135,9 @@ const RELICS: Record<string, Relic> = {
     theme: "By His Purpose We Are Led",
     backgroundImage: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp",
     youtubeId: "umDFjJjh0_c",
+    written: "2024",
+    genre: "Cinematic Worship • Ambient • Orchestral",
+    relicNumber: "04 / 07",
     story: [
       {
         title: "THE WILDERNESS",
@@ -146,6 +164,9 @@ const RELICS: Record<string, Relic> = {
     scriptureRef: "Revelation 19:16",
     theme: "By His Authority We Rule",
     backgroundImage: "/060a2ef0-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    written: "2024",
+    genre: "Cinematic Worship • Epic • Choir",
+    relicNumber: "05 / 07",
     story: [
       {
         title: "THE LAMB",
@@ -173,6 +194,9 @@ const RELICS: Record<string, Relic> = {
     scriptureRef: "Isaiah 53:5",
     theme: "By His Wounds We Are Healed",
     backgroundImage: "/file_0000000065a071f5832301f52d11fb80.png",
+    written: "2024",
+    genre: "Cinematic Worship • Intimate • Strings",
+    relicNumber: "06 / 07",
     story: [
       {
         title: "THE FIRE",
@@ -196,11 +220,40 @@ const RELICS: Record<string, Relic> = {
 export default function RelicPage({ params }: { params: { slug: string } }) {
   const relic = RELICS[params.slug];
   const [isNarrating, setIsNarrating] = useState(false);
+  const [storyMode, setStoryMode] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const ambientRef = useRef<HTMLAudioElement>(null);
+  const relicRef = useRef<HTMLAudioElement>(null);
 
   if (!relic) return notFound();
 
-  const prevRelic = relic.sagaPrev ? RELICS[relic.sagaPrev] : null;
-  const nextRelic = relic.sagaNext ? RELICS[relic.sagaNext] : null;
+  const prevRelic = relic.sagaPrev? RELICS[relic.sagaPrev] : null;
+  const nextRelic = relic.sagaNext? RELICS[relic.sagaNext] : null;
+
+  useEffect(() => {
+    if (storyMode) {
+      document.body.style.overflow = "hidden";
+      if (ambientRef.current) {
+        ambientRef.current.volume = 0.2;
+        ambientRef.current.play().catch(() => {});
+      }
+    } else {
+      document.body.style.overflow = "auto";
+      if (ambientRef.current) ambientRef.current.pause();
+      window.speechSynthesis.cancel();
+      setIsNarrating(false);
+    }
+  }, [storyMode]);
+
+  const enterStoryMode = () => {
+    setStoryMode(true);
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
+
+  const exitStoryMode = () => {
+    setStoryMode(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const narrateStory = () => {
     if (isNarrating) {
@@ -220,67 +273,171 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="relative h-screen flex items-center justify-center text-center px-4">
+      {/* AMBIENT + RELIC AUDIO */}
+      <audio ref={ambientRef} loop src={relic.ambientUrl || "/audio/wind-horn.mp3"} preload="none" />
+
+      {/* HERO - FILM OPENING */}
+      <div className="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={relic.backgroundImage}
             alt={relic.title}
             fill
-            className="object-cover"
+            className="object-cover scale-105"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black"></div>
         </div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto"
-        >
-          <p className="text-amber-500 uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-bold mb-4">
-            {relic.theme}
-          </p>
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight mb-4 md:mb-6 px-2">
-            {relic.title}
-          </h1>
-          <p className="text-xl md:text-3xl text-zinc-300 mb-8 max-w-2xl mx-auto px-4 font-light">
-            {relic.subtitle}
-          </p>
-          
-          <button
-            onClick={narrateStory}
-            className="bg-amber-600 hover:bg-amber-500 text-black font-bold py-3 px-8 rounded-lg transition-colors"
-          >
-            {isNarrating ? "■ STOP" : "▶ PLAY STORY"}
-          </button>
-        </motion.div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-amber-500 uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-bold mb-6"
+          >
+            {relic.theme}
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight mb-4 md:mb-6 px-2"
+          >
+            {relic.title}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="text-xl md:text-3xl text-zinc-300 mb-12 max-w-2xl mx-auto px-4 font-light"
+          >
+            {relic.subtitle}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            <button
+              onClick={enterStoryMode}
+              className="bg-amber-600 hover:bg-amber-500 text-black font-black py-4 px-12 rounded-lg transition-all hover:scale-105 shadow-2xl shadow-amber-600/40 text-lg tracking-wider"
+            >
+              ENTER STORY MODE
+            </button>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <p className="text-zinc-700 text-xs uppercase tracking-widest mb-2">Begin the Scroll</p>
+          <div className="animate-bounce">
+            <svg className="w-6 h-6 text-amber-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* RELIC IDENTITY PANEL */}
+      <div className="bg-zinc-950 border-y border-zinc-800 py-10 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 text-center">
+            <div className="border-r border-zinc-800 pr-4 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Relic</p>
+              <p className="text-amber-500 font-black text-xl">{relic.relicNumber}</p>
+            </div>
+            <div className="border-r-0 md:border-r border-zinc-800 pr-0 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Scripture</p>
+              <p className="text-zinc-300 text-sm font-bold">{relic.scriptureRef}</p>
+            </div>
+            <div className="border-r border-zinc-800 pr-4 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Theme</p>
+              <p className="text-zinc-300 text-sm">{relic.theme}</p>
+            </div>
+            <div className="border-r-0 md:border-r border-zinc-800 pr-0 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Written</p>
+              <p className="text-zinc-300 text-sm">{relic.written}</p>
+            </div>
+            <div className="col-span-2 md:col-span-1">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Genre</p>
+              <p className="text-zinc-300 text-sm">{relic.genre}</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {relic.status !== "coming-soon" && relic.youtubeId && (
-        <div className="bg-zinc-950 py-12 px-4 md:px-6 border-y border-zinc-900">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-sm text-zinc-500 mb-4 uppercase tracking-wider text-center">Video Scroll</p>
-            <div className="aspect-video w-full rounded-xl overflow-hidden">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
-                title={relic.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+      {/* AUDIO SYSTEM - SEPARATE PLAYERS */}
+      {relic.status!== "coming-soon" && (
+        <div className="bg-black py-16 px-4 md:px-6">
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* RELIC TRACK */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 md:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-zinc-400 uppercase tracking-wider">Play Relic</p>
+                <p className="text-xs text-zinc-600">Main Track</p>
+              </div>
+              {relic.audioUrl &&!audioError? (
+                <audio
+                  ref={relicRef}
+                  controls
+                  className="w-full"
+                  src={relic.audioUrl}
+                  preload="metadata"
+                  onError={() => setAudioError(true)}
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              ) : (
+                <div className="bg-zinc-950 rounded-lg p-8 text-center border border-zinc-800">
+                  <p className="text-amber-500 font-bold">Audio preparing for battle...</p>
+                  <p className="text-zinc-600 text-sm mt-2">Check back soon</p>
+                </div>
+              )}
             </div>
+
+            {/* STORY NARRATION */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 md:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-zinc-400 uppercase tracking-wider">Play Story</p>
+                <p className="text-xs text-zinc-600">Narration + Ambience</p>
+              </div>
+              <button
+                onClick={narrateStory}
+                className="w-full bg-zinc-800 hover:bg-amber-600 text-white hover:text-black font-bold py-4 px-8 rounded-lg transition-all"
+              >
+                {isNarrating? "■ STOP NARRATION" : "▶ START NARRATION"}
+              </button>
+            </div>
+
+            {/* YOUTUBE FALLBACK */}
+            {relic.youtubeId && (
+              <div>
+                <p className="text-sm text-zinc-500 mb-4 uppercase tracking-wider text-center">Video Scroll</p>
+                <div className="aspect-video w-full rounded-xl overflow-hidden shadow-2xl shadow-amber-900/20">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
+                    title={relic.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
 
+      {/* SCRIPTURE SCENE */}
       <div className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-zinc-950">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
@@ -299,119 +456,43 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {relic.story.map((scene, i) => (
-        <div 
-          key={i} 
-          className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-black"
-        >
-          <div className="absolute inset-0 z-0 opacity-15">
-            <Image
-              src={relic.backgroundImage}
-              alt=""
-              fill
-              className="object-cover blur-sm"
-            />
-          </div>
-          
+      {/* STORY MODE - CINEMATIC FLOW */}
+      <AnimatePresence>
+        {storyMode && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative z-10 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black z-50 overflow-y-auto"
           >
-            <p className="text-amber-600 font-black text-sm md:text-base mb-4 tracking-[0.3em]">
-              SCENE {i + 1}
-            </p>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 leading-tight">
-              {scene.title}
-            </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed text-zinc-300 font-light">
-              {scene.text}
-            </p>
-          </motion.div>
-        </div>
-      ))}
+            <button
+              onClick={exitStoryMode}
+              className="fixed top-6 right-6 z-50 bg-zinc-900 hover:bg-amber-600 text-white hover:text-black p-3 rounded-lg transition-all"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
 
-      <div className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-zinc-950">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <div className="border-t-2 border-b-2 border-amber-600 py-12 px-8">
-            <p className="text-2xl md:text-4xl lg:text-5xl font-black text-amber-500 leading-tight">
-              {relic.meaning}
-            </p>
-          </div>
-        </motion.div>
-      </div>
+            {relic.story.map((scene, i) => (
+              <div key={i}>
+                {i > 0 && (
+                  <div className="bg-black py-16 flex items-center justify-center">
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1 }}
+                      className="flex items-center gap-6"
+                    >
+                      <div className="h-px w-24 md:w-32 bg-gradient-to-r from-transparent via-amber-600 to-transparent"></div>
+                      <svg className="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <div className="h-px w-24 md:w-32 bg-gradient-to-l from-transparent via-amber-600 to-transparent"></div>
+                    </motion.div>
+                  </div>
+                )}
 
-      {relic.youtubeIdBonus && relic.status !== "coming-soon" && (
-        <div className="bg-black py-20 px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-sm text-zinc-500 mb-4 uppercase tracking-wider text-center">Original Version</p>
-            <div className="aspect-video w-full rounded-xl overflow-hidden">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${relic.youtubeIdBonus}?rel=0&modestbranding=1`}
-                title={`${relic.title} Original`}
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {relic.status === "coming-soon" && (
-        <div className="bg-zinc-950 py-32 px-4 text-center">
-          <p className="text-4xl md:text-6xl font-black text-amber-500 tracking-wider">COMING SOON</p>
-          <p className="text-zinc-500 mt-4 text-lg">This relic is being forged.</p>
-        </div>
-      )}
-
-      <div className="bg-black border-t border-zinc-900 px-4 md:px-6 py-8 md:py-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-3 gap-4 items-center">
-          {prevRelic? (
-            <Link href={`/music/${prevRelic.slug}`} className="group text-left">
-              <p className="text-xs text-zinc-600 mb-1">Previous</p>
-              <p className="text-zinc-400 group-hover:text-amber-500 transition-colors font-bold text-sm md:text-base">
-                ← {prevRelic.title}
-              </p>
-            </Link>
-          ) : (
-            <Link href="/music" className="group text-left">
-              <p className="text-xs text-zinc-700 mb-1">Hall</p>
-              <p className="text-zinc-600 group-hover:text-zinc-400 transition-colors font-bold text-sm md:text-base">
-                ← Relics
-              </p>
-            </Link>
-          )}
-
-          <Link 
-            href="/music" 
-            className="text-zinc-700 hover:text-amber-500 uppercase tracking-widest text-xs text-center transition-colors"
-          >
-            Hall of Relics
-          </Link>
-
-          {nextRelic? (
-            <Link href={`/music/${nextRelic.slug}`} className="group text-right">
-              <p className="text-xs text-zinc-600 mb-1">Next</p>
-              <p className="text-zinc-400 group-hover:text-amber-500 transition-colors font-bold text-sm md:text-base">
-                {nextRelic.title} →
-              </p>
-            </Link>
-          ) : (
-            <div className="text-right">
-              <p className="text-xs text-zinc-800 mb-1">End</p>
-              <p className="text-zinc-700 font-bold text-sm md:text-base">Saga</p>
-            </div>
-          )}
-        </div>
-      </div>
-    </main>
-  );
-          }
+                <div className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-black">
+                  <div c
