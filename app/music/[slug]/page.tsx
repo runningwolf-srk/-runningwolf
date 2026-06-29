@@ -1,3 +1,7 @@
+// app/music/[slug]/page.tsx
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
 const relicsData = {
   "horn-of-war": {
     number: "01 / 07",
@@ -6,7 +10,7 @@ const relicsData = {
     verse: "Joel 2:1",
     verseText: "Blow the trumpet in Zion; sound the alarm on my holy hill. Let all who live in the land tremble, for the day of the Lord is coming.",
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
-    youtubeId: "M4wGCg5oCx0", // From your earlier message
+    youtubeId: "M4wGCg5oCx0",
     sections: [
       {
         title: "THE SILENCE",
@@ -29,7 +33,7 @@ const relicsData = {
     verse: "Proverbs 27:17",
     verseText: "As iron sharpens iron, so one person sharpens another.",
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
-    youtubeId: "odIsEMUtNJI", // FINAL VERSION
+    youtubeId: "odIsEMUtNJI",
     sections: [
       {
         title: "THE FORGE",
@@ -102,7 +106,7 @@ const relicsData = {
     verse: "Colossians 1:20",
     verseText: "And through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.",
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL • SACRED",
-    youtubeId: "4lcbjsNLlzo", // FROM YOUR MESSAGE
+    youtubeId: "4lcbjsNLlzo",
     sections: [
       {
         title: "THE PRICE",
@@ -129,7 +133,7 @@ const relicsData = {
     verse: "1 Samuel 3:10",
     verseText: "The Lord came and stood there, calling as at the other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'",
     tags: "CINEMATIC WORSHIP • VIKING • ORCHESTRAL • CHORAL",
-    youtubeId: "oxNauKuxg4Q", // FROM YOUR MESSAGE
+    youtubeId: "oxNauKuxg4Q",
     sections: [
       {
         title: "THE WHISPER",
@@ -150,3 +154,87 @@ const relicsData = {
     ]
   }
 };
+
+// FIX: params is now a Promise in Next.js 14+
+export default async function RelicPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params; // FIX: await the params
+  const relic = relicsData[slug as keyof typeof relicsData];
+  
+  if (!relic) {
+    notFound();
+  }
+
+  return (
+    <main className="min-h-screen text-white antialiased relative z-0 flex flex-col bg-black">
+      
+      <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
+            Stormbreakers - RunningWolf
+          </Link>
+          <nav className="flex gap-6 text-sm">
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+            <Link href="/music" className="text-amber-500">Relics</Link>
+          </nav>
+        </div>
+      </header>
+
+      <section className="flex-1 px-6 py-12 md:py-20">
+        <div className="max-w-3xl mx-auto">
+          
+          <p className="text-xs text-amber-500 font-mono mb-4">{relic.number}</p>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight">
+            {relic.title}
+          </h1>
+          <p className="text-gray-400 text-xl mb-8">{relic.subtitle}</p>
+
+          <blockquote className="border-l-2 border-amber-500 pl-6 mb-4">
+            <p className="text-lg text-gray-200 italic mb-2">"{relic.verseText}"</p>
+            <cite className="text-sm text-gray-500 not-italic">{relic.verse}</cite>
+          </blockquote>
+
+          <p className="text-xs text-gray-600 tracking-wider mb-12">{relic.tags}</p>
+
+          <div className="mb-16">
+            <p className="text-xs text-amber-500 tracking-[0.3em] mb-4 font-mono">▶ RELIC EXPERIENCE</p>
+            <div className="aspect-video border border-gray-800 bg-gray-950">
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
+                title={relic.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            {relic.sections.map((section, idx) => (
+              <div key={idx} className="border-l border-gray-800 pl-6">
+                <h3 className="text-amber-500 font-black text-lg mb-3 tracking-wide">
+                  {section.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  {section.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t border-gray-900 mt-16 pt-8 flex justify-between items-center">
+            <Link href="/music" className="text-amber-500 hover:text-amber-400 text-sm font-mono">
+              ← RETURN TO HALL
+            </Link>
+            <p className="text-xs text-gray-700">STORMBREAKERS</p>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  );
+      }
