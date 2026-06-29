@@ -31,8 +31,7 @@ const songs: Record<string, SongData> = {
     subtitle: "The Battle Cry",
     scripture: "As iron sharpens iron, so one person sharpens another.",
     scriptureRef: "Proverbs 27:17",
-    youtubeId: "odIsEMUtNJI",
-    youtubeIdBonus: "fIkUDO2emoc",
+    youtubeId: "M4wGCg5oCx0", // FIXED
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
       {
@@ -59,7 +58,8 @@ const songs: Record<string, SongData> = {
     subtitle: "Sharpened Together",
     scripture: "As iron sharpens iron, so one person sharpens another.",
     scriptureRef: "Proverbs 27:17",
-    youtubeId: "M4wGCg5oCx0",
+    youtubeId: "odIsEMUtNJI", // FIXED
+    youtubeIdBonus: "fIkUDO2emoc", // FIXED - Live War Version
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
       {
@@ -376,4 +376,4 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
       </div>
     </main>
   );
-    }
+}
