@@ -276,3 +276,224 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
       <audio ref={ambientRef} loop src={relic.ambientUrl || "/audio/wind-horn.mp3"} preload="none" />
 
       <div className="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={relic.backgroundImage}
+            alt={relic.title}
+            fill
+            className="object-cover scale-105"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-amber-500 uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-bold mb-6"
+          >
+            {relic.theme}
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight mb-4 md:mb-6 px-2"
+          >
+            {relic.title}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="text-xl md:text-3xl text-zinc-300 mb-12 max-w-2xl mx-auto px-4 font-light"
+          >
+            {relic.subtitle}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            <button
+              onClick={enterStoryMode}
+              className="bg-amber-600 hover:bg-amber-500 text-black font-black py-4 px-12 rounded-lg transition-all hover:scale-105 shadow-2xl shadow-amber-600/40 text-lg tracking-wider"
+            >
+              ENTER STORY MODE
+            </button>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <p className="text-zinc-700 text-xs uppercase tracking-widest mb-2">Begin the Scroll</p>
+          <div className="animate-bounce">
+            <svg className="w-6 h-6 text-amber-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="bg-zinc-950 border-y border-zinc-800 py-10 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 text-center">
+            <div className="border-r border-zinc-800 pr-4 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Relic</p>
+              <p className="text-amber-500 font-black text-xl">{relic.relicNumber}</p>
+            </div>
+            <div className="border-r-0 md:border-r border-zinc-800 pr-0 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Scripture</p>
+              <p className="text-zinc-300 text-sm font-bold">{relic.scriptureRef}</p>
+            </div>
+            <div className="border-r border-zinc-800 pr-4 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Theme</p>
+              <p className="text-zinc-300 text-sm">{relic.theme}</p>
+            </div>
+            <div className="border-r-0 md:border-r border-zinc-800 pr-0 md:pr-8">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Written</p>
+              <p className="text-zinc-300 text-sm">{relic.written}</p>
+            </div>
+            <div className="col-span-2 md:col-span-1">
+              <p className="text-zinc-600 text-xs uppercase tracking-wider mb-2">Genre</p>
+              <p className="text-zinc-300 text-sm">{relic.genre}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {relic.status!== "coming-soon" && (
+        <div className="bg-black py-16 px-4 md:px-6">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 md:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-zinc-400 uppercase tracking-wider">Play Relic</p>
+                <p className="text-xs text-zinc-600">Main Track</p>
+              </div>
+              {relic.audioUrl &&!audioError? (
+                <audio
+                  ref={relicRef}
+                  controls
+                  className="w-full"
+                  src={relic.audioUrl}
+                  preload="metadata"
+                  onError={() => setAudioError(true)}
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              ) : (
+                <div className="bg-zinc-950 rounded-lg p-8 text-center border border-zinc-800">
+                  <p className="text-amber-500 font-bold">Audio preparing for battle...</p>
+                  <p className="text-zinc-600 text-sm mt-2">Check back soon</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 md:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-zinc-400 uppercase tracking-wider">Play Story</p>
+                <p className="text-xs text-zinc-600">Narration + Ambience</p>
+              </div>
+              <button
+                onClick={narrateStory}
+                className="w-full bg-zinc-800 hover:bg-amber-600 text-white hover:text-black font-bold py-4 px-8 rounded-lg transition-all"
+              >
+                {isNarrating? "■ STOP NARRATION" : "▶ START NARRATION"}
+              </button>
+            </div>
+
+            {relic.youtubeId && (
+              <div>
+                <p className="text-sm text-zinc-500 mb-4 uppercase tracking-wider text-center">Video Scroll</p>
+                <div className="aspect-video w-full rounded-xl overflow-hidden shadow-2xl shadow-amber-900/20">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
+                    title={relic.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-zinc-950">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+          >
+            <div className="border-l-4 border-amber-500 pl-6 md:pl-8 text-left">
+              <p className="text-2xl md:text-4xl italic text-zinc-200 leading-relaxed font-light">
+                "{relic.scripture}"
+              </p>
+              <p className="text-amber-500 font-bold mt-4 text-lg md:text-xl">{relic.scriptureRef}</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {storyMode && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black z-50 overflow-y-auto"
+          >
+            <button
+              onClick={exitStoryMode}
+              className="fixed top-6 right-6 z-50 bg-zinc-900 hover:bg-amber-600 text-white hover:text-black p-3 rounded-lg transition-all"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {relic.story.map((scene, i) => (
+              <div key={i}>
+                {i > 0 && (
+                  <div className="bg-black py-16 flex items-center justify-center">
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1 }}
+                      className="flex items-center gap-6"
+                    >
+                      <div className="h-px w-24 md:w-32 bg-gradient-to-r from-transparent via-amber-600 to-transparent"></div>
+                      <svg className="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <div className="h-px w-24 md:w-32 bg-gradient-to-l from-transparent via-amber-600 to-transparent"></div>
+                    </motion.div>
+                  </div>
+                )}
+
+                <div className="relative min-h-screen flex items-center justify-center px-4 py-32 bg-black">
+                  <div className="absolute inset-0 z-0 opacity-10">
+                    <Image
+                      src={relic.backgroundImage}
+                      alt=""
+                      fill
+                      className="object-cover blur-sm"
+                    />
+                  </div>
+
+                  <motion.div
+                 
