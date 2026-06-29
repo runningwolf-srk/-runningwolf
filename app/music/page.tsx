@@ -10,9 +10,9 @@ const RELICS_LIST = [
   { slug: "horn-of-war", title: "Horn of War", number: "01", status: "live" },
   { slug: "iron-collide", title: "Iron Collide", number: "02", status: "live" },
   { slug: "blood-of-the-cross", title: "Blood of the Cross", number: "03", status: "live" },
-  { slug: "seven-veils", title: "Seven Veils", number: "04", status: "coming-soon" },
-  { slug: "ghost-code", title: "Ghost Code", number: "05", status: "coming-soon" },
-  { slug: "lion-rises", title: "Lion Rises", number: "06", status: "coming-soon" },
+  { slug: "spiritual-journey", title: "Spiritual Journey", number: "04", status: "live" },
+  { slug: "lord-of-lords", title: "Lord of Lords", number: "05", status: "coming-soon" },
+  { slug: "scars-that-preach", title: "Scars That Preach", number: "06", status: "coming-soon" },
 ];
 
 export default function MusicPage() {
