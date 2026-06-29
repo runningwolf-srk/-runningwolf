@@ -13,6 +13,7 @@ type SongData = {
   title: string;
   subtitle: string;
   scripture: string;
+  scriptureRef?: string; // ← ADDED THIS TO FIX YOUR ERROR
   youtubeId?: string;
   youtubeIdBonus?: string;
   audioFile?: string;
@@ -261,9 +262,11 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
             <p className="text-lg md:text-xl text-gray-200 italic leading-relaxed">
               “{song.scripture}”
             </p>
-            <cite className="text-sm text-gray-500 not-italic mt-2 block">
-              {song.scriptureRef}
-            </cite>
+            {song.scriptureRef && (
+              <cite className="text-sm text-gray-500 not-italic mt-2 block">
+                {song.scriptureRef}
+              </cite>
+            )}
           </blockquote>
           
           <p className="text-xs text-gray-600 tracking-widest uppercase">
@@ -375,4 +378,4 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
       </div>
     </main>
   );
-}
+    }
