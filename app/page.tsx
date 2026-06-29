@@ -1,5 +1,6 @@
 // app/page.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +12,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen text-white antialiased relative z-0 flex flex-col">
       
-      {/* Nav */}
       <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
@@ -27,17 +27,18 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero - VIKING AVATAR BACK */}
       <section className="flex-1 flex items-center justify-center px-6 py-12 md:py-24">
         <div className="max-w-2xl mx-auto text-center">
           
-          {/* VIKING IMAGE - UPLOAD YOUR FILE HERE */}
           <div className="mb-8 flex justify-center">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-amber-500/30 ring-offset-4 ring-offset-black">
-              <img 
-                src="/images/viking-avatar.jpg" 
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-amber-500/30 ring-offset-4 ring-offset-black relative">
+              <Image 
+                src="/Screenshot_20260623-093852_Chrome~2.png" 
                 alt="RunningWolf"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                priority
+                unoptimized
               />
             </div>
           </div>
@@ -72,7 +73,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Saga Tease */}
       <section className="border-t border-gray-900 py-12 md:py-16 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-xs text-amber-500 tracking-[0.3em] mb-6 font-mono">
