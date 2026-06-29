@@ -44,14 +44,14 @@ const RELICS: Record<string, Relic> = {
   "iron-collide": {
     slug: "iron-collide", title: "Iron Collide", subtitle: "Faith sharpened in the fire of resistance.",
     scripture: "As iron sharpens iron, so one person sharpens another.", scriptureRef: "Proverbs 27:17",
-    theme: "By His Strength We Endure", backgroundImage: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    theme:2w2ww2www2w2w2w2wwwwwwwwwwwwwwwwwwwwwwwwwwwwww222 "By His Strength We Endure", backgroundImage: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp",
     youtubeId: "odIsEMUtNJI", youtubeIdBonus: "fIkUDO2emoc", written: "2024",
     genre: "Cinematic Worship • Viking War Hymn • Orchestral", relicNumber: "02 / 07",
     story: [
       { title: "THE ANVIL", text: "You thought the trial was punishment. It was preparation. You were placed, not abandoned." },
       { title: "THE HAMMER", text: "Every enemy was an anvil. Every hardship, a hammer. You were not being broken. You were being forged." },
       { title: "THE EDGE", text: "Pressure does not destroy the called. It gives them an edge. What tried to crush you sharpened you." }
-    ],
+    ];
     meaning: "You were not meant to survive the fire. You were meant to be shaped by it.", sagaPrev: "horn-of-war", sagaNext: "blood-of-the-cross"
   };
   "blood-of-the-cross": {
