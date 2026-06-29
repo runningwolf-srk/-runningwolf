@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen text-white antialiased relative z-0 flex flex-col">
       
-      {/* Nav - NO GALLERY */}
+      {/* Nav */}
       <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
@@ -20,19 +20,23 @@ export default function HomePage() {
           <nav className="flex gap-6 text-sm">
             <Link href="/" className="text-amber-500">Home</Link>
             <Link href="/music" className="text-gray-400 hover:text-white transition-colors">Music</Link>
+            <Link href="/gallery" className="text-gray-400 hover:text-amber-500 transition-colors flex items-center gap-1">
+              Gallery <span className="text-amber-500">LOCKED</span>
+            </Link>
           </nav>
         </div>
       </header>
 
-      {/* Hero - NO GALLERY BUTTON */}
+      {/* Hero - YOUR VIKING IMAGE */}
       <section className="flex-1 flex items-center justify-center px-6 py-12 md:py-24">
         <div className="max-w-2xl mx-auto text-center">
           
+          {/* VIKING AVATAR - USING YOUR ACTUAL FILE */}
           <div className="mb-8 flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-amber-500/30 ring-offset-4 ring-offset-black">
               <img 
-                src="/images/avatar.jpg" 
-                alt="Jessy Marquez"
+                src="/729068345_1706992463868756_7233760520950384832_n~2.jpg" 
+                alt="RunningWolf"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -50,12 +54,20 @@ export default function HomePage() {
             Cinematic worship and epic spiritual rock forged in fire. <span className="text-amber-500 font-semibold">Stormbreakers</span> is for the addicted, the broken, the chosen.
           </p>
 
-          <Link 
-            href="/music"
-            className="inline-block w-full md:w-auto bg-amber-500 hover:bg-amber-400 text-black font-black text-lg px-12 py-4 transition-colors tracking-wide"
-          >
-            ♫ Enter Music
-          </Link>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Link 
+              href="/music"
+              className="bg-amber-500 hover:bg-amber-400 text-black font-black text-lg px-12 py-4 transition-colors tracking-wide"
+            >
+              ♫ Enter Music
+            </Link>
+            <Link 
+              href="/gallery"
+              className="border border-amber-500/50 hover:bg-amber-500/10 text-amber-500 font-black text-lg px-12 py-4 transition-colors tracking-wide"
+            >
+              ◈ Unlock Gallery
+            </Link>
+          </div>
 
         </div>
       </section>
