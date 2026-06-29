@@ -340,7 +340,7 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
           >
             UNLOCK FULL SAGA — COMING SOON
           </button>
-          <p className="text-xs text-gray-700 mt-4">
+          <p className="text-xs text-gray-700 mt-3">
             Narrative bridges, interludes, and director's commentary
           </p>
         </div>
@@ -376,4 +376,4 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
       </div>
     </main>
   );
-}
+    }
