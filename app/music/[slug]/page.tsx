@@ -1,36 +1,10 @@
-// app/music//page.tsx
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-
-type StoryItem = {
-  title: string;
-  text: string;
-};
-
-type SongData = {
-  slug: string;
-  title: string;
-  subtitle: string;
-  scripture: string;
-  youtubeId?: string;
-  youtubeIdBonus?: string;
-  audioFile?: string;
-  genre: string;
-  story: StoryItem[];
-  meaning: string;
-  sagaNext?: string;
-  sagaPrev?: string;
-  trackNumber: string;
-};
-
 const songs: Record<string, SongData> = {
   "blood-of-the-cross": {
     slug: "blood-of-the-cross",
     title: "Blood of the Cross",
     subtitle: "The Sacrifice",
     scripture: "But he was pierced for our transgressions, he was crushed for our iniquities. — Isaiah 53:5",
-    youtubeId: "umDFjJjh0_c",
+    youtubeId: "4lcbjsNLlzo", // ← FIXED: This is your Blood of the Cross video
     audioFile: "blood-of-the-cross.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -138,7 +112,7 @@ const songs: Record<string, SongData> = {
     title: "Crown of Thorns",
     subtitle: "The King of Pain",
     scripture: "They twisted together a crown of thorns and set it on his head. — Matthew 27:29",
-    youtubeId: "4lcbjsNLlzo",
+    // youtubeId removed - need the correct ID for Crown of Thorns
     audioFile: "crown-of-thorns.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -291,119 +265,3 @@ const songs: Record<string, SongData> = {
     trackNumber: "10 / 10"
   }
 };
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const song = songs[params.slug];
-  if (!song) return { title: "Relic Not Found | RUNNINGWOLF" };
-  
-  return {
-    title: `${song.title} | RUNNINGWOLF`,
-    description: song.meaning,
-  };
-}
-
-export default function Page({ params }: { params: { slug: string } }) {
-  const song = songs[params.slug];
-
-  if (!song) {
-    notFound();
-  }
-
-  return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto px-6 py-8 md:py-12">
-        {/* Header */}
-        <div className="mb-8">
-          <p className="text-amber-500 text-sm tracking-[0.2em] mb-3">{song.trackNumber}</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-3">{song.title}</h1>
-          <p className="text-xl text-gray-400 mb-4">{song.subtitle}</p>
-          <p className="text-gray-300 italic mb-2">{song.scripture}</p>
-          <p className="text-sm text-gray-500">{song.genre}</p>
-        </div>
-
-        {/* YouTube Embed - only shows if youtubeId exists */}
-        {song.youtubeId && (
-          <div className="aspect-video mb-8 rounded-lg overflow-hidden bg-gray-900">
-            <iframe
-              className="w-full h-full"
-              src={`https://www.youtube.com/embed/${song.youtubeId}`}
-              title={song.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        )}
-
-        {/* Bonus Video - only shows if youtubeIdBonus exists */}
-        {song.youtubeIdBonus && (
-          <div className="mb-8">
-            <p className="text-sm text-amber-500 mb-3 tracking-widest">BONUS: LIVE VERSION</p>
-            <div className="aspect-video rounded-lg overflow-hidden bg-gray-900">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${song.youtubeIdBonus}`}
-                title={`${song.title} Live`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Audio Player - only shows if audioFile exists */}
-        {song.audioFile && (
-          <div className="mb-12 p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
-            <p className="text-sm text-amber-500 mb-3 tracking-widest">LISTEN TO RELIC AUDIO</p>
-            <audio controls className="w-full" preload="metadata">
-              <source src={`/audio/${song.audioFile}`} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        )}
-
-        {/* Story Sections */}
-        <div className="space-y-10 mb-12">
-          {song.story.map((item, index) => (
-            <div key={index} className="border-l-2 border-amber-500 pl-6">
-              <h2 className="text-2xl font-bold text-amber-500 mb-3 tracking-wide">{item.title}</h2>
-              <p className="text-gray-300 leading-relaxed text-lg">{item.text}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Meaning */}
-        <div className="bg-gray-900/50 border border-gray-800 p-8 rounded-lg mb-12">
-          <p className="text-xl text-gray-100 leading-relaxed">{song.meaning}</p>
-        </div>
-
-        {/* Saga Navigation */}
-        <div className="flex justify-between items-center pt-8 border-t border-gray-800">
-          {song.sagaPrev? (
-            <Link 
-              href={`/music/${song.sagaPrev}`} 
-              className="text-amber-500 hover:text-amber-400 transition-colors min-h- flex items-center"
-            >
-              ← Previous Relic
-            </Link>
-          ) : <div />}
-          
-          <Link 
-            href="/music" 
-            className="text-gray-400 hover:text-white transition-colors min-h- flex items-center"
-          >
-            Hall of Relics
-          </Link>
-          
-          {song.sagaNext? (
-            <Link 
-              href={`/music/${song.sagaNext}`} 
-              className="text-amber-500 hover:text-amber-400 transition-colors min-h- flex items-center ml-auto"
-            >
-              Next Relic →
-            </Link>
-          ) : <div />}
-        </div>
-      </div>
-    </main>
-  );
-}
