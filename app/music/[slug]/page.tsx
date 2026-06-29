@@ -17,45 +17,21 @@ type SongData = {
   youtubeIdBonus?: string;
   audioFile?: string;
   genre: string;
-  story: StoryItem[];
+  story: StoryItem[]; // MUST BE 3 ITEMS
   meaning: string;
   sagaNext?: string;
   sagaPrev?: string;
-  trackNumber: string;
+  trackNumber: string; // Format: "01 / 07"
 };
 
+// CANON LOCKED: 7 RELICS ONLY
 const songs: Record<string, SongData> = {
-  "blood-of-the-cross": {
-    slug: "blood-of-the-cross",
-    title: "Blood of the Cross",
-    subtitle: "The Sacrifice",
-    scripture: "But he was pierced for our transgressions, he was crushed for our iniquities. — Isaiah 53:5",
-    youtubeId: "4lcbjsNLlzo",
-    audioFile: "blood-of-the-cross.mp3",
-    genre: "Cinematic Worship • Orchestral • Choral",
-    story: [
-      {
-        title: "THE WEIGHT",
-        text: "Every sin carried. Every shame lifted. The cross was not symbolic. It was execution."
-      },
-      {
-        title: "THE EXCHANGE",
-        text: "His blood for your freedom. His wounds for your healing. The price was paid in full."
-      },
-      {
-        title: "THE VICTORY",
-        text: "Death thought it won. The grave thought it held Him. Three days later, the stone rolled away."
-      }
-    ],
-    meaning: "The cross is not the end of the story. It's where your story begins.",
-    sagaNext: "horn-of-war",
-    trackNumber: "01 / 10"
-  },
   "horn-of-war": {
     slug: "horn-of-war",
     title: "Horn of War",
     subtitle: "The Battle Cry",
-    scripture: "As iron sharpens iron, so one person sharpens another. — Proverbs 27:17",
+    scripture: "As iron sharpens iron, so one person sharpens another.",
+    scriptureRef: "Proverbs 27:17",
     youtubeId: "odIsEMUtNJI",
     youtubeIdBonus: "fIkUDO2emoc",
     audioFile: "horn-of-war.mp3",
@@ -76,14 +52,15 @@ const songs: Record<string, SongData> = {
     ],
     meaning: "The horn does not promise an easy battle. It calls the faithful to stand.",
     sagaNext: "iron-collide",
-    sagaPrev: "blood-of-the-cross",
-    trackNumber: "02 / 10"
+    sagaPrev: undefined,
+    trackNumber: "01 / 07"
   },
   "iron-collide": {
     slug: "iron-collide",
     title: "Iron Collide",
     subtitle: "Sharpened Together",
-    scripture: "As iron sharpens iron, so one person sharpens another. — Proverbs 27:17",
+    scripture: "As iron sharpens iron, so one person sharpens another.",
+    scriptureRef: "Proverbs 27:17",
     youtubeId: "M4wGCg5oCx0",
     audioFile: "iron-collide.mp3",
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
@@ -102,15 +79,44 @@ const songs: Record<string, SongData> = {
       }
     ],
     meaning: "We are forged in community, not in isolation. The collision is the calling.",
-    sagaNext: "white-horse",
+    sagaNext: "blood-of-the-cross",
     sagaPrev: "horn-of-war",
-    trackNumber: "03 / 10"
+    trackNumber: "02 / 07"
+  },
+  "blood-of-the-cross": {
+    slug: "blood-of-the-cross",
+    title: "Blood of the Cross",
+    subtitle: "The Sacrifice",
+    scripture: "But he was pierced for our transgressions, he was crushed for our iniquities.",
+    scriptureRef: "Isaiah 53:5",
+    youtubeId: "4lcbjsNLlzo",
+    audioFile: "blood-of-the-cross.mp3",
+    genre: "Cinematic Worship • Orchestral • Choral",
+    story: [
+      {
+        title: "THE WEIGHT",
+        text: "Every sin carried. Every shame lifted. The cross was not symbolic. It was execution."
+      },
+      {
+        title: "THE EXCHANGE",
+        text: "His blood for your freedom. His wounds for your healing. The price was paid in full."
+      },
+      {
+        title: "THE VICTORY",
+        text: "Death thought it won. The grave thought it held Him. Three days later, the stone rolled away."
+      }
+    ],
+    meaning: "The cross is not the end of the story. It's where your story begins.",
+    sagaNext: "white-horse",
+    sagaPrev: "iron-collide",
+    trackNumber: "03 / 07"
   },
   "white-horse": {
     slug: "white-horse",
     title: "White Horse",
     subtitle: "The Return",
-    scripture: "I saw heaven standing open and there before me was a white horse. — Revelation 19:11",
+    scripture: "I saw heaven standing open and there before me was a white horse.",
+    scriptureRef: "Revelation 19:11",
     youtubeId: "8XQUhWB_N5M",
     audioFile: "white-horse.mp3",
     genre: "Cinematic Worship • Orchestral • Epic",
@@ -130,14 +136,15 @@ const songs: Record<string, SongData> = {
     ],
     meaning: "He's not coming back as a lamb. He's coming back as a King.",
     sagaNext: "crown-of-thorns",
-    sagaPrev: "iron-collide",
-    trackNumber: "04 / 10"
+    sagaPrev: "blood-of-the-cross",
+    trackNumber: "04 / 07"
   },
   "crown-of-thorns": {
     slug: "crown-of-thorns",
     title: "Crown of Thorns",
     subtitle: "The King of Pain",
-    scripture: "They twisted together a crown of thorns and set it on his head. — Matthew 27:29",
+    scripture: "They twisted together a crown of thorns and set it on his head.",
+    scriptureRef: "Matthew 27:29",
     audioFile: "crown-of-thorns.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -157,13 +164,14 @@ const songs: Record<string, SongData> = {
     meaning: "Your King bled first. Your victory was bought with thorns.",
     sagaNext: "lion-and-lamb",
     sagaPrev: "white-horse",
-    trackNumber: "05 / 10"
+    trackNumber: "05 / 07"
   },
   "lion-and-lamb": {
     slug: "lion-and-lamb",
     title: "Lion and Lamb",
     subtitle: "The Paradox",
-    scripture: "See, the Lion of the tribe of Judah has triumphed. — Revelation 5:5",
+    scripture: "See, the Lion of the tribe of Judah has triumphed.",
+    scriptureRef: "Revelation 5:5",
     youtubeId: "oxNauKuxg4Q",
     audioFile: "lion-and-lamb.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
@@ -184,13 +192,14 @@ const songs: Record<string, SongData> = {
     meaning: "He conquered by surrendering. He rules by serving. That's Kingdom logic.",
     sagaNext: "seven-seals",
     sagaPrev: "crown-of-thorns",
-    trackNumber: "06 / 10"
+    trackNumber: "06 / 07"
   },
   "seven-seals": {
     slug: "seven-seals",
     title: "Seven Seals",
     subtitle: "The End and Beginning",
-    scripture: "Then I saw in the right hand of him who sat on the throne a scroll with writing on both sides. — Revelation 5:1",
+    scripture: "Then I saw in the right hand of him who sat on the throne a scroll with writing on both sides.",
+    scriptureRef: "Revelation 5:1",
     audioFile: "seven-seals.mp3",
     genre: "Cinematic Worship • Orchestral • Epic Finale",
     story: [
@@ -208,87 +217,9 @@ const songs: Record<string, SongData> = {
       }
     ],
     meaning: "The story doesn't end with judgment. It ends with worship.",
+    sagaNext: undefined,
     sagaPrev: "lion-and-lamb",
-    sagaNext: "heaven-is-calling",
-    trackNumber: "07 / 10"
-  },
-  "heaven-is-calling": {
-    slug: "heaven-is-calling",
-    title: "Heaven Is Calling",
-    subtitle: "The Invitation",
-    scripture: "Come to me, all you who are weary and burdened, and I will give you rest. — Matthew 11:28",
-    audioFile: "heaven-is-calling.mp3",
-    genre: "Cinematic Worship • Orchestral • Ambient",
-    story: [
-      {
-        title: "THE WHISPER",
-        text: "Before the shout, there was a whisper. Heaven calls the broken before it calls the brave."
-      },
-      {
-        title: "THE VOICE",
-        text: "Not condemnation. Invitation. The same voice that spoke worlds now speaks your name."
-      },
-      {
-        title: "THE RESPONSE",
-        text: "You can run. You can hide. Or you can answer. The call won't force you. But it won't stop."
-      }
-    ],
-    meaning: "Heaven is not distant. It's calling. Right now.",
-    sagaPrev: "seven-seals",
-    sagaNext: "im-on-fire",
-    trackNumber: "08 / 10"
-  },
-  "im-on-fire": {
-    slug: "im-on-fire",
-    title: "I'm On Fire",
-    subtitle: "The Commission",
-    scripture: "I have come to bring fire on the earth, and how I wish it were already kindled! — Luke 12:49",
-    audioFile: "im-on-fire.mp3",
-    genre: "Cinematic Worship • Rock • Orchestral",
-    story: [
-      {
-        title: "THE SPARK",
-        text: "One encounter. One word. One moment with God and the dry wood of your life ignites."
-      },
-      {
-        title: "THE BLAZE",
-        text: "This isn't a candle. It's wildfire. It consumes excuses. It burns through fear."
-      },
-      {
-        title: "THE SPREAD",
-        text: "Fire doesn't stay contained. Neither do you. Go set the world ablaze."
-      }
-    ],
-    meaning: "You weren't saved to sit. You were set on fire to send.",
-    sagaPrev: "heaven-is-calling",
-    sagaNext: "spiritual-journey",
-    trackNumber: "09 / 10"
-  },
-  "spiritual-journey": {
-    slug: "spiritual-journey",
-    title: "Spiritual Journey",
-    subtitle: "The Road From Birth To Calling",
-    scripture: "Your word is a lamp for my feet, a light on my path. — Psalm 119:105",
-    youtubeId: "umDFjJjh0_c",
-    audioFile: "spiritual-journey.mp3",
-    genre: "Cinematic Worship • Orchestral • Ambient • Testimony",
-    story: [
-      {
-        title: "THE BEGINNING",
-        text: "From the day I was born, the battle started. Pain, confusion, broken roads. I didn't know it then, but God was writing a story through the scars."
-      },
-      {
-        title: "THE WILDERNESS",
-        text: "Years of wandering. Wrong turns. Silence that felt like abandonment. But even in the dark, His hand was guiding. Every valley had a purpose."
-      },
-      {
-        title: "THE AWAKENING",
-        text: "Then He called my name. Not because I was worthy, but because He is. The same God who saw me in the womb set me on fire for His glory."
-      }
-    ],
-    meaning: "This is my life — from birth, through the brokenness, to the fire. The destination was always Him.",
-    sagaPrev: "im-on-fire",
-    trackNumber: "10 / 10"
+    trackNumber: "07 / 07"
   }
 };
 
@@ -302,26 +233,47 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function RelicPage({ params }: { params: { slug: string } }) {
   const song = songs[params.slug];
+  if (!song) notFound();
 
-  if (!song) {
-    notFound();
-  }
+  const prevRelic = song.sagaPrev ? songs[song.sagaPrev] : null;
+  const nextRelic = song.sagaNext ? songs[song.sagaNext] : null;
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto px-6 py-8 md:py-12">
-        <div className="mb-8">
-          <p className="text-amber-500 text-sm tracking-[0.2em] mb-3">{song.trackNumber}</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-3">{song.title}</h1>
-          <p className="text-xl text-gray-400 mb-4">{song.subtitle}</p>
-          <p className="text-gray-300 italic mb-2">{song.scripture}</p>
-          <p className="text-sm text-gray-500">{song.genre}</p>
-        </div>
+    <main className="min-h-screen bg-black text-white antialiased">
+      <div className="max-w-4xl mx-auto px-6 py-8 md:py-16">
+        
+        {/* IDENTITY HEADER - TIERED EMPHASIS */}
+        <header className="mb-12 md:mb-16">
+          <p className="text-amber-500 text-xs md:text-sm tracking-[0.3em] mb-4 font-mono">
+            {song.trackNumber}
+          </p>
+          <h1 className="text-5xl md:text-7xl font-black mb-4 leading-none tracking-tight">
+            {song.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-400 mb-6 font-light">
+            {song.subtitle}
+          </p>
+          
+          {/* SCRIPTURE QUOTE BLOCK */}
+          <blockquote className="border-l-4 border-amber-500/50 pl-6 py-2 mb-4">
+            <p className="text-lg md:text-xl text-gray-200 italic leading-relaxed">
+              “{song.scripture}”
+            </p>
+            <cite className="text-sm text-gray-500 not-italic mt-2 block">
+              {song.scriptureRef}
+            </cite>
+          </blockquote>
+          
+          <p className="text-xs text-gray-600 tracking-widest uppercase">
+            {song.genre}
+          </p>
+        </header>
 
+        {/* PRIMARY VISUAL - YOUTUBE */}
         {song.youtubeId && (
-          <div className="aspect-video mb-8 rounded-lg overflow-hidden bg-gray-900">
+          <div className="aspect-video mb-8 md:mb-12 rounded-none md:rounded-sm overflow-hidden bg-gray-950 ring-1 ring-gray-800">
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${song.youtubeId}`}
@@ -332,10 +284,13 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         )}
 
+        {/* BONUS VISUAL */}
         {song.youtubeIdBonus && (
-          <div className="mb-8">
-            <p className="text-sm text-amber-500 mb-3 tracking-widest">BONUS: LIVE VERSION</p>
-            <div className="aspect-video rounded-lg overflow-hidden bg-gray-900">
+          <div className="mb-8 md:mb-12">
+            <p className="text-xs text-amber-500 mb-4 tracking-[0.2em] font-mono">
+              BONUS: LIVE WAR VERSION
+            </p>
+            <div className="aspect-video rounded-none md:rounded-sm overflow-hidden bg-gray-950 ring-1 ring-gray-800">
               <iframe
                 className="w-full h-full"
                 src={`https://www.youtube.com/embed/${song.youtubeIdBonus}`}
@@ -347,56 +302,77 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         )}
 
+        {/* AUDIO RELIC - CINEMATIC BUTTON */}
         {song.audioFile && (
-          <div className="mb-12 p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
-            <p className="text-sm text-amber-500 mb-3 tracking-widest">LISTEN TO RELIC AUDIO</p>
-            <audio controls className="w-full" preload="metadata">
+          <div className="mb-12 md:mb-16 p-6 md:p-8 bg-gradient-to-b from-gray-900/80 to-gray-950/80 border border-gray-800 backdrop-blur-sm">
+            <p className="text-xs text-amber-500 mb-4 tracking-[0.2em] font-mono">
+              RELIC AUDIO
+            </p>
+            <audio 
+              controls 
+              className="w-full h-12 [&::-webkit-media-controls-panel]:bg-gray-900 [&::-webkit-media-controls-current-time-display]:text-amber-500" 
+              preload="metadata"
+            >
               <source src={`/audio/${song.audioFile}`} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
+            <button className="mt-4 text-sm text-gray-500 hover:text-amber-500 transition-colors tracking-wider">
+              ▶ ENTER SOUND OF WAR
+            </button>
           </div>
         )}
 
-        <div className="space-y-10 mb-12">
+        {/* 3-SCENE STORY - ALWAYS SAME FORMAT */}
+        <div className="space-y-12 md:space-y-16 mb-12 md:mb-16">
           {song.story.map((item, index) => (
-            <div key={index} className="border-l-2 border-amber-500 pl-6">
-              <h2 className="text-2xl font-bold text-amber-500 mb-3 tracking-wide">{item.title}</h2>
-              <p className="text-gray-300 leading-relaxed text-lg">{item.text}</p>
-            </div>
+            <section key={index} className="border-l-2 border-amber-500/30 pl-6 md:pl-8">
+              <h2 className="text-2xl md:text-3xl font-black text-amber-500 mb-4 tracking-wide">
+                {item.title}
+              </h2>
+              <p className="text-gray-300 leading-relaxed text-lg md:text-xl font-light">
+                {item.text}
+              </p>
+            </section>
           ))}
         </div>
 
-        <div className="bg-gray-900/50 border border-gray-800 p-8 rounded-lg mb-12">
-          <p className="text-xl text-gray-100 leading-relaxed">{song.meaning}</p>
+        {/* FINAL ECHO - MEANING LINE */}
+        <div className="bg-gradient-to-b from-gray-900/50 to-transparent border-t border-amber-500/20 p-8 md:p-12 mb-12 md:mb-16">
+          <p className="text-xl md:text-2xl text-gray-100 leading-relaxed font-light text-center">
+            {song.meaning}
+          </p>
         </div>
 
-        <div className="flex justify-between items-center pt-8 border-t border-gray-800">
-          {song.sagaPrev? (
+        {/* CHAPTER NAVIGATION - IMMERSIVE */}
+        <nav className="flex justify-between items-center pt-8 border-t border-gray-900 text-sm md:text-base">
+          {prevRelic ? (
             <Link 
-              href={`/music/${song.sagaPrev}`} 
-              className="text-amber-500 hover:text-amber-400 transition-colors min-h- flex items-center"
+              href={`/music/${prevRelic.slug}`} 
+              className="group text-gray-500 hover:text-amber-500 transition-colors flex items-center gap-2"
             >
-              ← Previous Relic
+              <span className="text-amber-500/50 group-hover:text-amber-500">←</span>
+              <span>{prevRelic.title}</span>
             </Link>
           ) : <div />}
           
           <Link 
             href="/music" 
-            className="text-gray-400 hover:text-white transition-colors min-h- flex items-center"
+            className="text-gray-600 hover:text-white transition-colors tracking-widest uppercase text-xs"
           >
-            Hall of Relics
+            Return to Hall
           </Link>
           
-          {song.sagaNext? (
+          {nextRelic ? (
             <Link 
-              href={`/music/${song.sagaNext}`} 
-              className="text-amber-500 hover:text-amber-400 transition-colors min-h- flex items-center ml-auto"
+              href={`/music/${nextRelic.slug}`} 
+              className="group text-gray-500 hover:text-amber-500 transition-colors flex items-center gap-2 ml-auto text-right"
             >
-              Next Relic →
+              <span>{nextRelic.title}</span>
+              <span className="text-amber-500/50 group-hover:text-amber-500">→</span>
             </Link>
           ) : <div />}
-        </div>
+        </nav>
       </div>
     </main>
   );
-      }
+}
