@@ -13,9 +13,9 @@ type SongData = {
   title: string;
   subtitle: string;
   scripture: string;
-  youtubeId?: string; // Optional - only add if video exists
-  youtubeIdBonus?: string; // Optional
-  audioFile?: string; // expects file in public/audio/
+  youtubeId?: string;
+  youtubeIdBonus?: string;
+  audioFile?: string;
   genre: string;
   story: StoryItem[];
   meaning: string;
@@ -30,7 +30,7 @@ const songs: Record<string, SongData> = {
     title: "Blood of the Cross",
     subtitle: "The Sacrifice",
     scripture: "But he was pierced for our transgressions, he was crushed for our iniquities. — Isaiah 53:5",
-    // youtubeId removed - add it back when you have the video
+    youtubeId: "umDFjJjh0_c",
     audioFile: "blood-of-the-cross.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -56,8 +56,8 @@ const songs: Record<string, SongData> = {
     title: "Horn of War",
     subtitle: "The Battle Cry",
     scripture: "As iron sharpens iron, so one person sharpens another. — Proverbs 27:17",
-    youtubeId: "odIsEMUtNJI", // You have this one
-    youtubeIdBonus: "fIkUD02emoc", // You have this bonus
+    youtubeId: "odIsEMUtNJI",
+    youtubeIdBonus: "fIkUDO2emoc",
     audioFile: "horn-of-war.mp3",
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
@@ -84,7 +84,7 @@ const songs: Record<string, SongData> = {
     title: "Iron Collide",
     subtitle: "Sharpened Together",
     scripture: "As iron sharpens iron, so one person sharpens another. — Proverbs 27:17",
-    youtubeId: "4wGCg5oCx0", // You have this one
+    youtubeId: "M4wGCg5oCx0",
     audioFile: "iron-collide.mp3",
     genre: "Cinematic Worship • Viking War Hymn • Orchestral",
     story: [
@@ -111,7 +111,7 @@ const songs: Record<string, SongData> = {
     title: "White Horse",
     subtitle: "The Return",
     scripture: "I saw heaven standing open and there before me was a white horse. — Revelation 19:11",
-    // youtubeId removed - add when ready
+    youtubeId: "8XQUhWB_N5M",
     audioFile: "white-horse.mp3",
     genre: "Cinematic Worship • Orchestral • Epic",
     story: [
@@ -138,7 +138,7 @@ const songs: Record<string, SongData> = {
     title: "Crown of Thorns",
     subtitle: "The King of Pain",
     scripture: "They twisted together a crown of thorns and set it on his head. — Matthew 27:29",
-    // youtubeId removed - add when ready
+    youtubeId: "4lcbjsNLlzo",
     audioFile: "crown-of-thorns.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -165,7 +165,7 @@ const songs: Record<string, SongData> = {
     title: "Lion and Lamb",
     subtitle: "The Paradox",
     scripture: "See, the Lion of the tribe of Judah has triumphed. — Revelation 5:5",
-    // youtubeId removed - add when ready
+    youtubeId: "oxNauKuxg4Q",
     audioFile: "lion-and-lamb.mp3",
     genre: "Cinematic Worship • Orchestral • Choral",
     story: [
@@ -192,7 +192,6 @@ const songs: Record<string, SongData> = {
     title: "Seven Seals",
     subtitle: "The End and Beginning",
     scripture: "Then I saw in the right hand of him who sat on the throne a scroll with writing on both sides. — Revelation 5:1",
-    // youtubeId removed - add when ready
     audioFile: "seven-seals.mp3",
     genre: "Cinematic Worship • Orchestral • Epic Finale",
     story: [
@@ -219,7 +218,6 @@ const songs: Record<string, SongData> = {
     title: "Heaven Is Calling",
     subtitle: "The Invitation",
     scripture: "Come to me, all you who are weary and burdened, and I will give you rest. — Matthew 11:28",
-    // youtubeId removed - add when ready
     audioFile: "heaven-is-calling.mp3",
     genre: "Cinematic Worship • Orchestral • Ambient",
     story: [
@@ -246,7 +244,6 @@ const songs: Record<string, SongData> = {
     title: "I'm On Fire",
     subtitle: "The Commission",
     scripture: "I have come to bring fire on the earth, and how I wish it were already kindled! — Luke 12:49",
-    // youtubeId removed - add when ready
     audioFile: "im-on-fire.mp3",
     genre: "Cinematic Worship • Rock • Orchestral",
     story: [
@@ -273,7 +270,6 @@ const songs: Record<string, SongData> = {
     title: "Spiritual Journey",
     subtitle: "The Road",
     scripture: "Your word is a lamp for my feet, a light on my path. — Psalm 119:105",
-    // youtubeId removed - add when ready
     audioFile: "spiritual-journey.mp3",
     genre: "Cinematic Worship • Orchestral • Ambient",
     story: [
