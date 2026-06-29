@@ -1,49 +1,230 @@
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Link from 'next/link';
-import { RELICS } from '../../../src/lib/relics';
 
-export async function generateStaticParams() {
-  return RELICS.map((relic) => ({ slug: relic.id }));
+type Relic = {
+  slug: string;
+  title: string;
+  theme: string;
+  scripture: { verse: string; text: string };
+  youtubeId?: string;
+  youtubeIdBonus?: string; // For Iron Collide Original
+  story: string[];
+  background: string; // /public/ images
+  sagaNext?: string; // slug of next relic
+  sagaPrev?: string; // slug of prev relic
+  status?: 'live' | 'coming-soon';
+};
+
+// RELIC DATA — ADD/EDIT HERE ONLY
+const RELICS: Record<string, Relic> = {
+  'horn-of-war': {
+    slug: 'horn-of-war',
+    title: 'Horn of War',
+    theme: 'The Call',
+    scripture: { verse: 'Joshua 6:5', text: 'When you hear the sound of the horn, all the people shall shout with a great shout.' },
+    youtubeId: 'M4wGCg5oCx0',
+    story: [
+      'This is the summons. The sound that breaks delay.',
+      'When the horn blows, the war shifts. You move or you miss it.',
+      'No more waiting. No more hiding. The call is now.'
+    ],
+    background: '/relics/horn-of-war.jpg',
+    sagaNext: 'iron-collide'
+  },
+  'iron-collide': {
+    slug: 'iron-collide',
+    title: 'Iron Collide',
+    theme: 'Pressure',
+    scripture: { verse: 'Proverbs 27:17', text: 'As iron sharpens iron, so one man sharpens another.' },
+    youtubeId: 'odIsEMUtNJI', // Hybrid
+    youtubeIdBonus: 'fIkUDO2emoc', // Original
+    story: [
+      'Pressure reveals what you are.',
+      'Two forces meet. Sparks fly. Weakness burns off.',
+      'You don’t survive this by avoiding impact. You get forged by it.'
+    ],
+    background: '/relics/iron-collide.jpg',
+    sagaPrev: 'horn-of-war',
+    sagaNext: 'blood-of-the-cross'
+  },
+  'blood-of-the-cross': {
+    slug: 'blood-of-the-cross',
+    title: 'Blood of the Cross',
+    theme: 'Redemption',
+    scripture: { verse: 'Ephesians 1:7', text: 'In Him we have redemption through His blood, the forgiveness of sins.' },
+    youtubeId: '4lcbjsNLlzo',
+    story: [
+      'There is a price for freedom. It was paid in blood.',
+      'The cross was not defeat. It was conquest.',
+      'Your past ends here. Your future starts now.'
+    ],
+    background: '/relics/blood-of-the-cross.jpg',
+    sagaPrev: 'iron-collide',
+    sagaNext: 'heaven-is-calling'
+  },
+  'heaven-is-calling': {
+    slug: 'heaven-is-calling',
+    title: 'Heaven Is Calling',
+    theme: 'Identity',
+    scripture: { verse: 'Romans 8:16', text: 'The Spirit himself testifies with our spirit that we are God’s children.' },
+    youtubeId: 'oxNauKuxg4Q',
+    story: [
+      'You were named before you were born.',
+      'The voice calling you is not from this world.',
+      'Answer it, and you remember who you are.'
+    ],
+    background: '/relics/heaven-is-calling.jpg',
+    sagaPrev: 'blood-of-the-cross',
+    sagaNext: 'im-on-fire'
+  },
+  'im-on-fire': {
+    slug: 'im-on-fire',
+    title: "I'm On Fire",
+    theme: 'Passion',
+    scripture: { verse: 'Luke 12:49', text: 'I have come to bring fire on the earth, and how I wish it were already kindled!' },
+    youtubeId: '8XQUhWB_N5M',
+    story: [
+      'Lukewarm never changed anything.',
+      'Passion is not an emotion. It’s a furnace.',
+      'Burn for what matters or freeze with the rest.'
+    ],
+    background: '/relics/im-on-fire.jpg',
+    sagaPrev: 'heaven-is-calling',
+    sagaNext: 'spiritual-journey'
+  },
+  'spiritual-journey': {
+    slug: 'spiritual-journey',
+    title: 'Spiritual Journey',
+    theme: 'Growth',
+    scripture: { verse: '2 Peter 3:18', text: 'But grow in the grace and knowledge of our Lord and Savior Jesus Christ.' },
+    youtubeId: 'umDFjJjh0_c',
+    story: [
+      'You are not who you were.',
+      'The road is long. The weight is real. But you are becoming.',
+      'Every step forward is a grave for who you used to be.'
+    ],
+    background: '/relics/spiritual-journey.jpg',
+    sagaPrev: 'im-on-fire',
+    sagaNext: 'throne-torn'
+  },
+  'throne-torn': {
+    slug: 'throne-torn',
+    title: 'Throne Torn',
+    theme: 'Final Revelation',
+    scripture: { verse: 'Revelation 19:16', text: 'On his robe and on his thigh he has this name written: King of kings and Lord of lords.' },
+    story: [
+      'Every false throne falls.',
+      'The crown belongs to one.',
+      'This is the end of usurpers. The start of true reign.'
+    ],
+    background: '/relics/throne-torn.jpg',
+    sagaPrev: 'spiritual-journey',
+    status: 'coming-soon'
+  }
+};
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const relic = RELICS[params.slug];
+  if (!relic) return { title: 'Relic Not Found' };
+  return {
+    title: `${relic.title} | Hall of Relics`,
+    description: `${relic.theme} — ${relic.scripture.verse}`
+  };
 }
 
-export default function MusicTrack({ params }: { params: { slug: string } }) {
-  const relic = RELICS.find(r => r.id === params.slug);
+export async function generateStaticParams() {
+  return Object.keys(RELICS).map((slug) => ({ slug }));
+}
+
+export default function RelicPage({ params }: { params: { slug: string } }) {
+  const relic = RELICS[params.slug];
   if (!relic) notFound();
+
   return (
-    <div style={{ background:'#000', color:'#fff', minHeight:'100vh', padding:'60px 24px', fontFamily:'Georgia, serif' }}>
-      <div style={{ maxWidth:'700px', margin:'0 auto' }}>
-        <Link href="/music" style={{ color:'#d4af37', textDecoration:'none', fontSize:'14px', fontFamily:'system-ui, sans-serif', display:'inline-block', marginBottom:'60px' }}>← Back to Music</Link>
+    <main 
+      className="min-h-screen bg-black text-zinc-100"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${relic.background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
         
-        {/* Cover Art */}
-        <div style={{ width:'100%', aspectRatio:'16/9', backgroundImage:`url(${relic.cover})`, backgroundSize:'cover', backgroundPosition:'center', backgroundColor:'#111', marginBottom:'40px', borderRadius:'4px', border:'1px solid #1a1a1a' }}></div>
-        
-        {/* Title */}
-        <h1 style={{ fontSize:'48px', color:'#fff', margin:'0 0 16px 0', lineHeight:'1.1' }}>{relic.title}</h1>
-        <div style={{ fontSize:'14px', color:'#d4af37', marginBottom:'40px', fontFamily:'system-ui, sans-serif' }}>{relic.scripture}</div>
-        
-        {/* BLOG: WHAT THIS TRACK IS ABOUT */}
-        <div style={{ marginBottom:'40px' }}>
-          <div style={{ fontSize:'12px', letterSpacing:'4px', color:'#d4af37', marginBottom:'16px', fontFamily:'system-ui, sans-serif' }}>
-            WHAT THIS RELIC MEANS
-          </div>
-          <div style={{ background:'#0a0a0a', border:'1px solid #1a1a1a', borderLeft:'3px solid #d4af37', padding:'32px' }}>
-            <p style={{ fontSize:'18px', fontStyle:'italic', color:'#d4af37', lineHeight:'1.8', margin:'0 0 24px 0' }}>
-              "{relic.prophecy}"
-            </p>
-            <p style={{ fontSize:'16px', color:'#ccc', lineHeight:'1.7', margin:0, fontFamily:'system-ui, sans-serif' }}>
-              This weapon was forged in the fire of {relic.subtitle.toLowerCase()}. 
-              When you hear this track, you are not just listening — you are being called to war. 
-              The sound carries the weight of the {relic.title} and the promise of {relic.scripture}.
-            </p>
+        {/* Back Button */}
+        <Link href="/music" className="inline-block mb-8 text-amber-500 hover:text-amber-400 font-semibold">
+          ← All Relics
+        </Link>
+
+        {/* Header */}
+        <div className="mb-12">
+          <p className="text-amber-500 uppercase tracking-widest text-sm font-bold mb-2">{relic.theme}</p>
+          <h1 className="text-5xl md:text-7xl font-black mb-6">{relic.title}</h1>
+          <div className="border-l-4 border-amber-500 pl-4">
+            <p className="text-xl md:text-2xl italic text-zinc-300">"{relic.scripture.text}"</p>
+            <p className="text-amber-500 font-bold mt-2">{relic.scripture.verse}</p>
           </div>
         </div>
 
-        {/* Music Player */}
-        <div style={{ background:'#0a0a0a', border:'1px solid #1a1a1a', padding:'40px', borderRadius:'4px', textAlign:'center' }}>
-          <div style={{ fontSize:'48px', marginBottom:'16px' }}>🎵</div>
-          <p style={{ color:'#666', fontFamily:'system-ui, sans-serif' }}>YouTube player goes here</p>
+        {/* Audio / Video Player */}
+        {relic.status === 'coming-soon' ? (
+          <div className="bg-zinc-900/80 border border-zinc-800 rounded-lg p-12 text-center mb-16">
+            <p className="text-2xl font-bold text-amber-500">COMING SOON</p>
+            <p className="text-zinc-400 mt-2">This relic is being forged.</p>
+          </div>
+        ) : (
+          <div className="space-y-6 mb-16">
+            <div className="aspect-video w-full">
+              <iframe
+                className="w-full h-full rounded-lg"
+                src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
+                title={relic.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            {relic.youtubeIdBonus && (
+              <div>
+                <p className="text-sm text-zinc-400 mb-2">Bonus: Original Version</p>
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="w-full h-full rounded-lg"
+                    src={`https://www.youtube.com/embed/${relic.youtubeIdBonus}?rel=0&modestbranding=1`}
+                    title={`${relic.title} Original`}
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Story Sections - Scroll Cinematic */}
+        <div className="space-y-24 mb-20">
+          {relic.story.map((paragraph, i) => (
+            <p key={i} className="text-2xl md:text-3xl leading-relaxed font-light text-zinc-200">
+              {paragraph}
+            </p>
+          ))}
         </div>
+
+        {/* Saga Navigation */}
+        <div className="flex justify-between border-t border-zinc-800 pt-8">
+          {relic.sagaPrev ? (
+            <Link href={`/music/${relic.sagaPrev}`} className="text-amber-500 hover:text-amber-400">
+              ← {RELICS[relic.sagaPrev].title}
+            </Link>
+          ) : <div />}
+          {relic.sagaNext ? (
+            <Link href={`/music/${relic.sagaNext}`} className="text-amber-500 hover:text-amber-400">
+              {RELICS[relic.sagaNext].title} →
+            </Link>
+          ) : <div />}
+        </div>
+
       </div>
-    </div>
+    </main>
   );
 }
