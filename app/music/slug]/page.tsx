@@ -66,3 +66,53 @@ const RELICS: Record<string, Relic> = {
     ],
     meaning: "God wastes no wilderness. Every step is preparing you for where you're going.", sagaPrev: "blood-of-the-cross", sagaNext: "lord-of-lords"
   },
+  "lord-of-lords": {
+    slug: "lord-of-lords", title: "Lord of Lords", subtitle: "Every knee will bow. Every tongue confess.",
+    scripture: "On his robe and on his thigh he has this name written: King of kings and Lord of lords.", scriptureRef: "Revelation 19:16",
+    theme: "By His Authority We Rule", backgroundImage: "/060a2ef0-6320-11f1-94f7-f3f3b6c0f03c.webp",
+    written: "2024", genre: "Cinematic Worship • Epic • Choir", relicNumber: "05 / 07",
+    story: [
+      { title: "THE LAMB", text: "He came first as a lamb. Silent before His shearers. Led to slaughter without a word." },
+      { title: "THE LION", text: "He returns as a lion. The age of silence is over. The age of the roar has begun." },
+      { title: "THE BOW", text: "When the Lion rises, everything bows. Kings. Kingdoms. Demons. You. There is no debate." }
+    ],
+    meaning: "He was slain to receive power. He returns to exercise it.", sagaPrev: "spiritual-journey", sagaNext: "scars-that-preach", status: "coming-soon"
+  },
+  "scars-that-preach": {
+    slug: "scars-that-preach", title: "Scars That Preach", subtitle: "Born through the fire. Testimony in flesh.",
+    scripture: "But he was pierced for our transgressions, he was crushed for our iniquities.", scriptureRef: "Isaiah 53:5",
+    theme: "By His Wounds We Are Healed", backgroundImage: "/file_0000000065a071f5832301f52d11fb80.png",
+    written: "2024", genre: "Cinematic Worship • Intimate • Strings", relicNumber: "06 / 07",
+    story: [
+      { title: "THE FIRE", text: "They told you to hide your scars. God said display them. Your pain is someone else's map out of hell." },
+      { title: "THE SERMON", text: "Your scars are not shame. They are scripture written in flesh. Every wound is a sermon waiting to be preached." },
+      { title: "THE COMMISSION", text: "The fire did not consume you. It commissioned you. You survived for a reason. Now go tell." }
+    ],
+    meaning: "Your testimony is not in what you avoided. It's in what you survived.", sagaPrev: "lord-of-lords", status: "coming-soon"
+  }
+};
+
+export default function RelicPage({ params }: { params: { slug: string } }) {
+  const relic = RELICS[params.slug];
+  const [isNarrating, setIsNarrating] = useState(false);
+  const [storyMode, setStoryMode] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const ambientRef = useRef<HTMLAudioElement>(null);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoice, setSelectedVoice] = useState("");
+  const [isPaused, setIsPaused] = useState(false);
+
+  if (!relic) return notFound();
+  const prevRelic = relic.sagaPrev? RELICS[relic.sagaPrev] : null;
+  const nextRelic = relic.sagaNext? RELICS[relic.sagaNext] : null;
+
+  useEffect(() => {
+    const loadVoices = () => {
+      const v = window.speechSynthesis.getVoices();
+      setVoices(v);
+      const saved = localStorage.getItem('relic-voice');
+      setSelectedVoice(saved || v.find(x => x.lang.startsWith('en'))?.name || "");
+    };
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }, []);
