@@ -128,7 +128,7 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
     };
     loadVoices();
     window.speechSynthesis.onvoiceschanged = loadVoices;
-  }, []);
+  }, 
 
   useEffect(() => {
     if (storyMode) {
