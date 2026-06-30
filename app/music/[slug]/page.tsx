@@ -112,7 +112,7 @@ const relicsData = {
       }
     ]
   },
-  "blood-of-the-cross": {
+  "blood-of-cross": {
     number: "05",
     total: "07",
     title: "Blood of the Cross", 
