@@ -13,8 +13,8 @@ export default function HomePage() {
             <Link href="/" className="text-amber-500">
               Home
             </Link>
-            <Link href="/music" className="text-gray-400 hover:text-white transition-colors">
-              Music
+            <Link href="/saga" className="text-gray-400 hover:text-white transition-colors">
+              Saga
             </Link>
             <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors">
               Gallery
@@ -50,10 +50,10 @@ export default function HomePage() {
 
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <Link 
-            href="/music" 
+            href="/saga" 
             className="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
           >
-            <span className="text-xl">♪</span> Enter Music
+            <span className="text-xl">⚔️</span> Enter The Saga
           </Link>
           <Link 
             href="/gallery" 
