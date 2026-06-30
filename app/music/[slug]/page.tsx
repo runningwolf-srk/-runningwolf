@@ -1,8 +1,3 @@
-// app/music//page.tsx
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-
 const relicsData = {
   "horn-of-war": {
     number: "01 / 07",
@@ -13,6 +8,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
     youtubeId: "M4wGCg5oCx0",
     isVertical: false,
+    coverImage: null, // Add cover later when you have it
     sections: [
       {
         title: "THE SILENCE",
@@ -37,6 +33,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
     youtubeId: "odIsEMUtNJI",
     isVertical: false,
+    coverImage: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp", // IRON COLLIDE ART
     sections: [
       {
         title: "THE FORGE",
@@ -61,6 +58,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
     youtubeId: "umDFjJjh0_c",
     isVertical: false,
+    coverImage: null, // Add when ready
     sections: [
       {
         title: "THE MOCKERY",
@@ -85,6 +83,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
     youtubeId: "8XQUhWB_N5M",
     isVertical: false,
+    coverImage: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp", // SPIRITUAL JOURNEY ART
     sections: [
       {
         title: "THE LAMB",
@@ -113,6 +112,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL • SACRED",
     youtubeId: "4lcbjsNLlzo",
     isVertical: true,
+    coverImage: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp", // BLOOD OF CROSS ART
     sections: [
       {
         title: "THE PRICE",
@@ -141,6 +141,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • VIKING • ORCHESTRAL • CHORAL",
     youtubeId: "oxNauKuxg4Q",
     isVertical: true,
+    coverImage: "/file_0000000065a071f5832301f52d11fb80.png", // SCARS THAT PREACH ART
     sections: [
       {
         title: "THE WHISPER",
@@ -161,104 +162,3 @@ const relicsData = {
     ]
   }
 };
-
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-  
-  if (!relic) {
-    return { title: "Relic Not Found" };
-  }
-  
-  return {
-    title: `${relic.title} - Stormbreakers`,
-    description: relic.subtitle,
-  };
-}
-
-export default async function RelicPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}) {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-  
-  if (!relic) {
-    notFound();
-  }
-
-  return (
-    <main className="min-h-screen text-white antialiased relative z-0 flex flex-col bg-black">
-      
-      <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
-            Stormbreakers - RunningWolf
-          </Link>
-          <nav className="flex gap-6 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
-            <Link href="/music" className="text-amber-500">Relics</Link>
-          </nav>
-        </div>
-      </header>
-
-      <section className="flex-1 px-6 py-12 md:py-20">
-        <div className="max-w-3xl mx-auto pt-8">
-          
-          <p className="text-xs text-amber-500 font-mono mb-4">{relic.number}</p>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight leading-tight">
-            {relic.title}
-          </h1>
-          <p className="text-gray-400 text-xl mb-8">{relic.subtitle}</p>
-
-          <blockquote className="border-l-2 border-amber-500 pl-6 mb-4">
-            <p className="text-lg text-gray-200 italic mb-2">"{relic.verseText}"</p>
-            <cite className="text-sm text-gray-500 not-italic">{relic.verse}</cite>
-          </blockquote>
-
-          <p className="text-xs text-gray-600 tracking-wider mb-12">{relic.tags}</p>
-
-          <div className="mb-16">
-            <p className="text-xs text-amber-500 tracking-[0.3em] mb-4 font-mono">▶ RELIC EXPERIENCE</p>
-            <div className={`${relic.isVertical ? 'aspect-[9/16] max-w-sm mx-auto' : 'aspect-video'} border border-gray-800 bg-gray-950`}>
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
-                title={relic.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div className="space-y-12">
-            {relic.sections.map((section, idx) => (
-              <div key={idx} className="border-l border-gray-800 pl-6">
-                <h3 className="text-amber-500 font-black text-lg mb-3 tracking-wide">
-                  {section.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  {section.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="border-t border-gray-900 mt-16 pt-8 flex justify-between items-center">
-            <Link href="/music" className="text-amber-500 hover:text-amber-400 text-sm font-mono">
-              ← RETURN TO HALL
-            </Link>
-            <p className="text-xs text-gray-700">STORMBREAKERS</p>
-          </div>
-
-        </div>
-      </section>
-    </main>
-  );
-}
