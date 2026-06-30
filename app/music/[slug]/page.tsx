@@ -68,4 +68,8 @@ function usePaymentAccess() {
   };
 
   const hasStory = tier === 1 || tier === 3;
-  const has
+ const hasNewMusic = tier === 2 || tier === 3;
+
+ return { tier, hasStory, hasNewMusic, unlockTier };
+ }
+
