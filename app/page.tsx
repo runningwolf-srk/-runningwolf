@@ -6,10 +6,10 @@ export default function HomePage() {
     <main className="min-h-screen bg-black text-white antialiased">
       <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg leading-tight">
-            Stormbreakers<br />- RunningWolf
+          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
+            Stormbreakers - RunningWolf
           </Link>
-          <nav className="flex gap-4 text-sm items-center">
+          <nav className="flex gap-6 text-sm">
             <Link href="/" className="text-amber-500">
               Home
             </Link>
@@ -17,7 +17,7 @@ export default function HomePage() {
               Music
             </Link>
             <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors">
-              Gallery <span className="text-amber-500 text-xs">LOCKED</span>
+              Gallery
             </Link>
           </nav>
         </div>
@@ -25,11 +25,11 @@ export default function HomePage() {
 
       <section className="flex flex-col items-center justify-center px-6 py-16 text-center">
         <div className="relative mb-8">
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-amber-500/60 p-1 bg-black shadow-[0_0_40px_rgba(245,158,11,0.25)]">
+          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-amber-500/60 p-1 bg-black shadow-[0_0_40px_rgba(245,158,11,0.25)] overflow-hidden">
             <img 
-              src="/viking-profile.webp" 
+              src="/Screenshot_20260623-093852_Chrome~2.png" 
               alt="RunningWolf" 
-              className="w-full h-full rounded-full object-contain bg-black" 
+              className="w-full h-full object-contain" 
             />
           </div>
         </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
             href="/gallery" 
             className="w-full border border-amber-500/50 hover:bg-amber-500/10 text-amber-500 font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
           >
-            <span className="text-xl">◆</span> Unlock Gallery
+            <span className="text-xl">🖼️</span> View the Gallery
           </Link>
         </div>
       </section>
