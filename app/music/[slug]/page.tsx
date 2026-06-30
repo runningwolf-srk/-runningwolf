@@ -3,67 +3,67 @@ import Image from 'next/image'
 
 const RELICS = {
   'horn-of-war': {
-    num: '01', total: '07', title: 'HORN OF WAR', subtitle: 'A Battle Cry. A Legend Rises.',
+    num: '01', total: '07', title: 'HORN OF WAR', subtitle: 'The Battle Cry',
     scripture: 'Joel 2:1', 
     cover: '/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp',
     audio: '/horn-of-war.mp3', video: 'dQw4w9WgXcQ',
     story: 'This relic was forged when the Lord commanded: "Blow the trumpet in Zion." Mahalla is the war cry that was birthed from this horn.',
     meaning: 'For the warriors who intercede. When hell advances, we sound the horn. This is your signal to stand.',
-    prev: 'heaven-calling', next: 'iron-collide'
+    prev: 'scars-that-preach', next: 'iron-collide'
   },
   'iron-collide': {
-    num: '02', total: '07', title: 'IRON COLLIDE', subtitle: 'An Epic Hard Rock Anthem',
+    num: '02', total: '07', title: 'IRON COLLIDE', subtitle: 'Sharpened Together',
     scripture: 'Proverbs 27:17',
     cover: '/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp',
     audio: '/iron-collide.mp3', video: 'dQw4w9WgXcQ',
-    story: 'Iron sharpens iron. This relic came from brotherhood. From men who refused to let me stay broken. We collide to make each other stronger.',
+    story: 'Iron sharpens iron. This relic came from brotherhood. From men who refused to let me stay broken.',
     meaning: 'Find your pack. Let them sharpen you. You were forged for battle, not comfort.',
-    prev: 'horn-of-war', next: 'blood-of-cross'
+    prev: 'horn-of-war', next: 'crown-of-thorns'
   },
-  'blood-of-cross': {
-    num: '03', total: '07', title: 'BLOOD OF CROSS', subtitle: 'By His Wounds We Are Healed',
+  'crown-of-thorns': {
+    num: '03', total: '07', title: 'CROWN OF THORNS', subtitle: 'The King of Pain',
+    scripture: 'John 19:5',
+    cover: '/crown-of-thorns.webp', // UPLOAD THIS IMAGE TO /public LATER
+    audio: '/crown-of-thorns.mp3', video: 'dQw4w9WgXcQ',
+    story: 'He wore the crown we deserved. This relic is His suffering made beautiful. The thorns became His glory.',
+    meaning: 'For the suffering. Your pain has a King. He wore thorns so you could wear a crown.',
+    prev: 'iron-collide', next: 'lion-and-lamb'
+  },
+  'lion-and-lamb': {
+    num: '04', total: '07', title: 'LION AND LAMB', subtitle: 'The Victorious King',
+    scripture: 'Revelation 5:5-6',
+    cover: '/lion-and-lamb.webp', // UPLOAD THIS IMAGE TO /public LATER
+    audio: '/lion-and-lamb.mp3', video: 'dQw4w9WgXcQ',
+    story: 'The Lion of Judah and the Lamb that was slain. One throne. Two natures. Total victory.',
+    meaning: 'For those who feel powerless. The Lamb has overcome as a Lion. Roar and rest.',
+    prev: 'crown-of-thorns', next: 'blood-of-the-cross'
+  },
+  'blood-of-the-cross': {
+    num: '05', total: '07', title: 'BLOOD OF THE CROSS', subtitle: 'The Covenant',
     scripture: 'Colossians 1:20',
     cover: '/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp',
-    audio: '/blood-of-cross.mp3', video: 'dQw4w9WgXcQ',
+    audio: '/blood-of-the-cross.mp3', video: 'dQw4w9WgXcQ',
     story: 'This relic was written in Gethsemane tears. The blood speaks a better word than Abel. It cries: Forgiven.',
     meaning: 'For the guilty and shamed. The blood has not lost its power. You are clean.',
-    prev: 'iron-collide', next: 'scars-that-preach'
-  },
-  'scars-that-preach': {
-    num: '04', total: '07', title: 'SCARS THAT PREACH', subtitle: 'Born Through The Fire',
-    scripture: 'Galatians 6:17',
-    cover: '/file_0000000065a071f5832301f52d11fb80.png',
-    audio: '/scars-that-preach.mp3', video: 'dQw4w9WgXcQ',
-    story: 'Your scars are not your shame. They are your sermon. This relic was born from the wounds that became weapons.',
-    meaning: 'For the wounded healers. Show your scars. They prove you survived. Now you can lead others out.',
-    prev: 'blood-of-cross', next: 'lord-of-lords'
-  },
-  'lord-of-lords': {
-    num: '05', total: '07', title: 'LORD OF LORDS', subtitle: 'A Spiritual Anthem',
-    scripture: 'Revelation 19:16',
-    cover: '/060a2ef0-6320-11f1-94f7-f3f3b6c0f03c.webp',
-    audio: '/lord-of-lords.mp3', video: 'dQw4w9WgXcQ',
-    story: 'He is King of Kings. This relic declares His throne. Every knee will bow to the Lord of Lords.',
-    meaning: 'For those who need to remember who reigns. Bow to no other name. He holds all authority.',
-    prev: 'scars-that-preach', next: 'spiritual-journey'
-  },
-  'spiritual-journey': {
-    num: '06', total: '07', title: 'SPIRITUAL JOURNEY', subtitle: 'A Journey To His Presence',
-    scripture: 'Psalm 42:1',
-    cover: '/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp',
-    audio: '/spiritual-journey.mp3', video: 'dQw4w9WgXcQ',
-    story: 'This relic was born in the secret place. When worship becomes your warfare and His presence becomes your home.',
-    meaning: 'For the seekers. His presence is the destination, not the platform. Keep walking.',
-    prev: 'lord-of-lords', next: 'heaven-calling'
+    prev: 'lion-and-lamb', next: 'heaven-calling'
   },
   'heaven-calling': {
-    num: '07', total: '07', title: 'HEAVEN CALLING', subtitle: 'A Worship Anthem',
+    num: '06', total: '07', title: 'HEAVEN IS CALLING', subtitle: 'The Voice That Finds Us',
     scripture: 'John 10:27',
     cover: '/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp',
     audio: '/heaven-calling.mp3', video: 'dQw4w9WgXcQ',
     story: 'Written when I was running. But His voice is louder than my rebellion. Heaven doesn\'t whisper - it calls your name.',
     meaning: 'For the prodigals. You can hear Him. Stop running. He\'s calling you home.',
-    prev: 'spiritual-journey', next: 'horn-of-war'
+    prev: 'blood-of-the-cross', next: 'scars-that-preach'
+  },
+  'scars-that-preach': {
+    num: '07', total: '07', title: 'SCARS THAT PREACH', subtitle: 'The Living Testimony',
+    scripture: 'Galatians 6:17',
+    cover: '/file_0000000065a071f5832301f52d11fb80.png',
+    audio: '/scars-that-preach.mp3', video: 'dQw4w9WgXcQ',
+    story: 'Your scars are not your shame. They are your sermon. This relic was born from the wounds that became weapons.',
+    meaning: 'For the wounded healers. Show your scars. They prove you survived. Now you can lead others out.',
+    prev: 'heaven-calling', next: 'horn-of-war'
   }
 }
 
