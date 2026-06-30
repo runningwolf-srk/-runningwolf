@@ -115,31 +115,4 @@ const relicsData = {
     verse: "Colossians 1:20",
     verseText: "And through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.",
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL • SACRED",
-    youtubeId: "4lcbjsNLlzo",
-    isVertical: true,
-    coverImage: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp",
-    sections: [
-      {
-        title: "THE PRICE",
-        text: "Peace wasn’t negotiated. It was bled for. The cross wasn’t a symbol of religion — it was a receipt. Paid in full. Every sin you’ve committed, every chain you’ve forged, every lie you’ve believed was nailed there. The blood settled the debt."
-      },
-      {
-        title: "THE RECONCILING", 
-        text: "Colossians says He reconciled ALL things. Your past. Your family. Your future. Your addiction. Your trauma. Nothing is too far. The blood doesn’t just cover sin — it makes peace where there was war. Between you and God. Between you and yourself."
-      },
-      {
-        title: "THE COVENANT",
-        text: "This is why the enemy hates communion. Why he hates worship. Why he hates this song. Because every time you remember the blood, you’re reminding hell it lost. You’re not trying to get clean. You ARE clean. The blood of the cross says so."
-      },
-      {
-        title: "THE ACCESS",
-        text: "Hebrews 10:19 — You have confidence to enter the Most Holy Place by the blood of Jesus. Not by your behavior. Not by your streak. By His blood. Walk in. The veil is torn. The King is here."
-      }
-    ]
-  },
-  "heaven-calling": {
-    number: "06 / 07",
-    title: "Heaven Calling", 
-    subtitle: "The Summoning",
-    verse: "1 Samuel 3:10",
-    verseText: "The Lord came and stood there,
+    youtubeId: "
