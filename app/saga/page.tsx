@@ -1,223 +1,138 @@
-// app/saga//page.tsx
+// app/saga/page.tsx
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 
-const relicsData = {
-  "horn-of-war": {
+const relics = [
+  {
+    slug: "horn-of-war",
     number: "01",
-    total: "07",
     title: "Horn of War",
     subtitle: "The Battle Cry",
-    verse: "Joel 2:1",
-    verseText: "Blow the trumpet in Zion; sound the alarm on my holy hill. Let all who live in the land tremble, for the day of the Lord is coming.",
-    tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
-    youtubeId: "M4wGCg5oCx0",
-    isVertical: false,
-    coverImage: "/horn-of-war.jpg",
-    freeSections: [
-      {
-        title: "THE SILENCE",
-        text: "Before the battle, everything is still. The enemy whispers that silence means safety. Heaven says silence is surrender. You’ve been quiet too long. The war didn’t start when you noticed it — it started when you were born."
-      },
-      {
-        title: "THE HORN",
-        text: "Mahalla, the companion anthem to Horn of War, wasn't written in a studio. It was birthed at 3 a.m. when addiction was screaming. The Spirit said: 'Blow the horn.' This became the war cry. The distorted guitars are the alarm. The chant is the army assembling."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE ALARM — TIER 3 SAGA",
-        text: "You don’t blow the shofar for ambiance. You blow it because the enemy is at the gate. This chapter contains the full battle strategy: how to blow it over your house, over your mind, over your bloodline. Includes the ancient Viking rune breakdown and the prophetic timeline for your chains breaking. Unlock to read the full saga."
-      }
-    ]
+    tier: "Free + Tier 3 Saga"
   },
-  "iron-collide": {
-    number: "02",
-    total: "07",
+  {
+    slug: "iron-collide",
+    number: "02", 
     title: "Iron Collide",
     subtitle: "Sharpened Together",
-    verse: "Proverbs 27:17",
-    verseText: "As iron sharpens iron, so one person sharpens another.",
-    tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
-    youtubeId: "odIsEMUtNJI",
-    isVertical: false,
-    coverImage: "/iron-collide.jpg",
-    freeSections: [
-      {
-        title: "THE FORGE",
-        text: "Iron doesn’t sharpen iron by accident. It takes heat. Pressure. Friction. God will put people in your life that scrape against your pride until Christ is formed in you."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE COLLISION — TIER 3 SAGA",
-        text: "Hybrid is the sound of two kingdoms colliding. This locked chapter reveals the Viking forge ritual, the Isaiah 42:13 battle map, and how to identify if you’re fighting FOR victory or FROM it. Includes illuminated manuscript pages of the original lyrics written in blood and fire. Upgrade to Tier 3 to unlock the full collision."
-      },
-      {
-        title: "THE EDGE — TIER 3 SAGA",
-        text: "Dull swords get people killed. This section contains the sharpening protocol — daily decrees, brotherhood codes, and the enemy’s fear response when saints get sharp. Unlock Tier 3 to access the full armory."
-      }
-    ]
+    tier: "Free + Tier 3 Saga"
   },
-  "crown-of-thorns": {
+  {
+    slug: "crown-of-thorns",
     number: "03",
-    total: "07",
-    title: "Crown of Thorns",
+    title: "Crown of Thorns", 
     subtitle: "The King of Pain",
-    verse: "Matthew 27:29",
-    verseText: "They twisted together a crown of thorns and set it on his head. They put a staff in his right hand. Then they knelt in front of him and mocked him.",
-    tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
-    youtubeId: "umDFjJjh0_c",
-    isVertical: false,
-    coverImage: "/crown-of-thorns.jpg",
-    freeSections: [
-      {
-        title: "THE MOCKERY",
-        text: "They gave Him a crown to humiliate Him. Heaven saw a coronation. Every thorn was meant to shame Him. Every thorn was proof He was taking your place."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE BLOOD — TIER 3 SAGA",
-        text: "Every thorn drew blood. This locked chapter contains the medical breakdown of crucifixion, the Genesis 3:18 curse connection, and the specific addictions each thorn paid for. Includes rare artwork of the crown relic. Unlock to see what your shame cost Him."
-      },
-      {
-        title: "THE EXCHANGE — TIER 3 SAGA",
-        text: "He wore the crown of curse so you could wear the crown of life. Tier 3 unlocks the full exchange doctrine, James 1:12 activation prayers, and the Viking coronation rite for former addicts. Upgrade to claim your crown."
-      }
-    ]
+    tier: "Free + Tier 3 Saga"
   },
-  "lion-and-lamb": {
+  {
+    slug: "lion-and-lamb",
     number: "04",
-    total: "07",
     title: "Lion and Lamb",
-    subtitle: "The Victorious King",
-    verse: "Revelation 5:5",
-    verseText: "Then one of the elders said to me, 'Do not weep! See, the Lion of the tribe of Judah, the Root of David, has triumphed. He is able to open the scroll and its seven seals.'",
-    tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
-    youtubeId: "8XQUhWB_N5M",
-    isVertical: false,
-    coverImage: "/lion-and-lamb.jpg",
-    freeSections: [
-      {
-        title: "THE LAMB",
-        text: "He didn't come to dominate. He came to be slaughtered. Weakness was the weapon. The cross looked like defeat. Hell thought it won."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE LION — TIER 3 SAGA",
-        text: "The same one who was slain now roars. This saga chapter contains the Revelation 5 scroll breakdown, the 7 seals activation, and how to roar from your wounds. Includes Viking battle roar phonetics. Unlock Tier 3 to awaken the Lion."
-      },
-      {
-        title: "THE THRONE — TIER 3 SAGA",
-        text: "He rules not by force, but by sacrifice. Tier 3 reveals Kingdom logic, the scar credentials, and how to stop trying to be the lion. Let the Lamb in you become the Lion through you. Full saga unlock required."
-      }
-    ]
+    subtitle: "The Victorious King", 
+    tier: "Free + Tier 3 Saga"
   },
-  "blood-of-cross": {
+  {
+    slug: "blood-of-cross",
     number: "05",
-    total: "07",
     title: "Blood of the Cross",
     subtitle: "The Covenant",
-    verse: "Colossians 1:20",
-    verseText: "And through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.",
-    tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL • SACRED",
-    youtubeId: "4lcbjsNLlzo",
-    isVertical: true,
-    coverImage: "/blood-of-cross.jpg",
-    freeSections: [
-      {
-        title: "THE PRICE",
-        text: "Peace wasn’t negotiated. It was bled for. The cross wasn’t a symbol of religion — it was a receipt. Paid in full."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE RECONCILING — TIER 3 SAGA",
-        text: "Colossians says He reconciled ALL things. This locked chapter lists every addiction, trauma, and bloodline curse covered. Includes communion activation rite and why hell hates this song. Upgrade to see the full reconciliation."
-      },
-      {
-        title: "THE COVENANT — TIER 3 SAGA",
-        text: "This is why the enemy hates communion. Tier 3 unlocks the blood covenant law, how to plead the blood, and the Viking oath ritual for permanent freedom. You’re not trying to get clean. You ARE clean. Unlock to enforce it."
-      }
-    ]
+    tier: "Free + Tier 3 Saga"
   },
-  "heaven-calling": {
+  {
+    slug: "heaven-calling",
     number: "06",
-    total: "07",
     title: "Heaven Is Calling",
     subtitle: "The Voice That Finds Us",
-    verse: "1 Samuel 3:10",
-    verseText: "The Lord came and stood there, calling as at the other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'",
-    tags: "CINEMATIC WORSHIP • VIKING • ORCHESTRAL • CHORAL",
-    youtubeId: "oxNauKuxg4Q",
-    isVertical: true,
-    coverImage: "/heaven-calling.jpg",
-    freeSections: [
-      {
-        title: "THE WHISPER",
-        text: "Heaven doesn't always shout. Sometimes it whispers your name in the dark. 3 a.m. When you're numb. When you're running."
-      }
-    ],
-    lockedSections: [
-      {
-        title: "THE ANSWER — TIER 3 SAGA",
-        text: "Samuel said 'Speak, for your servant is listening.' This saga reveals your true name — not the one your past gave you. The name spoken before you were born. Includes Viking naming ceremony and how to hear Him at 3 a.m. Unlock Tier 3."
-      },
-      {
-        title: "THE VIKING — TIER 3 SAGA",
-        text: "Why Viking? This locked chapter explains the war hymn doctrine, axe-dropping surrender rite, and drum frequencies that match heaven’s heartbeat. This is what it sounds like when a warrior hears his King. Upgrade for the full call."
-      }
-    ]
+    tier: "Free + Tier 3 Saga"
   },
-  "scars-that-preach": {
+  {
+    slug: "scars-that-preach",
     number: "07",
-    total: "07",
     title: "Scars That Preach",
     subtitle: "The Living Testimony",
-    verse: "Job 23:10",
-    verseText: "But he knows the way that I take; when he has tested me, I will come forth as gold.",
-    tags: "CINEMATIC WORSHIP • TESTIMONY • ORCHESTRAL",
-    youtubeId: "",
-    isVertical: false,
-    coverImage: "/scars-that-preach.jpg",
-    freeSections: [],
-    lockedSections: [
-      {
-        title: "THE FIRE — TIER 3 SAGA",
-        text: "Gold isn’t found. It’s refined. This entire relic is Tier 3 sealed. Unlock to read how your scars become sermons. Includes Job’s furnace map, Revelation 12:11 activation, and the final Viking saga. Walk the first six relics, then return."
-      }
-    ],
-    status: "sealed"
+    tier: "Tier 3 Sealed"
   }
-};
+];
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-  if (!relic) return { title: "Relic Not Found" };
-  return {
-    title: `${relic.title} - Stormbreakers Saga`,
-    description: relic.subtitle,
-  };
+export default function SagaPage() {
+  return (
+    <main className="min-h-screen text-amber-100 antialiased relative bg-[#0a0a0a]">
+      <div className="fixed inset-0 z-0 opacity-30">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-amber-600/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <header className="w-full border-b border-amber-900/30 bg-black/70 backdrop-blur-md sticky top-0 z-20">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
+            Stormbreakers - RunningWolf
+          </Link>
+          <nav className="flex gap-6 text-sm">
+            <Link href="/" className="text-amber-200/70 hover:text-amber-200 transition-colors">
+              Home
+            </Link>
+            <Link href="/saga" className="text-amber-500">
+              Saga
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      <section className="relative z-10 px-6 py-16 md:py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16 animate-fadeIn">
+            <p className="text-xs text-amber-600 font-mono mb-4 tracking-[0.4em]">THE CODEX</p>
+            <h1 className="text-5xl md:text-7xl font-black text-amber-200 mb-4 tracking-tight leading-none drop-shadow-[0_2px_20px_rgba(245,158,11,0.2)]">
+              The Seven Relics
+            </h1>
+            <p className="text-amber-100/60 text-lg max-w-2xl mx-auto">
+              Cinematic worship forged in fire. Read free. Upgrade to unlock the full saga.
+            </p>
+            <p className="text-amber-700/50 text-xs mt-6 italic">
+              *Each relic has companion anthems forged in the same fire. Mahalla is the war cry of Horn of War.*
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            {relics.map((relic) => (
+              <Link 
+                key={relic.slug} 
+                href={`/saga/${relic.slug}`}
+                className="group block animate-fadeIn"
+              >
+                <div className="relative border border-amber-900/30 bg-gradient-to-r from-stone-950/80 to-black/80 rounded-lg p-6 md:p-8 hover:border-amber-600/50 transition-all duration-300 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
+                  <div className="absolute -inset-px bg-gradient-to-r from-amber-600/0 via-amber-600/10 to-amber-600/0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <div className="text-amber-600 font-mono text-sm">
+                        {relic.number} / 07
+                      </div>
+                      <div>
+                        <h2 className="text-2xl md:text-3xl font-black text-amber-200 mb-1 group-hover:text-amber-100 transition-colors">
+                          {relic.title}
+                        </h2>
+                        <p className="text-amber-100/50 text-sm italic">{relic.subtitle}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="text-right">
+                      <p className="text-xs text-amber-700 font-mono tracking-wider">{relic.tier}</p>
+                      <div className="text-amber-600 group-hover:translate-x-1 transition-transform duration-300 mt-1">→</div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center border-t border-amber-900/30 pt-12">
+            <p className="text-amber-700/60 text-sm mb-4">⚔️ VIKING CHRISTIAN CODEX ⚔️</p>
+            <p className="text-amber-100/40 text-xs max-w-xl mx-auto">
+              Free chapters available to all. Upgrade to Tier 3 to unlock the full saga, illuminated manuscripts, and ancient rune teachings.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
-
-export default async function SagaRelicPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-
-  if (!relic) {
-    notFound();
-  }
-
-  const isFullySealed = "status" in relic && relic.status === "se
