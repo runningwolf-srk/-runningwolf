@@ -14,7 +14,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
     youtubeId: "M4wGCg5oCx0",
     isVertical: false,
-    coverImage: "/photo6901810056471433797.jpeg",
+    coverImage: "/photo6901810056471433797.jpeg", // ← Update this if your actual filename is different
     sections: [
       {
         title: "THE SILENCE",
@@ -40,7 +40,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • VIKING WAR HYMN • ORCHESTRAL",
     youtubeId: "odIsEMUtNJI",
     isVertical: false,
-    coverImage: "/photo562540372469305624.jpeg",
+    coverImage: "/photo562540372469305624.jpeg", // ← Update this if your actual filename is different
     sections: [
       {
         title: "THE FORGE",
@@ -66,7 +66,7 @@ const relicsData = {
     tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
     youtubeId: "umDFjJjh0_c",
     isVertical: false,
-    coverImage: "/photo6147556545566856679.jpeg",
+    coverImage: "/photo6147556545566856679.jpeg", // ← Update this if your actual filename is different
     sections: [
       {
         title: "THE MOCKERY",
@@ -84,236 +84,3 @@ const relicsData = {
   },
   "lion-and-lamb": {
     number: "04",
-    total: "07",
-    title: "Lion and Lamb", 
-    subtitle: "The Victorious King",
-    verse: "Revelation 5:5",
-    verseText: "Then one of the elders said to me, 'Do not weep! See, the Lion of the tribe of Judah, the Root of David, has triumphed. He is able to open the scroll and its seven seals.'",
-    tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL",
-    youtubeId: "8XQUhWB_N5M",
-    isVertical: false,
-    coverImage: "/photo1705921937774203132.jpeg",
-    sections: [
-      {
-        title: "THE LAMB",
-        text: "He didn't come to dominate. He came to be slaughtered. Weakness was the weapon. The cross looked like defeat. Hell thought it won. But the Lamb slain was the key to the scroll. Your brokenness isn't your end — it's where His power starts."
-      },
-      {
-        title: "THE LION", 
-        text: "The same one who was slain now roars. The grave couldn't hold Him. Death couldn't keep Him. The Lion of Judah has triumphed. When you worship from your wounds, you don't sound like a victim. You sound like victory. He roars through your surrender."
-      },
-      {
-        title: "THE THRONE",
-        text: "He rules not by force, but by sacrifice. The scars are His credentials. He conquered by surrendering. He rules by serving. That's Kingdom logic. Stop trying to be the lion. Let the Lamb in you become the Lion through you."
-      },
-      {
-        title: "THE PARADOX",
-        text: "He's not coming back as a lamb. He's coming back as a King. Your fire right now? That's the Lion roaring. Your tears last night? That's the Lamb weeping. Both are Him. Both are you when you're in Him."
-      }
-    ]
-  },
-  "blood-of-cross": {
-    number: "05",
-    total: "07",
-    title: "Blood of the Cross", 
-    subtitle: "The Covenant",
-    verse: "Colossians 1:20",
-    verseText: "And through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.",
-    tags: "CINEMATIC WORSHIP • ORCHESTRAL • CHORAL • SACRED",
-    youtubeId: "4lcbjsNLlzo",
-    isVertical: true,
-    coverImage: "/photo3483816387230100917.jpeg",
-    sections: [
-      {
-        title: "THE PRICE",
-        text: "Peace wasn’t negotiated. It was bled for. The cross wasn’t a symbol of religion — it was a receipt. Paid in full. Every sin you’ve committed, every chain you’ve forged, every lie you’ve believed was nailed there. The blood settled the debt."
-      },
-      {
-        title: "THE RECONCILING", 
-        text: "Colossians says He reconciled ALL things. Your past. Your family. Your future. Your addiction. Your trauma. Nothing is too far. The blood doesn’t just cover sin — it makes peace where there was war. Between you and God. Between you and yourself."
-      },
-      {
-        title: "THE COVENANT",
-        text: "This is why the enemy hates communion. Why he hates worship. Why he hates this song. Because every time you remember the blood, you’re reminding hell it lost. You’re not trying to get clean. You ARE clean. The blood of the cross says so."
-      },
-      {
-        title: "THE ACCESS",
-        text: "Hebrews 10:19 — You have confidence to enter the Most Holy Place by the blood of Jesus. Not by your behavior. Not by your streak. By His blood. Walk in. The veil is torn. The King is here."
-      }
-    ]
-  },
-  "heaven-calling": {
-    number: "06",
-    total: "07",
-    title: "Heaven Is Calling", 
-    subtitle: "The Voice That Finds Us",
-    verse: "1 Samuel 3:10",
-    verseText: "The Lord came and stood there, calling as at the other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'",
-    tags: "CINEMATIC WORSHIP • VIKING • ORCHESTRAL • CHORAL",
-    youtubeId: "oxNauKuxg4Q",
-    isVertical: true,
-    coverImage: "/photo7096196557556417083.jpeg",
-    sections: [
-      {
-        title: "THE WHISPER",
-        text: "Heaven doesn't always shout. Sometimes it whispers your name in the dark. 3 a.m. When you're numb. When you're running. When addiction is screaming louder than prayer. That's when He calls. Not to condemn you — to summon you."
-      },
-      {
-        title: "THE ANSWER", 
-        text: "Samuel said 'Speak, for your servant is listening.' That's the whole war. Not your strength. Not your sobriety streak. Your surrender. Heaven is calling your name right now. Not the name your past gave you. The name your Father spoke over you before you were born."
-      },
-      {
-        title: "THE VIKING",
-        text: "Why Viking? Because this isn't safe, clean, churchy worship. This is war hymn. This is what it sounds like when a warrior hears his King and drops his axe. The drums are the heartbeat of heaven. The chant is your spirit saying 'Here I am.' Answer the call."
-      },
-      {
-        title: "THE SUMMONING",
-        text: "You were made for more than coping. More than surviving. More than relapse and repent cycles. Heaven is calling you out of the cave. Out of the grave. Out of the lie that you're too far gone. Your name is on His lips. Answer."
-      }
-    ]
-  },
-  "scars-that-preach": {
-    number: "07",
-    total: "07",
-    title: "Scars That Preach", 
-    subtitle: "The Living Testimony",
-    verse: "Job 23:10",
-    verseText: "But he knows the way that I take; when he has tested me, I will come forth as gold.",
-    tags: "CINEMATIC WORSHIP • TESTIMONY • ORCHESTRAL",
-    youtubeId: "",
-    isVertical: false,
-    coverImage: "/photo5805324504711009414.jpeg",
-    status: "sealed",
-    sections: [
-      {
-        title: "THE FIRE",
-        text: "Gold isn’t found. It’s refined. Job lost everything and still said 'He knows the way I take.' Your scars aren’t evidence you failed. They’re proof you survived the furnace. And Heaven doesn’t waste scars. It preaches through them."
-      },
-      {
-        title: "THE TESTIMONY",
-        text: "Revelation 12:11 — They overcame by the blood of the Lamb and the word of their testimony. Your story is a weapon. The enemy wants you silent because your scars tell the truth: God brings dead things back to life."
-      },
-      {
-        title: "THE SEAL",
-        text: "This relic is sealed until the appointed time. Tier 3 unlocks the full saga. The fire, the gold, the voice that says 'I was there too.' Your scars will preach. But first, walk the first six."
-      }
-    ]
-  }
-};
-
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-  if (!relic) return { title: "Relic Not Found" };
-  return {
-    title: `${relic.title} - Stormbreakers`,
-    description: relic.subtitle,
-  };
-}
-
-export default async function RelicPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}) {
-  const { slug } = await params;
-  const relic = relicsData[slug as keyof typeof relicsData];
-  
-  if (!relic) {
-    notFound();
-  }
-
-  const isSealed = 'status' in relic && relic.status === 'sealed';
-
-  return (
-    <main className="min-h-screen text-white antialiased relative z-0 flex flex-col bg-black">
-      <header className="w-full border-b border-gray-900 bg-black/80 backdrop-blur-sm sticky top-0 z-20">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="text-amber-500 font-black tracking-tight text-lg">
-            Stormbreakers - RunningWolf
-          </Link>
-          <nav className="flex gap-6 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
-            <Link href="/music" className="text-amber-500">Relics</Link>
-          </nav>
-        </div>
-      </header>
-
-      <section className="flex-1 px-6 py-12 md:py-20">
-        <div className="max-w-3xl mx-auto pt-8">
-          <div className="flex justify-between items-start mb-4">
-            <p className="text-xs text-amber-500 font-mono">{relic.number} / {relic.total}</p>
-            <p className="text-xs text-gray-600 font-mono">Journey Progress: {relic.number} of {relic.total} Relics</p>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight leading-tight">
-            {relic.title}
-          </h1>
-          <p className="text-gray-400 text-xl mb-8">{relic.subtitle}</p>
-
-          <blockquote className="border-l-2 border-amber-500 pl-6 mb-4">
-            <p className="text-lg text-gray-200 italic mb-2">"{relic.verseText}"</p>
-            <cite className="text-sm text-gray-500 not-italic">{relic.verse}</cite>
-          </blockquote>
-
-          <p className="text-xs text-gray-600 tracking-wider mb-12">{relic.tags}</p>
-
-          {relic.coverImage && (
-            <div className="mb-8 border border-gray-800">
-              <img 
-                src={relic.coverImage} 
-                alt={`${relic.title} Album Art`}
-                className="w-full h-auto"
-              />
-            </div>
-          )}
-
-          {isSealed ? (
-            <div className="mb-16 border border-amber-500/30 bg-amber-500/5 p-8 text-center">
-              <p className="text-amber-500 font-black text-lg mb-2 tracking-wider">🔒 TIER 3 SEALED</p>
-              <p className="text-gray-400 text-sm">This relic unlocks when the saga begins. Walk the first six.</p>
-            </div>
-          ) : (
-            <div className="mb-16">
-              <p className="text-xs text-amber-500 tracking-[0.3em] mb-4 font-mono">▶ RELIC EXPERIENCE</p>
-              <div className={`${relic.isVertical ? 'aspect-[9/16] max-w-sm mx-auto' : 'aspect-video'} border border-gray-800 bg-gray-950`}>
-                <iframe
-                  className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${relic.youtubeId}?rel=0&modestbranding=1`}
-                  title={relic.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          )}
-
-          <div className="space-y-12">
-            {relic.sections.map((section, idx) => (
-              <div key={idx} className="border-l border-gray-800 pl-6">
-                <h3 className="text-amber-500 font-black text-lg mb-3 tracking-wide">
-                  {section.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  {section.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="border-t border-gray-900 mt-16 pt-8 flex justify-between items-center">
-            <Link href="/music" className="text-amber-500 hover:text-amber-400 text-sm font-mono">
-              ← RETURN TO HALL
-            </Link>
-            <p className="text-xs text-gray-700">STORMBREAKERS</p>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-        }
