@@ -132,4 +132,4 @@ export default function SagaPage() {
       </section>
     </main>
   );
-      }
+}
