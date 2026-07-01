@@ -21,89 +21,88 @@ const RELICS: Relic[] = [
       'Calling saints to the front',
       'No more silence, no retreat',
       'We rise with a shout',
-      'The battle belongs to the Lord'
+      'Victory belongs to the Lord'
     ],
     audio: '/audio/horn-of-war.mp3',
-    cover: '/REPLACE_WITH_YOUR_HORN_OF_WAR_UUID.webp',
+    cover: '/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp',
   },
   {
     slug: 'iron-collide',
     title: 'Iron Collide',
     scripture: 'Proverbs 27:17 - "As iron sharpens iron, so one person sharpens another."',
     lyrics: [
-      'Iron collide, sparks in the night',
-      'Brother to brother, we stand and fight',
-      'No man left behind in this fire',
-      'Sharpen my heart with Your fire'
+      'When iron collides with iron',
+      'Sparks fly in the fire',
+      'We are forged in battle',
+      'Sharper than before'
     ],
     audio: '/audio/iron-collide.mp3',
-    cover: '/REPLACE_WITH_YOUR_IRON_COLLIDE_UUID.webp',
+    cover: '/placeholder.webp',
   },
   {
     slug: 'crown-of-thorns',
     title: 'Crown of Thorns',
-    scripture: 'John 19:5 - "Jesus came out wearing the crown of thorns and the purple robe."',
+    scripture: 'Matthew 27:29 - "They twisted together a crown of thorns and set it on his head."',
     lyrics: [
       'He wore my crown of thorns',
-      'So I could wear His crown of life',
-      'Blood for blood, love for shame',
-      'Every thorn declares His name'
+      'So I could wear His crown',
+      'The pain became my glory',
+      'The cross became my crown'
     ],
     audio: '/audio/crown-of-thorns.mp3',
-    cover: '/REPLACE_WITH_YOUR_CROWN_OF_THORNS_UUID.webp',
+    cover: '/placeholder.webp',
   },
   {
     slug: 'lion-and-lamb',
     title: 'Lion and Lamb',
-    scripture: 'Revelation 5:5-6 - "The Lion of Judah... a Lamb, looking as if it had been slain"',
+    scripture: 'Revelation 5:5-6 - "See, the Lion of the tribe of Judah... Then I saw a Lamb"',
     lyrics: [
-      'He roars like a lion',
-      'Bleeds like a lamb',
-      'King and sacrifice',
-      'I am who I am',
-      'Worthy is the Lamb'
+      'He\'s the Lion and the Lamb',
+      'Roaring with mercy in His eyes',
+      'Conquering through sacrifice',
+      'The Lion and the Lamb'
     ],
     audio: '/audio/lion-and-lamb.mp3',
-    cover: '/REPLACE_WITH_YOUR_LION_AND_LAMB_UUID.webp',
+    cover: '/placeholder.webp',
   },
   {
     slug: 'blood-of-the-cross',
     title: 'Blood of the Cross',
-    scripture: 'Colossians 1:20 - "...making peace through his blood, shed on the cross."',
+    scripture: 'Colossians 1:20 - "Making peace through his blood, shed on the cross."',
     lyrics: [
-      'Nothing but the blood',
-      'That ran from Calvary',
-      'Breaks every chain in me',
-      'Speaks a better word for me'
+      'By the blood of the cross',
+      'I am redeemed',
+      'Every chain is broken',
+      'By the blood of the cross'
     ],
     audio: '/audio/blood-of-the-cross.mp3',
-    cover: '/REPLACE_WITH_YOUR_BLOOD_OF_THE_CROSS_UUID.webp',
+    cover: '/placeholder.webp',
   },
   {
     slug: 'heaven-calling',
     title: 'Heaven Calling',
-    scripture: 'Philippians 3:14 - "I press on toward the goal... the prize of the upward call of God"',
+    scripture: 'Philippians 3:14 - "I press on toward the goal for the prize of the upward call of God"',
     lyrics: [
-      'I hear heaven calling my name',
+      'I hear heaven calling',
+      'Calling me higher',
       'This world is not my home',
-      'Set my eyes on higher ground',
-      'Til I wear that golden crown'
+      'I\'m running to the throne'
     ],
     audio: '/audio/heaven-calling.mp3',
-    cover: '/REPLACE_WITH_YOUR_HEAVEN_CALLING_UUID.webp',
+    cover: '/placeholder.webp',
   },
   {
     slug: 'scars-that-preach',
     title: 'Scars That Preach',
-    scripture: 'Galatians 6:17 - "...for I bear on my body the marks of Jesus."',
+    scripture: 'Galatians 6:17 - "I bear on my body the marks of Jesus."',
     lyrics: [
-      'These scars, they preach',
-      'A story only pain can teach',
-      'He writes glory on my wounds',
-      'My brokenness sings of You'
+      'These scars that preach',
+      'They tell of His grace',
+      'Every wound a witness',
+      'Every scar His name'
     ],
     audio: '/audio/scars-that-preach.mp3',
-    cover: '/REPLACE_WITH_YOUR_SCARS_THAT_PREACH_UUID.webp',
+    cover: '/placeholder.webp',
   },
 ];
 
@@ -119,7 +118,7 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
   if (!relic) notFound();
   
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
+    <main className="min-h-screen bg-black text-white">
       <div className="max-w-4xl mx-auto px-6 py-12">
         <Link 
           href="/music" 
@@ -142,26 +141,28 @@ export default function RelicPage({ params }: { params: { slug: string } }) {
           
           <div>
             <h1 className="text-5xl font-black text-amber-400 mb-3 tracking-tight">
-              {relic.title}
+              {relic.title.toUpperCase()}
             </h1>
             
-            <p className="text-zinc-400 italic mb-6 text-lg leading-relaxed">
+            <p className="text-zinc-300 mb-6 text-lg leading-relaxed">
               {relic.scripture}
             </p>
             
-            <audio controls className="w-full mb-8 rounded-lg">
-              <source src={relic.audio} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-            
-            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
-              <h2 className="text-amber-400 font-bold mb-4 text-xl">Lyrics</h2>
-              <div className="space-y-3 text-lg text-zinc-200 leading-relaxed">
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800 mb-6">
+              <h2 className="text-amber-400 font-bold mb-4 text-xl">Prophecy</h2>
+              <div className="space-y-2">
                 {relic.lyrics.map((line, i) => (
-                  <p key={i}>{line}</p>
+                  <p key={i} className="text-lg text-zinc-200 leading-relaxed">
+                    {line}
+                  </p>
                 ))}
               </div>
             </div>
+
+            <audio controls className="w-full">
+              <source src={relic.audio} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
           </div>
         </div>
       </div>
