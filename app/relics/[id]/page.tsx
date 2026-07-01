@@ -12,11 +12,11 @@ const relics = [
     devotional: [
       {
         heading: "The horn does not promise an easy battle.",
-        text: "Vikings didn't blow horns to start parties. They blew them to end peace. The sound meant one thing: war has come. God uses the same language. When He says 'blow the trumpet,' He's not asking. He's commanding."
+        text: "Vikings didn't blow horns to start parties. They blew them to end peace. The sound meant one thing: war has come."
       },
       {
         heading: "It calls the faithful to stand.",
-        text: "Standing is a choice. Retreating is easier. But the faithful don't negotiate with darkness. They don't make peace with what God called them to conquer. When the horn sounds, you either stand or you fall."
+        text: "Standing is a choice. Retreating is easier. But the faithful don't negotiate with darkness."
       }
     ]
   },
@@ -24,13 +24,13 @@ const relics = [
     id: 2,
     title: "HEAVEN CALLING",
     subtitle: "THE ASCENT BEGINS.",
-    videoId: "oxNauKuxg4Q", // HEAVEN CALLING
+    videoId: "oxNauKuxg4Q", // HEAVEN CALLING - THIS ONE WORKS
     verse: "After this I looked, and there before me was a door standing open in heaven. And the voice I had first heard speaking to me like a trumpet said, 'Come up here, and I will show you what must take place after this.'",
     ref: "Revelation 4:1",
     devotional: [
       {
         heading: "Heaven is not passive.",
-        text: "It calls. It invites. It commands ascent. You were not made to live in the valley of survival. You were called to the mountain of encounter. Vikings climbed for glory. We climb for God."
+        text: "It calls. It invites. It commands ascent. You were not made to live in the valley of survival. You were called to the mountain of encounter."
       }
     ]
   },
@@ -44,7 +44,7 @@ const relics = [
     devotional: [
       {
         heading: "Iron does not bend unless it chooses to.",
-        text: "When kingdoms collide, neutral ground burns first. You cannot serve both fear and faith. The battlefield is inside you. Will you retreat to comfort, or collide with your calling?"
+        text: "When kingdoms collide, neutral ground burns first. You cannot serve both fear and faith."
       }
     ]
   },
@@ -58,7 +58,7 @@ const relics = [
     devotional: [
       {
         heading: "Every saga is a journey.",
-        text: "Every pilgrim has a path. Vikings sailed by stars. Believers walk by the Word. You will get lost without it. You will wander in circles. But with His light, even the wilderness becomes a road home."
+        text: "Vikings sailed by stars. Believers walk by the Word. You will get lost without it."
       }
     ]
   },
@@ -66,13 +66,13 @@ const relics = [
     id: 5,
     title: "BLOOD OF CROSS",
     subtitle: "THE COVENANT SEALED.",
-    videoId: "4IcbjsNLIzo", // BLOOD OF CROSS
+    videoId: "4lcbjsNLIzo", // BLOOD OF CROSS - FIXED: lowercase L not capital I
     verse: "Without the shedding of blood there is no forgiveness.",
     ref: "Hebrews 9:22",
     devotional: [
       {
         heading: "Viking warriors swore blood oaths.",
-        text: "Christ sealed a blood covenant. The difference? Their blood was for vengeance. His blood was for victory. Your sin for His righteousness. Your death for His life. The cross is where the war was won."
+        text: "Christ sealed a blood covenant. Their blood was for vengeance. His blood was for victory."
       }
     ]
   },
@@ -86,7 +86,7 @@ const relics = [
     devotional: [
       {
         heading: "Vikings feared the wildfire.",
-        text: "Christians become the wildfire. This is not emotion - this is invasion. The Holy Spirit does not visit. He possesses. When He sets you ablaze, you don't just feel warm. You become dangerous to darkness."
+        text: "Christians become the wildfire. The Holy Spirit does not visit. He possesses."
       }
     ]
   }
