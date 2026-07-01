@@ -5,37 +5,37 @@ const relics = [
     id: 1,
     title: "HORN OF WAR",
     subtitle: "A BATTLE CRY. A LEGEND RISES.",
-    image: "/images/horn-of-war.jpg"
+    image: "/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
     id: 2,
     title: "HEAVEN CALLING", 
     subtitle: "THE ASCENT BEGINS.",
-    image: "/images/heaven-calling.jpg"
+    image: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
     id: 3,
     title: "IRON COLLIDE",
     subtitle: "KINGDOMS CLASH.",
-    image: "/images/iron-collide.jpg"
+    image: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
     id: 4,
     title: "SPIRITUAL JOURNEY",
     subtitle: "THE PATH HOME.",
-    image: "/images/spiritual-journey.jpg"
+    image: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
     id: 5,
     title: "BLOOD OF CROSS",
     subtitle: "THE COVENANT SEALED.",
-    image: "/images/blood-of-cross.jpg"
+    image: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
     id: 6,
     title: "I'M ON FIRE",
     subtitle: "WILDFIRE SPREADS.",
-    image: "/images/im-on-fire.jpg"
+    image: "/placeholder-im-on-fire.jpg" // ← You still need to upload this one
   }
 ]
 
@@ -67,8 +67,12 @@ export default function RelicsPage() {
               href={`/relics/${relic.id}`}
               className="block border border-zinc-800 rounded-lg overflow-hidden hover:border-amber-500 transition-all cursor-pointer"
             >
-              <div className="aspect-video bg-gradient-to-br from-red-900 via-zinc-900 to-black">
-                {/* Replace with <img src={relic.image} /> when you upload images */}
+              <div className="aspect-video bg-zinc-900 relative">
+                <img 
+                  src={relic.image} 
+                  alt={relic.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="p-6">
