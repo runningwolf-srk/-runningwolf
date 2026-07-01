@@ -169,4 +169,4 @@ export default function RelicPage({ params }: { params: { id: string } }) {
       </div>
     </main>
   )
-      }
+}
