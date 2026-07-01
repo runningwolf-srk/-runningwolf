@@ -1,12 +1,7 @@
 export default function MusicPage() {
   const tracks = [
     { id: 1, title: 'Spiritual Journey', youtubeId: 'umDFjJjh0_c', duration: '4:12' },
-    { id: 2, title: 'Horn of War', youtubeId: 'REPLACE_ME', duration: '3:42' },
-    { id: 3, title: 'Iron Collide', youtubeId: 'REPLACE_ME', duration: '4:15' },
-    { id: 4, title: 'The Silence', youtubeId: 'REPLACE_ME', duration: '2:58' },
-    { id: 5, title: 'The Choice', youtubeId: 'REPLACE_ME', duration: '3:21' },
-    { id: 6, title: 'By His Call We Rise', youtubeId: 'REPLACE_ME', duration: '3:55' },
-    { id: 7, title: 'Stormbreakers', youtubeId: 'REPLACE_ME', duration: '4:02' },
+    { id: 2, title: "I'm on Fire", youtubeId: '8XQUhWB_N5M', duration: '3:28' },
   ];
 
   return (
