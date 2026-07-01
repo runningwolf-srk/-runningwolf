@@ -35,7 +35,7 @@ const relics = [
     id: 6,
     title: "I'M ON FIRE",
     subtitle: "WILDFIRE SPREADS.",
-    image: "/placeholder-im-on-fire.jpg" // ← You still need to upload this one
+    image: "/file_0000000065a071f5832301f52d11fb80.png" // ← SCARS THAT PREACH ART
   }
 ]
 
