@@ -7,7 +7,7 @@ const chapters = [
     id: 0,
     title: "PROLOGUE: THE CALL OF THE WOLF",
     subtitle: "How the Stormbreaker Was Named",
-    image: "/729068345_1706992463868756_7233760520950384832_n~2.jpg",
+    image: "/729068345_1706992463868756_7233760520950384832_n~2.jpg", // <-- Update this if you uploaded a different wolf image
     text: `The wind never stopped in Guymon, Oklahoma.
 
 Dust. Silence. Flat earth to the horizon.
@@ -42,7 +42,7 @@ The songs. The relics. The saga.`,
     id: 1,
     title: "CHAPTER I: HORN OF WAR",
     subtitle: "The Sound That Ended Peace",
-    image: "/images/photo6276145519223296336.jpeg",
+    image: "/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp", // HORN OF WAR image
     text: `The snow fell sideways in the Valley of Bones.
 
 Not the gentle kind that covers sin. The kind that cuts. The kind that blinds. The kind that makes men question if God is still watching.
@@ -173,7 +173,7 @@ It had invited itself.`,
     id: 2,
     title: "CHAPTER II: IRON COLLIDE",
     subtitle: "The Forge of Brothers",
-    image: "/images/photo5642035277206128851.jpeg",
+    image: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp", // IRON COLLIDE image
     text: `The law was brutal: No man fights alone.
 
 Hakon Iron-Hand enforced it with broken bones and harder truths.
@@ -202,7 +202,7 @@ It takes brothers willing to break you so the enemy can't.`,
     id: 3,
     title: "CHAPTER III: CROWN OF THORNS",
     subtitle: "The King With No Kingdom",
-    image: "/images/photo2162396780494862805.jpeg",
+    image: "/060a2ef0-6320-11f1-94f7-f3f3b6c0f03c.webp", // LORD OF LORDS - using for Crown of Thorns
     text: `They found him in the ruins of the old chapel at Ravenscar.
 
 Not on a throne. On his knees in the snow.
@@ -235,7 +235,7 @@ Astrid did not take it. She drew her knife and cut the thorns from his head, one
     id: 4,
     title: "CHAPTER IV: BLOOD OF THE CROSS",
     subtitle: "The Covenant in the Cave",
-    image: "/images/photo3094945936600368699.jpeg",
+    image: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp", // BLOOD OF CROSS image
     text: `Every Viking knew the blood oath.
 
 A cut across the palm. "My blood for your vengeance." Sealed in fire, broken only by death.
@@ -270,7 +270,7 @@ The war was over before it began.`,
     id: 5,
     title: "CHAPTER V: HEAVEN CALLING",
     subtitle: "The Voice in the Fire",
-    image: "/images/photo8190684909978424817.jpeg",
+    image: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp", // HEAVEN CALLING image
     text: `The warband was dying.
 
 Not from battle. From the third winter. From hunger. From the silence that follows when hope runs out.
@@ -315,7 +315,7 @@ He began to climb.`,
     id: 6,
     title: "CHAPTER VI: I'M ON FIRE",
     subtitle: "Wildfire Spreads",
-    image: "/images/photo1158854991807873860.jpeg",
+    image: "/file_0000000065a071f5832301f52d11fb80.png", // SCARS THAT PREACH - using for I'm On Fire
     text: `It started with a spark.
 
 The first spark landed on Astrid's fur cloak as she stood watch. She beat it out. Thought nothing of it.
@@ -360,7 +360,7 @@ Below them, the first green shoots were already pushing through the black earth.
     id: 7,
     title: "CHAPTER VII: SPIRITUAL JOURNEY",
     subtitle: "God Kept Me Alive",
-    image: "/images/photo3811338021140057743.jpeg",
+    image: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp", // SPIRITUAL JOURNEY image
     text: `I should have died before I was born.
 
 Ten months late. Cord wrapped. Doctors said zero chance.
@@ -511,4 +511,4 @@ export default function SagaPage() {
       </div>
     </main>
   )
-    }
+}
