@@ -6,56 +6,65 @@ export default function RelicsPage() {
       <div className="max-w-3xl mx-auto px-6 py-20">
         
         {/* Nav */}
-        <div className="flex justify-between text-sm text-zinc-500 mb-20 tracking-widest">
+        <div className="flex justify-between text-sm text-zinc-500 mb-16 tracking-widest">
           <Link href="/" className="hover:text-amber-500">← RUNNINGWOLF</Link>
           <span>HALL OF RELICS</span>
-          <Link href="/saga" className="hover:text-amber-500">Iron Collide →</Link>
+          <Link href="/saga" className="hover:text-amber-500">Saga →</Link>
         </div>
 
-        {/* Main Quote */}
-        <div className="text-center py-24">
-          <div className="w-24 h-px bg-amber-500 mx-auto mb-12"></div>
-          
-          <h1 className="text-3xl md:text-5xl font-serif text-amber-500 leading-relaxed mb-12">
-            The horn does not promise<br />
-            an easy battle. It calls the<br />
-            faithful to stand.
-          </h1>
-          
-          <div className="w-24 h-px bg-amber-500 mx-auto"></div>
+        {/* Relic Title */}
+        <div className="mb-12">
+          <p className="text-amber-500 text-sm tracking-[0.3em] mb-2">RELIC 01</p>
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">HORN OF WAR</h1>
+          <p className="text-zinc-400">A BATTLE CRY. A LEGEND RISES.</p>
         </div>
 
-        {/* Joel 2:1 + What It Means */}
-        <div className="mt-32 pt-16 border-t border-zinc-800">
-          <p className="text-amber-500 text-sm tracking-[0.3em] mb-6">THE SCRIPTURE</p>
+        {/* Video Player */}
+        <div className="aspect-video mb-12">
+          <iframe 
+            className="w-full h-full rounded-lg border border-amber-500/20"
+            src="https://www.youtube.com/embed/M4wGCg5oCx0"
+            title="Horn of War"
+            frameBorder="0" 
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen>
+          </iframe>
+        </div>
+
+        {/* Blog Section - Devotional Reading */}
+        <div className="prose prose-invert max-w-none">
+          <h2 className="text-amber-500 font-serif text-2xl mb-6">The Devotional</h2>
           
           <div className="border-l-2 border-amber-500 pl-6 mb-8">
-            <p className="text-2xl italic text-white font-serif mb-3 leading-relaxed">
+            <p className="text-xl italic text-white font-serif mb-2">
               "Blow the trumpet in Zion, declare a holy fast, call a sacred assembly."
             </p>
-            <p className="text-amber-500">Joel 2:1</p>
+            <p className="text-amber-500 text-sm">Joel 2:1</p>
           </div>
 
-          {/* What The Verse Means */}
-          <div className="mt-12">
-            <p className="text-amber-500 text-sm tracking-[0.3em] mb-6">WHAT IT SAYS</p>
-            <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
-              <p>
-                <span className="text-amber-500 font-bold">Blow the trumpet in Zion</span> - 
-                This is the war horn. Not for entertainment. For awakening. 
-                When God calls, the faithful don't hit snooze.
-              </p>
-              <p>
-                <span className="text-amber-500 font-bold">Declare a holy fast</span> - 
-                Vikings prepared for battle by fasting. Christians prepare for war by fasting. 
-                Empty yourself so God can fill you for the fight.
-              </p>
-              <p>
-                <span className="text-amber-500 font-bold">Call a sacred assembly</span> - 
-                The clan gathers. The church gathers. You don't fight alone. 
-                Stormbreakers rise together.
-              </p>
-            </div>
+          <h3 className="text-white text-xl font-bold mt-12 mb-4">The horn does not promise an easy battle.</h3>
+          <p className="text-zinc-300 leading-relaxed mb-6">
+            Vikings didn't blow horns to start parties. They blew them to start wars. When you hear 
+            HORN OF WAR, understand this: God is not calling you to comfort. He's calling you to 
+            combat. The faithful don't wait for peace. They stand when the horn sounds.
+          </p>
+
+          <h3 className="text-white text-xl font-bold mt-12 mb-4">It calls the faithful to stand.</h3>
+          <p className="text-zinc-300 leading-relaxed mb-6">
+            Standing is a choice. Retreating is easier. But Stormbreakers were not forged in retreat. 
+            Every time you press play on this track, you're making a covenant: "I will not bow to fear. 
+            I will not surrender to silence. I will rise when He calls."
+          </p>
+
+          <h3 className="text-white text-xl font-bold mt-12 mb-4">Declare a holy fast.</h3>
+          <p className="text-zinc-300 leading-relaxed mb-6">
+            Before Vikings went to battle, they fasted. Before Jesus went to the cross, He fasted. 
+            Fasting empties you of self so God can fill you with war fire. This song hits different 
+            when you're hungry for Him instead of comfort.
+          </p>
+
+          <div className="mt-16 pt-8 border-t border-zinc-800 text-center">
+            <p className="text-zinc-500 italic">Posted in the Hall of Relics</p>
           </div>
         </div>
 
