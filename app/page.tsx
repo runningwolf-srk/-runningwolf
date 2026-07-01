@@ -3,9 +3,8 @@ import Link from 'next/link'
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-zinc-200 flex flex-col items-center justify-center px-6">
-
+      
       <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-amber-500/30 mb-8 bg-zinc-900">
-        {/* Add image later: <img src="/images/viking-warrior.jpg" alt="Stormbreaker" className="w-full h-full object-cover" /> */}
       </div>
 
       <h1 className="text-5xl md:text-7xl font-serif text-amber-500 mb-4 text-center">
