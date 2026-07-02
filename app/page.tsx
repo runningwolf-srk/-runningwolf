@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function HomePage() {
   return (
@@ -9,7 +8,7 @@ export default function HomePage() {
         {/* Avatar */}
         <div className="w-48 h-48 rounded-full mx-auto mb-8 border-2 border-amber-500/30 overflow-hidden">
           <img
-            src="/729068345_1706992463868756_8236103091302264582_n.jpg"
+            src="/avatar.jpg"
             alt="RunningWolf - Stormbreaker"
             className="w-full h-full object-cover"
           />
@@ -28,4 +27,31 @@ export default function HomePage() {
         <div className="w-24 h-px bg-amber-500/50 mx-auto my-6"></div>
 
         {/* Tagline */}
-        <p className="
+        <p className="text-zinc-500 mb-12">
+          Cinematic Worship • Spirit Led • 🔥🐺⚔️
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col gap-4 w-full">
+          <Link href="https://youtube.com/@your-channel">
+            <button className="bg-amber-500 text-black px-8 py-3 w-full font-bold text-lg hover:bg-amber-400 transition-colors">
+              LISTEN NOW
+            </button>
+          </Link>
+          
+          <Link href="/music">
+            <button className="border border-amber-500 text-amber-500 px-8 py-3 w-full font-bold text-lg hover:bg-amber-500/10 transition-colors">
+              READ THE SAGA
+            </button>
+          </Link>
+        </div>
+
+        {/* Footer Quote */}
+        <p className="text-zinc-600 text-sm mt-16 italic">
+          By His call we rise.
+        </p>
+
+      </div>
+    </main>
+  )
+}
