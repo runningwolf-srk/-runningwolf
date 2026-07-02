@@ -1,0 +1,59 @@
+import Link from 'next/link'
+
+const chapters = [
+  { id: 1, title: "THE HORN", verse: "Blow the trumpet in Zion", ref: "Joel 2:1" },
+  { id: 2, title: "THE SCARS", verse: "He was pierced for our transgressions", ref: "Isaiah 53:5" },
+  { id: 3, title: "THE IRON", verse: "Choose this day whom you will serve", ref: "Joshua 24:15" },
+  { id: 4, title: "THE CALLING", verse: "Come up here, and I will show you", ref: "Revelation 4:1" },
+  { id: 5, title: "THE PATH", verse: "Your word is a lamp to my feet", ref: "Psalm 119:105" },
+  { id: 6, title: "THE BLOOD", verse: "Without shedding of blood there is no forgiveness", ref: "Hebrews 9:22" },
+  { id: 7, title: "THE FIRE", verse: "He will baptize you with Holy Spirit and fire", ref: "Matthew 3:11" }
+]
+
+export default function SagaContents() {
+  return (
+    <main className="min-h-screen bg-black text-zinc-200">
+      <div className="max-w-3xl mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <p className="text-amber-500/70 text-sm uppercase tracking-widest mb-4">The Codex</p>
+          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6">
+            THE RUNNINGWOLF SAGA
+          </h1>
+          <p className="text-zinc-400 font-sans">
+            Seven chapters. One war. Your calling.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {chapters.map((chapter) => (
+            <Link 
+              key={chapter.id} 
+              href={`/saga/${chapter.id}`}
+              className="block group"
+            >
+              <div className="border border-zinc-800 hover:border-amber-500/50 p-6 transition-all bg-zinc-950/50 hover:bg-zinc-900/50">
+                <div className="flex justify-between items-start mb-2">
+                  <h2 className="text-2xl font-serif text-white group-hover:text-amber-500 transition-colors">
+                    {chapter.title}
+                  </h2>
+                  <span className="text-amber-500/70 font-sans">
+                    Chapter {chapter.id}
+                  </span>
+                </div>
+                <p className="text-zinc-500 text-sm italic font-serif">
+                  "{chapter.verse}" — {chapter.ref}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-16 pt-12 border-t border-zinc-800 text-center">
+          <Link href="/" className="text-zinc-500 hover:text-amber-500 font-sans">
+            ← Return to Hall
+          </Link>
+        </div>
+      </div>
+    </main>
+  )
+}
