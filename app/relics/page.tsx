@@ -2,40 +2,40 @@ import Link from 'next/link'
 
 const relics = [
   {
-    id: 1,
+    slug: 'horn-of-war',
     title: "HORN OF WAR",
     subtitle: "A BATTLE CRY. A LEGEND RISES.",
     image: "/f9a9d930-631f-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
-    id: 2,
+    slug: 'heaven-calling',
     title: "HEAVEN CALLING", 
     subtitle: "THE ASCENT BEGINS.",
     image: "/29ed31f0-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
-    id: 3,
+    slug: 'iron-collide',
     title: "IRON COLLIDE",
     subtitle: "KINGDOMS CLASH.",
     image: "/1fe52410-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
-    id: 4,
+    slug: 'spiritual-journey',
     title: "SPIRITUAL JOURNEY",
     subtitle: "THE PATH HOME.",
     image: "/e8a21b70-631f-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
-    id: 5,
+    slug: 'blood-of-cross',
     title: "BLOOD OF CROSS",
     subtitle: "THE COVENANT SEALED.",
     image: "/148e9d30-6320-11f1-94f7-f3f3b6c0f03c.webp"
   },
   {
-    id: 6,
+    slug: 'im-on-fire',
     title: "I'M ON FIRE",
     subtitle: "WILDFIRE SPREADS.",
-    image: "/file_0000000065a071f5832301f52d11fb80.png" // ← SCARS THAT PREACH ART
+    image: "/file_0000000065a071f5832301f52d11fb80.png"
   }
 ]
 
@@ -63,8 +63,8 @@ export default function RelicsPage() {
         <div className="space-y-8">
           {relics.map((relic) => (
             <Link
-              key={relic.id}
-              href={`/relics/${relic.id}`}
+              key={relic.slug}
+              href={`/relics/${relic.slug}`}
               className="block border border-zinc-800 rounded-lg overflow-hidden hover:border-amber-500 transition-all cursor-pointer"
             >
               <div className="aspect-video bg-zinc-900 relative">
